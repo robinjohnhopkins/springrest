@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import theredredrobin.com.springrest.model.Friend;
 import theredredrobin.com.springrest.services.FriendService;
+import theredredrobin.com.springrest.util.ErrorMessage;
 
 import javax.xml.bind.ValidationException;
 import java.util.Optional;
@@ -25,8 +26,10 @@ public class FriendController {
     }
 
     @ExceptionHandler(ValidationException.class)
-    ResponseEntity<String> exceptionHandler(ValidationException e){
-        return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+    //ResponseEntity<String> exceptionHandler(ValidationException e){
+    ErrorMessage exceptionHandler(ValidationException e){
+        //return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ErrorMessage("400", e.getMessage());
     }
 
     @GetMapping("/friend")
