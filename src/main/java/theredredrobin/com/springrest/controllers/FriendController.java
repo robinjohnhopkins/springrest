@@ -25,6 +25,7 @@ public class FriendController {
             throw new ValidationException("friend cannot be created");
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ValidationException.class)
     //ResponseEntity<String> exceptionHandler(ValidationException e){
     ErrorMessage exceptionHandler(ValidationException e){
