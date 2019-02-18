@@ -151,3 +151,266 @@ postman GET http://localhost:8080/friends  and we see link now exists
     }
 }
 
+==
+next change to Many to Many - Address and Friend class changes
+
+run App
+
+mysql> show tables;
++-------------------+
+| Tables_in_friends |
++-------------------+
+| address           |
+| address_friends   |
+| friend            |
++-------------------+
+3 rows in set (0.00 sec)
+
+
+address and friend have the same db description.
+
+describe address_friends;
++--------------+---------+------+-----+---------+-------+
+| Field        | Type    | Null | Key | Default | Extra |
++--------------+---------+------+-----+---------+-------+
+| addresses_id | int(11) | NO   | PRI | NULL    |       |
+| friends_id   | int(11) | NO   | PRI | NULL    |       |
++--------------+---------+------+-----+---------+-------+
+
+This is a linking table
+
+postman
+GET http://localhost:8080/friends/
+{
+    "_embedded": {
+        "friends": [
+            {
+                "firstName": "tim",
+                "lastName": "nice",
+                "age": 66,
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/friends/5"
+                    },
+                    "friend": {
+                        "href": "http://localhost:8080/friends/5"
+                    },
+                    "addresses": {
+                        "href": "http://localhost:8080/friends/5/addresses"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/friends/"
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile/friends"
+        }
+    }
+}
+
+GET http://localhost:8080/friends/5/addresses
+{
+    "_embedded": {
+        "addresses": []             <-- see empty
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/friends/5/addresses"
+        }
+    }
+}
+
+
+GET http://localhost:8080/addresses
+{
+    "_embedded": {
+        "addresses": [
+            {
+                "street": "my street",
+                "city": "bristol",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/addresses/1"
+                    },
+                    "address": {
+                        "href": "http://localhost:8080/addresses/1"
+                    },
+                    "friends": {
+                        "href": "http://localhost:8080/addresses/1/friends"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/addresses"
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile/addresses"
+        }
+    }
+}
+
+GET http://localhost:8080/addresses/1/friends
+{
+    "_embedded": {
+        "friends": []           <-- empty
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/addresses/1/friends"
+        }
+    }
+}
+
+POST http://localhost:8080/addresses/1/friends
+raw http://localhost:8080/friends/5
+Content-type: text/uri-list
+
+==
+Now the coupling is correct
+
+GET http://localhost:8080/friends
+{
+    "_embedded": {
+        "friends": [
+            {
+                "firstName": "tim",
+                "lastName": "nice",
+                "age": 66,
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/friends/5"
+                    },
+                    "friend": {
+                        "href": "http://localhost:8080/friends/5"
+                    },
+                    "addresses": {
+                        "href": "http://localhost:8080/friends/5/addresses"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/friends"
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile/friends"
+        }
+    }
+}
+
+GET http://localhost:8080/friends/5
+{
+    "firstName": "tim",
+    "lastName": "nice",
+    "age": 66,
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/friends/5"
+        },
+        "friend": {
+            "href": "http://localhost:8080/friends/5"
+        },
+        "addresses": {
+            "href": "http://localhost:8080/friends/5/addresses"
+        }
+    }
+}
+
+GET http://localhost:8080/friends/5/addresses
+{
+    "_embedded": {
+        "addresses": [
+            {
+                "street": "my street",
+                "city": "bristol",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/addresses/1"
+                    },
+                    "address": {
+                        "href": "http://localhost:8080/addresses/1"
+                    },
+                    "friends": {
+                        "href": "http://localhost:8080/addresses/1/friends"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/friends/5/addresses"
+        }
+    }
+}
+
+
+GET http://localhost:8080/addresses/
+{
+    "_embedded": {
+        "addresses": [
+            {
+                "street": "my street",
+                "city": "bristol",
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/addresses/1"
+                    },
+                    "address": {
+                        "href": "http://localhost:8080/addresses/1"
+                    },
+                    "friends": {
+                        "href": "http://localhost:8080/addresses/1/friends"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/addresses/"
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile/addresses"
+        }
+    }
+}
+
+GET http://localhost:8080/addresses/1/friends
+{
+    "_embedded": {
+        "friends": [
+            {
+                "firstName": "tim",
+                "lastName": "nice",
+                "age": 66,
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/friends/5"
+                    },
+                    "friend": {
+                        "href": "http://localhost:8080/friends/5"
+                    },
+                    "addresses": {
+                        "href": "http://localhost:8080/friends/5/addresses"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/addresses/1/friends"
+        }
+    }
+}
+

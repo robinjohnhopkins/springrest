@@ -27,8 +27,9 @@ public class Friend {
 
     public Friend() {
     }
-    //    @ManyToMany(mappedBy = "friends")
-    @OneToMany(mappedBy = "friend")
+
+    @ManyToMany(mappedBy = "friends")
+    //@OneToMany(mappedBy = "friend")
     private Set<Address> addresses;
 
 //    @OneToMany(cascade = CascadeType.ALL)
