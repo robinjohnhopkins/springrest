@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import theredredrobin.com.springrest.util.ErrorMessage;
 
-import javax.xml.bind.ValidationException;
+import javax.validation.ValidationException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {

@@ -12,7 +12,7 @@ import theredredrobin.com.springrest.util.ErrorMessage;
 import theredredrobin.com.springrest.util.FieldErrorMessage;
 
 import javax.validation.Valid;
-import javax.xml.bind.ValidationException;
+import javax.validation.ValidationException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -79,6 +79,11 @@ public class FriendController {
             return friendService.findByLastName(lastName);
         else
             return friendService.findAll();
+    }
+
+    @GetMapping("/error/test")
+    Friend errorTest() {
+        throw new ValidationException("error test called - presumably part of exception testing");
     }
 
 }

@@ -1,8 +1,11 @@
 package theredredrobin.com.springrest;
 
 import org.assertj.core.api.Assertions;
+import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import theredredrobin.com.springrest.model.Friend;
 
@@ -27,7 +30,19 @@ public class SystemTests {
         //Assertions.assertThat(restTemplate.getForObject(url,Friend[].class)).isEmpty();
         Friend[] friendsAfter = restTemplate.getForObject(url, Friend[].class);
         Assertions.assertThat(friendsAfter.length == friendsStart.length);
+    }
 
+    @Test
+    public void testErrorHandlingReturnsBadRequest() {
 
+        RestTemplate restTemplate = new RestTemplate();
+
+        String url = "http://localhost:8080/error/test";
+
+        try {
+            restTemplate.getForEntity(url, String.class);
+        } catch (HttpClientErrorException e) {
+            Assert.assertEquals(HttpStatus.BAD_REQUEST, e.getStatusCode());
+        }
     }
 }

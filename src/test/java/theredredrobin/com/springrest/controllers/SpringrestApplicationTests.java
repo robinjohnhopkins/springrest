@@ -1,4 +1,4 @@
-package theredredrobin.com.springrest;
+package theredredrobin.com.springrest.controllers;
 
 
 import org.assertj.core.api.Assertions;
@@ -13,6 +13,9 @@ import org.springframework.web.client.RestTemplate;
 import theredredrobin.com.springrest.controllers.FriendController;
 import theredredrobin.com.springrest.model.Friend;
 
+import javax.validation.ValidationException;
+
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringrestApplicationTests {
@@ -25,5 +28,9 @@ public class SpringrestApplicationTests {
 		Assert.assertNotNull(friendController);
 	}
 
+	@Test(expected = ValidationException.class)
+	public void testErrorHandlingVallidationExceptionThrown(){
+		friendController.errorTest();
+	}
 
 }
