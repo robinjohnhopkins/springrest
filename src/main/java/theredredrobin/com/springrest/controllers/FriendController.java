@@ -22,16 +22,17 @@ public class FriendController {
         if (friend.getId() == 0 && friend.getFirstName() != null && friend.getLastName() != null )
             return friendService.save(friend);
         else
-            throw new ValidationException("friend cannot be created");
+            throw new ValidationException("friend cannot be created.!");
     }
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(ValidationException.class)
-    //ResponseEntity<String> exceptionHandler(ValidationException e){
-    ErrorMessage exceptionHandler(ValidationException e){
-        //return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
-        return new ErrorMessage("400", e.getMessage());
-    }
+    
+// moved to class ControllerExceptionHandler
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ExceptionHandler(ValidationException.class)
+//    //ResponseEntity<String> exceptionHandler(ValidationException e){
+//    ErrorMessage exceptionHandler(ValidationException e){
+//        //return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+//        return new ErrorMessage("400", e.getMessage());
+//    }
 
     @GetMapping("/friend")
     Iterable<Friend> read(){
