@@ -45,6 +45,12 @@
 			<version>2.1</version>
 		</dependency>
 
+        <!-- with spring-boot-starter-data-rest added to pom,
+                the FriendController is not explicitly needed -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
 
 	</dependencies>
 
