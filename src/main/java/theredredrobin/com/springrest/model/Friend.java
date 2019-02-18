@@ -3,6 +3,7 @@ package theredredrobin.com.springrest.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.Set;
 
@@ -11,6 +12,8 @@ public class Friend {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
+  @NotBlank
   private String firstName;
   private String lastName;
   int age;

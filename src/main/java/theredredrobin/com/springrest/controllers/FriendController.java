@@ -3,13 +3,19 @@ package theredredrobin.com.springrest.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import theredredrobin.com.springrest.model.Friend;
 import theredredrobin.com.springrest.services.FriendService;
 import theredredrobin.com.springrest.util.ErrorMessage;
+import theredredrobin.com.springrest.util.FieldErrorMessage;
 
+import javax.validation.Valid;
 import javax.xml.bind.ValidationException;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class FriendController {
@@ -18,13 +24,20 @@ public class FriendController {
     FriendService friendService;
 
     @PostMapping("/friend")
-    Friend create(@RequestBody Friend friend) throws ValidationException {
-        if (friend.getId() == 0 && friend.getFirstName() != null && friend.getLastName() != null )
+    Friend create(@Valid @RequestBody Friend friend) throws ValidationException {
+// NB afteradding @Valid, don't need this validation!
+//        if (friend.getId() == 0 && friend.getFirstName() != null && friend.getLastName() != null )
             return friendService.save(friend);
-        else
-            throw new ValidationException("friend cannot be created.!");
+//        else
+//            throw new ValidationException("friend cannot be created.!");
     }
-    
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    List<FieldErrorMessage>  exceptionHandler(MethodArgumentNotValidException e){
+        List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
+        List<FieldErrorMessage> fieldErrorMessages = fieldErrors.stream().map(fieldError -> new FieldErrorMessage(fieldError.getField(), fieldError.getDefaultMessage())).collect(Collectors.toList());
+        return fieldErrorMessages;
+    }
 // moved to class ControllerExceptionHandler
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    @ExceptionHandler(ValidationException.class)
