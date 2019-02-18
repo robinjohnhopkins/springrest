@@ -20,7 +20,14 @@ public class Friend {
   @JsonIgnore
   boolean married;
 
-//    @ManyToMany(mappedBy = "friends")
+    public Friend(@NotBlank String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Friend() {
+    }
+    //    @ManyToMany(mappedBy = "friends")
 //    private Set<Address> addresses;
 
     @OneToMany(cascade = CascadeType.ALL )
