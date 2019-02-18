@@ -28,25 +28,27 @@ public class Friend {
     public Friend() {
     }
     //    @ManyToMany(mappedBy = "friends")
-//    private Set<Address> addresses;
+    @OneToMany(mappedBy = "friend")
+    private Set<Address> addresses;
 
-    @OneToMany(cascade = CascadeType.ALL )
-    private List<Address> addresses;
-
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
-//  public Set<Address> getAddresses() {
-//    return addresses;
-//  }
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<Address> addresses;
 //
-//  public void setAddresses(Set<Address> addresses) {
-//    this.addresses = addresses;
-//  }
+//    public List<Address> getAddresses() {
+//        return addresses;
+//    }
+//
+//    public void setAddresses(List<Address> addresses) {
+//        this.addresses = addresses;
+//    }
+
+  public Set<Address> getAddresses() {
+    return addresses;
+  }
+
+  public void setAddresses(Set<Address> addresses) {
+    this.addresses = addresses;
+  }
 
     public int getAge() {
         return age;

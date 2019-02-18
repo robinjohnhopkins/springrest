@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import theredredrobin.com.springrest.controllers.FriendController;
+//import theredredrobin.com.springrest.controllers.FriendController;
 import theredredrobin.com.springrest.model.Friend;
 import theredredrobin.com.springrest.services.FriendService;
 
@@ -20,27 +20,27 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(FriendController.class)
-public class StandaloneControllerTests {
-
-  @MockBean
-  FriendService friendService;
-
-  @Autowired
-  MockMvc mockMvc;
-
-  @Test
-  public void testCreateReadDelete() throws Exception {
-    Friend friend = new Friend("Gordon", "Moore");
-    List<Friend> friends = Arrays.asList(friend);
-
-    Mockito.when(friendService.findAll()).thenReturn(friends);
-
-    mockMvc.perform(get("/friend"))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$", Matchers.hasSize(1)))
-        .andExpect(jsonPath("$[0].firstName", Matchers.is("Gordon")));
-  }
-
-}
+//@RunWith(SpringRunner.class)
+//@WebMvcTest(FriendController.class)
+//public class StandaloneControllerTests {
+//
+//  @MockBean
+//  FriendService friendService;
+//
+//  @Autowired
+//  MockMvc mockMvc;
+//
+//  @Test
+//  public void testCreateReadDelete() throws Exception {
+//    Friend friend = new Friend("Gordon", "Moore");
+//    List<Friend> friends = Arrays.asList(friend);
+//
+//    Mockito.when(friendService.findAll()).thenReturn(friends);
+//
+//    mockMvc.perform(get("/friend"))
+//        .andExpect(status().isOk())
+//        .andExpect(jsonPath("$", Matchers.hasSize(1)))
+//        .andExpect(jsonPath("$[0].firstName", Matchers.is("Gordon")));
+//  }
+//
+//}

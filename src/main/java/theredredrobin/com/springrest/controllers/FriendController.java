@@ -40,6 +40,120 @@ import java.util.stream.Collectors;
 //        ]
 //  }
 
+// in changing db - login to mysql
+//show tables;
+//        +-------------------+
+//        | Tables_in_friends |
+//        +-------------------+
+//        | address           |
+//        | address_friends   |
+//        | friend            |
+//        | friend_addresses  |
+//        +-------------------+
+//drop table friend_addresses;
+//drop table friend;
+//drop table address;
+//drop table address_friends;
+//
+// run app again with OneToMany
+//show tables;
+//        +-------------------+
+//        | Tables_in_friends |
+//        +-------------------+
+//        | address           |
+//        | friend            |
+//        +-------------------+
+//    mysql> describe friend;
+//        +------------+--------------+------+-----+---------+----------------+
+//        | Field      | Type         | Null | Key | Default | Extra          |
+//        +------------+--------------+------+-----+---------+----------------+
+//        | id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+//        | age        | int(11)      | NO   |     | NULL    |                |
+//        | first_name | varchar(255) | YES  |     | NULL    |                |
+//        | last_name  | varchar(255) | YES  |     | NULL    |                |
+//        | married    | bit(1)       | NO   |     | NULL    |                |
+//        +------------+--------------+------+-----+---------+----------------+
+//        5 rows in set (0.00 sec)
+//
+//    mysql> describe address;
+//        +-----------+--------------+------+-----+---------+----------------+
+//        | Field     | Type         | Null | Key | Default | Extra          |
+//        +-----------+--------------+------+-----+---------+----------------+
+//        | id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+//        | city      | varchar(255) | YES  |     | NULL    |                |
+//        | street    | varchar(255) | YES  |     | NULL    |                |
+//        | friend_id | int(11)      | YES  | MUL | NULL    |                |
+//        +-----------+--------------+------+-----+---------+----------------+
+//        4 rows in set (0.00 sec)
+
+//postman POST http://localhost:8080/friends
+//{
+//        "firstName": "tim",
+//        "lastName": "nice",
+//        "age":66,
+//        "addresses":[
+//        ]
+//}
+
+// postman RESPONSE:
+//{
+//        "firstName": "tim",
+//        "lastName": "nice",
+//        "age": 66,
+//        "_links": {
+//        "self": {
+//        "href": "http://localhost:8080/friends/5"
+//        },
+//        "friend": {
+//        "href": "http://localhost:8080/friends/5"
+//        },
+//        "addresses": {
+//        "href": "http://localhost:8080/friends/5/addresses"
+//        }
+//        }
+//}
+
+//postman POST http://localhost:8080/addresses
+//{
+//        "street": "my street",
+//        "city":"bristol",
+//        "friend":"http://localhost:8080/friends/5"
+//}
+
+//postman GET http://localhost:8080/friends  and we see link now exists
+/*
+{
+    "_embedded": {
+        "friends": [
+            {
+                "firstName": "tim",
+                "lastName": "nice",
+                "age": 66,
+                "_links": {
+                    "self": {
+                        "href": "http://localhost:8080/friends/5"
+                    },
+                    "friend": {
+                        "href": "http://localhost:8080/friends/5"
+                    },
+                    "addresses": {
+                        "href": "http://localhost:8080/friends/5/addresses"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/friends"
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile/friends"
+        }
+    }
+}
+*/
+
 
 //@RestController
 //public class FriendController {

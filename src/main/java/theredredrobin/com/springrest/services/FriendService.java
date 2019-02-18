@@ -7,7 +7,7 @@ import theredredrobin.com.springrest.model.Friend;
 
 @Repository
 public interface FriendService extends CrudRepository<Friend, Integer> {
-    Iterable<Friend> findByFirstNameAndLastName(String firstName, String lastName);
-    Iterable<Friend> findByFirstName(String firstName);
-    Iterable<Friend> findByLastName(String lastName);
+//    Iterable<Friend> findByFirstNameAndLastName(String firstName, String lastName);
+//    Iterable<Friend> findByFirstName(String firstName);
+//    Iterable<Friend> findByLastName(String lastName);
 }
