@@ -61,6 +61,7 @@
 				<configuration>
 					<includes>
 						<include>**/*Application*</include>
+						<include>**/*Service*</include>
 					</includes>
 				</configuration>
 			</plugin>
