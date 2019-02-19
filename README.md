@@ -442,3 +442,30 @@ run App
         }
 
 ```
+
+## compile
+```
+mvn clean install
+```
+
+## run from jar specifying alternate properties file fom current directory
+```
+java -Dspring.profiles.active=test -Dspring.config.location=./application-test.properties  -jar target/springrest-0.0.1-SNAPSHOT.jar
+```
+
+## Docker
+### build docker image
+```
+docker build -t  springrest:v1 .
+```
+
+### run docker compose
+
+There is an external to jar properties file that we want to use to supply the properties.
+This is located in the same dir as the docker-compose.yml and has db connection params.
+
+
+```
+docker-compose  -f docker-compose/docker-compose.yml up
+```
+

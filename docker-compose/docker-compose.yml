@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  db:
+    container_name: db
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: friends
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: supersecret
+    ports:
+      - 3306:3306
+  web:
+    image: springrest:v1
+    volumes:
+      - .:/data
+# here . is the same directory as the docker-compose.yml file
+
+#    command: ls -al /data
+# this command line overrides the CMD line in the Dockerfile
+
+    command: java -Dspring.profiles.active=prod -Dspring.config.location=/data/application-prod.properties -jar /usr/src/springrest-0.0.1-SNAPSHOT.jar theredredrobin.com.springrest.SpringrestApplication
+    ports:
+      - 8080:8080
+#      - 9990:9990
+    depends_on:
+      - db
