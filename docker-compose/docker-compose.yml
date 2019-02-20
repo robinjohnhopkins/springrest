@@ -3,6 +3,8 @@ services:
   db:
     container_name: db
     image: mysql:8
+#see https://hub.docker.com/_/mysql   for explanation of terms
+# e.g. MYSQL_DATABASE - optional and allows you to specify the name of a database to be created on image startup
     environment:
       MYSQL_DATABASE: friends
       MYSQL_USER: mysql

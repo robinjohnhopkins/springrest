@@ -1,0 +1,42 @@
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: springrest-deploy
+spec:
+  replicas: 1
+  minReadySeconds: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: springrest
+    spec:
+      containers:
+        - name: springrest-pod
+          image: robinjohnhopkins/springrest:v1
+#image running:
+#openjdk 11.0.1 2018-10-16
+#OpenJDK Runtime Environment (build 11.0.1+13-Debian-3)
+#OpenJDK 64-Bit Server VM (build 11.0.1+13-Debian-3, mixed mode, sharing)
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: foo
+              mountPath: "/data"
+              readOnly: true
+          command:
+            - "java"
+          args: ["-Dspring.profiles.active=prod", "-Dspring.config.location=/data/application-prod.properties",
+                 "-jar", "/usr/src/springrest-0.0.1-SNAPSHOT.jar",
+                 "theredredrobin.com.springrest.SpringrestApplication"]
+# this command line overrides the CMD line in the Dockerfile
+
+      volumes:
+        - name: foo
+          secret:
+            secretName: prod.props

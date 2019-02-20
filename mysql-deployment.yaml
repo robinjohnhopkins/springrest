@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    app: springrest
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: springrest
+    tier: mysql
+  clusterIP: None
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  labels:
+    app: springrest
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: springrest
+spec:
+  selector:
+    matchLabels:
+      app: springrest
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: springrest
+        tier: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+#see https://hub.docker.com/_/mysql   for explanation of terms
+# e.g. MYSQL_DATABASE - optional and allows you to specify the name of a database to be created on image startup
+        env:
+        - name: MYSQL_DATABASE
+          value: friends
+        - name: MYSQL_ROOT_PASSWORD
+#          value: supersecret
+          valueFrom:
+            secretKeyRef:
+              name: prod.props
+              key: dbpassword
+        ports:
+        - containerPort: 3306
+          name: mysql
+#        volumeMounts:
+#        - name: mysql-persistent-storage
+#          mountPath: /var/lib/mysql
+#      volumes:
+#      - name: mysql-persistent-storage
+#        persistentVolumeClaim:
+#          claimName: mysql-pv-claim
+

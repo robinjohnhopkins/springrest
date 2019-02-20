@@ -469,3 +469,191 @@ This is located in the same dir as the docker-compose.yml and has db connection 
 docker-compose  -f docker-compose/docker-compose.yml up
 ```
 
+## Kubernetes
+### Rename docker image
+
+above we named the image springrest:v1 - next we add another tag to the image id then remove the original tag
+
+```
+docker tag springrest:v1 <your_docker_hub_name>/springrest:v1
+docker push <your_docker_hub_name>/springrest:v1
+docker rmi springrest:v1
+```
+
+image is now on https://hub.docker.com/
+
+## install kubernetes
+see README.md in
+
+https://github.com/robinjohnhopkins/Simple-Web-Server-cpp11-Docker-eg
+
+## run minikube dashboard to see effect of command line invocations in a browser!
+```
+minikube dashboard
+```
+
+## create secret
+```
+kubectl create secret generic prod.props --from-literal=dbpassword=supersecret --from-file=./kubernetes/application-prod.properties
+```
+Here we have a kubernetes specific properties file and a dbpassword that will be passed into pods as an environment variable.
+
+
+## run mysql pod
+```
+kubectl create -f mysql-deployment.yaml
+kubectl get all
+NAME                         READY     STATUS    RESTARTS   AGE
+pod/mysql-8664987864-7hnk8   1/1       Running   0          11d
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP    11d
+service/mysql        ClusterIP   None         <none>        3306/TCP   11d
+
+NAME                    DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/mysql   1         1         1            1           11d
+
+NAME                               DESIRED   CURRENT   READY     AGE
+replicaset.apps/mysql-8664987864   1         1         1         11d
+
+```
+
+
+## mysql command prompt in minikube dashboard
+
+In kubernetes dashboard, show pods, click on mysql-1234567890-abcde pod
+
+click EXEC
+
+```
+mysql -p
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| friends            |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create database thingy;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| friends            |
+| mysql              |
+| performance_schema |
+| thingy             |
++--------------------+
+5 rows in set (0.00 sec)
+exit
+exit
+```
+Above `friends` was already created.
+This was because we specified MYSQL_DATABASE in the yaml.
+
+see https://hub.docker.com/_/mysql   for explanation of terms
+
+e.g. MYSQL_DATABASE - optional and allows you to specify the name of a database to be created on image startup
+
+If you map a directory to mysql and do not specify MYSQL_DATABASE then you might need to go into a command line
+and as a one off task create the db as shown above. After which each restart will use the already created db.
+
+## mysql command prompt from commandline
+```
+kubectl get pods
+NAME                     READY     STATUS    RESTARTS   AGE
+mysql-8664987864-7hnk8   1/1       Running   0          11d
+
+kubectl exec -it mysql-8664987864-7hnk8 -- /bin/bash
+
+mysql -p
+Enter password:
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| friends            |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.00 sec)
+```
+
+## run java spring rest app
+```
+kubectl create -f svc.yml
+
+kubectl create -f deploy.yml
+
+kubectl get all
+NAME                                     READY     STATUS    RESTARTS   AGE
+pod/mysql-8664987864-7hnk8               1/1       Running   0          11d
+pod/springrest-deploy-65f85b49b4-lpvrf   1/1       Running   0          11d
+
+NAME                     TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes       ClusterIP   10.96.0.1     <none>        443/TCP          11d
+service/mysql            ClusterIP   None          <none>        3306/TCP         11d
+service/springrest-svc   NodePort    10.99.82.73   <none>        8080:30001/TCP   11d
+
+NAME                                DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/mysql               1         1         1            1           11d
+deployment.apps/springrest-deploy   1         1         1            1           11d
+
+NAME                                           DESIRED   CURRENT   READY     AGE
+replicaset.apps/mysql-8664987864               1         1         1         11d
+replicaset.apps/springrest-deploy-65f85b49b4   1         1         1         11d
+
+kubectl logs pod/springrest-deploy-65f85b49b4-lpvrf
+...
+2019-02-08 19:54:09.679  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-08 19:54:09.691  INFO 1 --- [           main] t.com.springrest.SpringrestApplication   : Started SpringrestApplication in 13.015 seconds (JVM running for 14.126)
+```
+Here the pod has started up and connected to the mysql db called 'friends'.
+
+## check a GET rest end point in browser
+```
+minikube service list
+|-------------|----------------------|---------------------------|
+|  NAMESPACE  |         NAME         |            URL            |
+|-------------|----------------------|---------------------------|
+| default     | kubernetes           | No node port              |
+| default     | mysql                | No node port              |
+| default     | springrest-svc       | http://192.168.x.x:30001 |
+| kube-system | kube-dns             | No node port              |
+| kube-system | kubernetes-dashboard | No node port              |
+|-------------|----------------------|---------------------------|
+```
+Here the springrest-svc has exposed the internal port 8080 to external port 30001.
+Thus you can try the following endpont in a browser.
+
+http://192.168.x.x:30001
+
+Then as we have implemented a hateos REST service you see:
+```
+{
+  "_links" : {
+    "friends" : {
+      "href" : "http://192.168.x.x:30001/friends"
+    },
+    "addresses" : {
+      "href" : "http://192.168.x.x:30001/addresses"
+    },
+    "profile" : {
+      "href" : "http://192.168.x.x:30001/profile"
+    }
+  }
+}
+```
+
+The rest service itself is self-documenting.
+Postman can again be used to test out the GET, POST, PUT, DELETE commands as shown above.
