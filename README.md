@@ -657,3 +657,47 @@ Then as we have implemented a hateos REST service you see:
 
 The rest service itself is self-documenting.
 Postman can again be used to test out the GET, POST, PUT, DELETE commands as shown above.
+
+
+## 2020 Revisit sample
+
+needed to make these changes to deploy.yml
+
+```
+    diff --git a/deploy.yml b/deploy.yml
+    index 1b987fb..5e26921 100644
+    --- a/deploy.yml
+    +++ b/deploy.yml
+    @@ -1,10 +1,14 @@
+     
+    -apiVersion: extensions/v1beta1
+    +#apiVersion: extensions/v1beta1
+    +apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: springrest-deploy
+     spec:
+       replicas: 1
+    +  selector:
+    +    matchLabels:
+    +      app: springrest
+```
+
+Also had minikube fix:
+
+minikube start --vm-driver=xhyve                # errored as follows:
+    😄  minikube v1.6.2 on Darwin 10.14.6
+    ✨  Selecting 'xhyve' driver from user configuration (alternates: [virtualbox])
+    💣  The driver 'xhyve' is not supported on darwin
+
+minikube config set vm-driver hyperkit
+    ⚠️  These changes will take effect upon a minikube delete and then a minikube start
+
+minikube delete             # gave error - hence tried again with sudo
+sudo minikube delete
+minikube start 
+minikube status
+kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   14m
+
