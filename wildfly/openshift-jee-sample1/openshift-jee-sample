@@ -1,0 +1,103 @@
+kind: Build
+apiVersion: build.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/build-config.name: openshift-jee-sample
+    openshift.io/build.number: '1'
+    openshift.io/build.pod-name: openshift-jee-sample-1-build
+  selfLink: /apis/build.openshift.io/v1/namespaces/banana/builds/openshift-jee-sample-1
+  resourceVersion: '157184803'
+  name: openshift-jee-sample-1
+  uid: 6329390e-4212-11ea-b4e8-0a580a80007a
+  creationTimestamp: '2020-01-28T21:08:52Z'
+  namespace: banana
+  ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      kind: BuildConfig
+      name: openshift-jee-sample
+      uid: 62cc5bd0-4212-11ea-b4e8-0a580a80007a
+      controller: true
+  labels:
+    app: openshift-jee-sample
+    app.kubernetes.io/part-of: openshift-jee-sample-app
+    app.kubernetes.io/instance: openshift-jee-sample
+    openshift.io/build-config.name: openshift-jee-sample
+    app.kubernetes.io/component: openshift-jee-sample
+    openshift.io/build.start-policy: Serial
+    buildconfig: openshift-jee-sample
+    app.openshift.io/runtime: wildfly
+    app.kubernetes.io/name: wildfly
+    app.openshift.io/runtime-version: '17.0'
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'openshift-jee-sample:latest'
+    pushSecret:
+      name: builder-dockercfg-ttgtt
+  resources: {}
+  triggeredBy:
+    - message: Build configuration change
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/wildfly@sha256:5a20dd8d9bfe99d9c192c2385fa55daa929ee488068de4ad0b95d397d3cc46a5
+      pullSecret:
+        name: builder-dockercfg-ttgtt
+  postCommit: {}
+  serviceAccount: builder
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/openshift/openshift-jee-sample'
+    contextDir: /
+  revision:
+    type: Git
+    git:
+      commit: 3ed799911cf2d7dd93086aaa6f394d6da5ceb0fd
+      author:
+        name: Ben Parees
+        email: bparees@users.noreply.github.com
+      committer:
+        name: GitHub
+        email: noreply@github.com
+      message: 'Merge pull request #13 from bparees/welcome'
+status:
+  output: {}
+  config:
+    kind: BuildConfig
+    namespace: banana
+    name: openshift-jee-sample
+  reason: OutOfMemoryKilled
+  message: The build pod was killed due to an out of memory condition.
+  outputDockerImageReference: >-
+    image-registry.openshift-image-registry.svc:5000/banana/openshift-jee-sample:latest
+  duration: 97000000000
+  startTimestamp: '2020-01-28T21:08:53Z'
+  stages:
+    - name: FetchInputs
+      startTime: '2020-01-28T21:09:06Z'
+      durationMilliseconds: 535
+      steps:
+        - name: FetchGitSource
+          startTime: '2020-01-28T21:09:06Z'
+          durationMilliseconds: 535
+  logSnippet: >-
+    Copying blob
+    sha256:c3dca185eb1482e83381d99881430ebc179e91f0969bc905207cd1e2312e5b57
+
+    Copying blob
+    sha256:35b0f71819b36d692107d8354d8f8a53c56d7a1e10722c577f5512b34631aee3
+
+    Copying blob
+    sha256:497ef6ea0fac8097af3363a9b9032f0948098a9fa2b9002eb51ac65f2ed29cf6
+
+    Writing manifest to image destination
+
+    Storing signatures
+  completionTimestamp: '2020-01-28T21:10:30Z'
+  phase: Failed

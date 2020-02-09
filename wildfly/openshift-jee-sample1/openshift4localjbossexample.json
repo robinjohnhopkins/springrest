@@ -1,0 +1,2940 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "",
+                    "openshift.io/build.name": "eap-app-1",
+                    "openshift.io/scc": "privileged"
+                },
+                "creationTimestamp": "2020-02-08T19:32:42Z",
+                "labels": {
+                    "openshift.io/build.name": "eap-app-1"
+                },
+                "name": "eap-app-1-build",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "build.openshift.io/v1",
+                        "controller": true,
+                        "kind": "Build",
+                        "name": "eap-app-1",
+                        "uid": "c6378e7e-4aa9-11ea-a477-0a580a8000ae"
+                    }
+                ],
+                "resourceVersion": "41877",
+                "selfLink": "/api/v1/namespaces/aaa/pods/eap-app-1-build",
+                "uid": "c6696f37-4aa9-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-sti-build"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"eap-app-1\",\"namespace\":\"aaa\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/aaa/builds/eap-app-1\",\"uid\":\"c6378e7e-4aa9-11ea-a477-0a580a8000ae\",\"resourceVersion\":\"40942\",\"creationTimestamp\":\"2020-02-08T19:32:42Z\",\"labels\":{\"application\":\"eap-app\",\"buildconfig\":\"eap-app\",\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.start-policy\":\"Serial\",\"template\":\"eap72-basic-s2i\",\"template.openshift.io/template-instance-owner\":\"c5d050b9-4aa9-11ea-a477-0a580a8000ae\",\"xpaas\":\"1.0.0\"},\"annotations\":{\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"eap-app\",\"uid\":\"c6057c07-4aa9-11ea-a477-0a580a8000ae\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/jboss-developer/jboss-eap-quickstarts.git\",\"ref\":\"openshift\"},\"contextDir\":\"kitchensink\"},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\"},\"pullSecret\":{\"name\":\"builder-dockercfg-xc9c2\"},\"env\":[{\"name\":\"MAVEN_MIRROR_URL\"},{\"name\":\"MAVEN_ARGS_APPEND\",\"value\":\"-Dcom.redhat.xpaas.repo.jbossorg\"},{\"name\":\"ARTIFACT_DIR\"}],\"incremental\":true,\"forcePull\":true}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-xc9c2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Image change\",\"imageChangeBuild\":{\"imageID\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\",\"fromRef\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"openshift\",\"name\":\"jboss-eap72-openshift:1.0\"}}}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"aaa\",\"name\":\"eap-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_CONTEXT_DIR",
+                                "value": "kitchensink"
+                            },
+                            {
+                                "name": "SOURCE_REF",
+                                "value": "openshift"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "PUSH_DOCKERCFG_PATH",
+                                "value": "/var/run/secrets/openshift.io/push"
+                            },
+                            {
+                                "name": "PULL_DOCKERCFG_PATH",
+                                "value": "/var/run/secrets/openshift.io/pull"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_DRIVER",
+                                "value": "overlay"
+                            },
+                            {
+                                "name": "BUILD_ISOLATION",
+                                "value": "chroot"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "sti-build",
+                        "resources": {},
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/lib/containers/cache",
+                                "name": "buildcachedir"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/openshift.io/push",
+                                "name": "builder-dockercfg-xc9c2-push",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/openshift.io/pull",
+                                "name": "builder-dockercfg-xc9c2-pull",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/lib/containers/storage",
+                                "name": "container-storage-root"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-6kw9k",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "builder-dockercfg-xc9c2"
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-git-clone"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"eap-app-1\",\"namespace\":\"aaa\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/aaa/builds/eap-app-1\",\"uid\":\"c6378e7e-4aa9-11ea-a477-0a580a8000ae\",\"resourceVersion\":\"40942\",\"creationTimestamp\":\"2020-02-08T19:32:42Z\",\"labels\":{\"application\":\"eap-app\",\"buildconfig\":\"eap-app\",\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.start-policy\":\"Serial\",\"template\":\"eap72-basic-s2i\",\"template.openshift.io/template-instance-owner\":\"c5d050b9-4aa9-11ea-a477-0a580a8000ae\",\"xpaas\":\"1.0.0\"},\"annotations\":{\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"eap-app\",\"uid\":\"c6057c07-4aa9-11ea-a477-0a580a8000ae\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/jboss-developer/jboss-eap-quickstarts.git\",\"ref\":\"openshift\"},\"contextDir\":\"kitchensink\"},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\"},\"pullSecret\":{\"name\":\"builder-dockercfg-xc9c2\"},\"env\":[{\"name\":\"MAVEN_MIRROR_URL\"},{\"name\":\"MAVEN_ARGS_APPEND\",\"value\":\"-Dcom.redhat.xpaas.repo.jbossorg\"},{\"name\":\"ARTIFACT_DIR\"}],\"incremental\":true,\"forcePull\":true}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-xc9c2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Image change\",\"imageChangeBuild\":{\"imageID\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\",\"fromRef\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"openshift\",\"name\":\"jboss-eap72-openshift:1.0\"}}}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"aaa\",\"name\":\"eap-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_CONTEXT_DIR",
+                                "value": "kitchensink"
+                            },
+                            {
+                                "name": "SOURCE_REF",
+                                "value": "openshift"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "git-clone",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-6kw9k",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-manage-dockerfile"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"eap-app-1\",\"namespace\":\"aaa\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/aaa/builds/eap-app-1\",\"uid\":\"c6378e7e-4aa9-11ea-a477-0a580a8000ae\",\"resourceVersion\":\"40942\",\"creationTimestamp\":\"2020-02-08T19:32:42Z\",\"labels\":{\"application\":\"eap-app\",\"buildconfig\":\"eap-app\",\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.start-policy\":\"Serial\",\"template\":\"eap72-basic-s2i\",\"template.openshift.io/template-instance-owner\":\"c5d050b9-4aa9-11ea-a477-0a580a8000ae\",\"xpaas\":\"1.0.0\"},\"annotations\":{\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"eap-app\",\"uid\":\"c6057c07-4aa9-11ea-a477-0a580a8000ae\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/jboss-developer/jboss-eap-quickstarts.git\",\"ref\":\"openshift\"},\"contextDir\":\"kitchensink\"},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\"},\"pullSecret\":{\"name\":\"builder-dockercfg-xc9c2\"},\"env\":[{\"name\":\"MAVEN_MIRROR_URL\"},{\"name\":\"MAVEN_ARGS_APPEND\",\"value\":\"-Dcom.redhat.xpaas.repo.jbossorg\"},{\"name\":\"ARTIFACT_DIR\"}],\"incremental\":true,\"forcePull\":true}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-xc9c2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Image change\",\"imageChangeBuild\":{\"imageID\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\",\"fromRef\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"openshift\",\"name\":\"jboss-eap72-openshift:1.0\"}}}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"aaa\",\"name\":\"eap-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_CONTEXT_DIR",
+                                "value": "kitchensink"
+                            },
+                            {
+                                "name": "SOURCE_REF",
+                                "value": "openshift"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "manage-dockerfile",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-6kw9k",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "nodeSelector": {
+                    "kubernetes.io/os": "linux"
+                },
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "builder",
+                "serviceAccountName": "builder",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/containers/cache",
+                            "type": ""
+                        },
+                        "name": "buildcachedir"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "buildworkdir"
+                    },
+                    {
+                        "name": "builder-dockercfg-xc9c2-push",
+                        "secret": {
+                            "defaultMode": 384,
+                            "secretName": "builder-dockercfg-xc9c2"
+                        }
+                    },
+                    {
+                        "name": "builder-dockercfg-xc9c2-pull",
+                        "secret": {
+                            "defaultMode": 384,
+                            "secretName": "builder-dockercfg-xc9c2"
+                        }
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "eap-app-1-sys-config"
+                        },
+                        "name": "build-system-configs"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "items": [
+                                {
+                                    "key": "service-ca.crt",
+                                    "path": "certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt"
+                                }
+                            ],
+                            "name": "eap-app-1-ca"
+                        },
+                        "name": "build-ca-bundles"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "items": [
+                                {
+                                    "key": "ca-bundle.crt",
+                                    "path": "tls-ca-bundle.pem"
+                                }
+                            ],
+                            "name": "eap-app-1-global-ca"
+                        },
+                        "name": "build-proxy-ca-bundles"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "container-storage-root"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "build-blob-cache"
+                    },
+                    {
+                        "name": "builder-token-6kw9k",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "builder-token-6kw9k"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:33:15Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:38:01Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:38:01Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:32:42Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://23eed053ccc20ebf088ab4c39b1a1654cf9c2e273b1fd78fc55d01586f620054",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "sti-build",
+                        "ready": false,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://23eed053ccc20ebf088ab4c39b1a1654cf9c2e273b1fd78fc55d01586f620054",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-08T19:38:00Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-08T19:33:15Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "initContainerStatuses": [
+                    {
+                        "containerID": "cri-o://c5ea766b79044c21bc579d730adca2402849e947e0647ec531d5116bb9402372",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "git-clone",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://c5ea766b79044c21bc579d730adca2402849e947e0647ec531d5116bb9402372",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-08T19:33:13Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-08T19:33:03Z"
+                            }
+                        }
+                    },
+                    {
+                        "containerID": "cri-o://25d59431cae3271c17167b743660fe7b90e398cc8fa51a69131a95f959ca5f6b",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "manage-dockerfile",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://25d59431cae3271c17167b743660fe7b90e398cc8fa51a69131a95f959ca5f6b",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-08T19:33:15Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-08T19:33:14Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Succeeded",
+                "podIP": "10.128.0.206",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-08T19:32:42Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "",
+                    "openshift.io/deployment-config.name": "eap-app",
+                    "openshift.io/deployment.name": "eap-app-1",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-02-08T19:38:01Z",
+                "labels": {
+                    "openshift.io/deployer-pod-for.name": "eap-app-1"
+                },
+                "name": "eap-app-1-deploy",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "ReplicationController",
+                        "name": "eap-app-1",
+                        "uid": "8473ffc8-4aaa-11ea-bba8-0ef0e3c74fbe"
+                    }
+                ],
+                "resourceVersion": "42325",
+                "selfLink": "/api/v1/namespaces/aaa/pods/eap-app-1-deploy",
+                "uid": "84881a05-4aaa-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "activeDeadlineSeconds": 21600,
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAME",
+                                "value": "eap-app-1"
+                            },
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAMESPACE",
+                                "value": "aaa"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "deployment",
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000520000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "deployer-token-d6xzd",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "deployer-dockercfg-fmxbn"
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000520000,
+                    "seLinuxOptions": {
+                        "level": "s0:c23,c7"
+                    }
+                },
+                "serviceAccount": "deployer",
+                "serviceAccountName": "deployer",
+                "shareProcessNamespace": false,
+                "terminationGracePeriodSeconds": 10,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "deployer-token-d6xzd",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "deployer-token-d6xzd"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:38:01Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:40:23Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:40:23Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:38:01Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://a7bcb3c7f66dc03d3a55846844195e00df99ab0faa2a4041db5c689182e35282",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "lastState": {},
+                        "name": "deployment",
+                        "ready": false,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://a7bcb3c7f66dc03d3a55846844195e00df99ab0faa2a4041db5c689182e35282",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-08T19:40:22Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-08T19:38:17Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "phase": "Succeeded",
+                "podIP": "10.128.0.207",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-08T19:38:01Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "[{\n    \"name\": \"openshift-sdn\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.128.0.211\"\n    ],\n    \"default\": true,\n    \"dns\": {}\n}]",
+                    "openshift.io/deployment-config.latest-version": "2",
+                    "openshift.io/deployment-config.name": "eap-app",
+                    "openshift.io/deployment.name": "eap-app-2",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-02-08T19:41:04Z",
+                "generateName": "eap-app-2-",
+                "labels": {
+                    "application": "eap-app",
+                    "deployment": "eap-app-2",
+                    "deploymentConfig": "eap-app",
+                    "deploymentconfig": "eap-app"
+                },
+                "name": "eap-app-2-7ssz4",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicationController",
+                        "name": "eap-app-2",
+                        "uid": "e7d41fda-4aaa-11ea-bba8-0ef0e3c74fbe"
+                    }
+                ],
+                "resourceVersion": "71341",
+                "selfLink": "/api/v1/namespaces/aaa/pods/eap-app-2-7ssz4",
+                "uid": "f184ab17-4aaa-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "JGROUPS_PING_PROTOCOL",
+                                "value": "dns.DNS_PING"
+                            },
+                            {
+                                "name": "OPENSHIFT_DNS_PING_SERVICE_NAME",
+                                "value": "eap-app-ping"
+                            },
+                            {
+                                "name": "OPENSHIFT_DNS_PING_SERVICE_PORT",
+                                "value": "8888"
+                            },
+                            {
+                                "name": "MQ_CLUSTER_PASSWORD",
+                                "value": "tM4IOWg6"
+                            },
+                            {
+                                "name": "MQ_QUEUES"
+                            },
+                            {
+                                "name": "MQ_TOPICS"
+                            },
+                            {
+                                "name": "JGROUPS_CLUSTER_PASSWORD",
+                                "value": "LjJql1Uy"
+                            },
+                            {
+                                "name": "AUTO_DEPLOY_EXPLODED",
+                                "value": "false"
+                            }
+                        ],
+                        "image": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177",
+                        "imagePullPolicy": "Always",
+                        "livenessProbe": {
+                            "exec": {
+                                "command": [
+                                    "/bin/bash",
+                                    "-c",
+                                    "/opt/eap/bin/livenessProbe.sh"
+                                ]
+                            },
+                            "failureThreshold": 3,
+                            "initialDelaySeconds": 60,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "eap-app",
+                        "ports": [
+                            {
+                                "containerPort": 8778,
+                                "name": "jolokia",
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 8080,
+                                "name": "http",
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 8888,
+                                "name": "ping",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "exec": {
+                                "command": [
+                                    "/bin/bash",
+                                    "-c",
+                                    "/opt/eap/bin/readinessProbe.sh"
+                                ]
+                            },
+                            "failureThreshold": 3,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "memory": "1Gi"
+                            },
+                            "requests": {
+                                "memory": "1Gi"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000520000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-nvlpt",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-qvzd6"
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000520000,
+                    "seLinuxOptions": {
+                        "level": "s0:c23,c7"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 75,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists"
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-nvlpt",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-nvlpt"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:41:04Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:41:40Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:41:40Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:41:04Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://a5485512200b54cd169f56983bf736dd9b75648a9ff9194d49100f4d7166957b",
+                        "image": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177",
+                        "imageID": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177",
+                        "lastState": {},
+                        "name": "eap-app",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2020-02-08T19:41:16Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "phase": "Running",
+                "podIP": "10.128.0.211",
+                "qosClass": "Burstable",
+                "startTime": "2020-02-08T19:41:04Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "",
+                    "openshift.io/build.name": "eap-app-2",
+                    "openshift.io/scc": "privileged"
+                },
+                "creationTimestamp": "2020-02-08T19:38:02Z",
+                "labels": {
+                    "openshift.io/build.name": "eap-app-2"
+                },
+                "name": "eap-app-2-build",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "build.openshift.io/v1",
+                        "controller": true,
+                        "kind": "Build",
+                        "name": "eap-app-2",
+                        "uid": "d6f279a1-4aa9-11ea-a477-0a580a8000ae"
+                    }
+                ],
+                "resourceVersion": "42403",
+                "selfLink": "/api/v1/namespaces/aaa/pods/eap-app-2-build",
+                "uid": "84c9734b-4aaa-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-sti-build"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"eap-app-2\",\"namespace\":\"aaa\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/aaa/builds/eap-app-2\",\"uid\":\"d6f279a1-4aa9-11ea-a477-0a580a8000ae\",\"resourceVersion\":\"41038\",\"creationTimestamp\":\"2020-02-08T19:33:10Z\",\"labels\":{\"application\":\"eap-app\",\"buildconfig\":\"eap-app\",\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.start-policy\":\"Serial\",\"template\":\"eap72-basic-s2i\",\"template.openshift.io/template-instance-owner\":\"c5d050b9-4aa9-11ea-a477-0a580a8000ae\",\"xpaas\":\"1.0.0\"},\"annotations\":{\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.number\":\"2\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"eap-app\",\"uid\":\"c6057c07-4aa9-11ea-a477-0a580a8000ae\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/jboss-developer/jboss-eap-quickstarts.git\",\"ref\":\"openshift\"},\"contextDir\":\"kitchensink\"},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\"},\"pullSecret\":{\"name\":\"builder-dockercfg-xc9c2\"},\"env\":[{\"name\":\"MAVEN_MIRROR_URL\"},{\"name\":\"MAVEN_ARGS_APPEND\",\"value\":\"-Dcom.redhat.xpaas.repo.jbossorg\"},{\"name\":\"ARTIFACT_DIR\"}],\"incremental\":true,\"forcePull\":true}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-xc9c2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Manually triggered\"}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"aaa\",\"name\":\"eap-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_CONTEXT_DIR",
+                                "value": "kitchensink"
+                            },
+                            {
+                                "name": "SOURCE_REF",
+                                "value": "openshift"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "PUSH_DOCKERCFG_PATH",
+                                "value": "/var/run/secrets/openshift.io/push"
+                            },
+                            {
+                                "name": "PULL_DOCKERCFG_PATH",
+                                "value": "/var/run/secrets/openshift.io/pull"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_DRIVER",
+                                "value": "overlay"
+                            },
+                            {
+                                "name": "BUILD_ISOLATION",
+                                "value": "chroot"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "sti-build",
+                        "resources": {},
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/lib/containers/cache",
+                                "name": "buildcachedir"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/openshift.io/push",
+                                "name": "builder-dockercfg-xc9c2-push",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/openshift.io/pull",
+                                "name": "builder-dockercfg-xc9c2-pull",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/lib/containers/storage",
+                                "name": "container-storage-root"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-6kw9k",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "builder-dockercfg-xc9c2"
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-git-clone"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"eap-app-2\",\"namespace\":\"aaa\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/aaa/builds/eap-app-2\",\"uid\":\"d6f279a1-4aa9-11ea-a477-0a580a8000ae\",\"resourceVersion\":\"41038\",\"creationTimestamp\":\"2020-02-08T19:33:10Z\",\"labels\":{\"application\":\"eap-app\",\"buildconfig\":\"eap-app\",\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.start-policy\":\"Serial\",\"template\":\"eap72-basic-s2i\",\"template.openshift.io/template-instance-owner\":\"c5d050b9-4aa9-11ea-a477-0a580a8000ae\",\"xpaas\":\"1.0.0\"},\"annotations\":{\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.number\":\"2\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"eap-app\",\"uid\":\"c6057c07-4aa9-11ea-a477-0a580a8000ae\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/jboss-developer/jboss-eap-quickstarts.git\",\"ref\":\"openshift\"},\"contextDir\":\"kitchensink\"},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\"},\"pullSecret\":{\"name\":\"builder-dockercfg-xc9c2\"},\"env\":[{\"name\":\"MAVEN_MIRROR_URL\"},{\"name\":\"MAVEN_ARGS_APPEND\",\"value\":\"-Dcom.redhat.xpaas.repo.jbossorg\"},{\"name\":\"ARTIFACT_DIR\"}],\"incremental\":true,\"forcePull\":true}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-xc9c2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Manually triggered\"}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"aaa\",\"name\":\"eap-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_CONTEXT_DIR",
+                                "value": "kitchensink"
+                            },
+                            {
+                                "name": "SOURCE_REF",
+                                "value": "openshift"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "git-clone",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-6kw9k",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-manage-dockerfile"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"eap-app-2\",\"namespace\":\"aaa\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/aaa/builds/eap-app-2\",\"uid\":\"d6f279a1-4aa9-11ea-a477-0a580a8000ae\",\"resourceVersion\":\"41038\",\"creationTimestamp\":\"2020-02-08T19:33:10Z\",\"labels\":{\"application\":\"eap-app\",\"buildconfig\":\"eap-app\",\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.start-policy\":\"Serial\",\"template\":\"eap72-basic-s2i\",\"template.openshift.io/template-instance-owner\":\"c5d050b9-4aa9-11ea-a477-0a580a8000ae\",\"xpaas\":\"1.0.0\"},\"annotations\":{\"openshift.io/build-config.name\":\"eap-app\",\"openshift.io/build.number\":\"2\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"eap-app\",\"uid\":\"c6057c07-4aa9-11ea-a477-0a580a8000ae\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/jboss-developer/jboss-eap-quickstarts.git\",\"ref\":\"openshift\"},\"contextDir\":\"kitchensink\"},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7\"},\"pullSecret\":{\"name\":\"builder-dockercfg-xc9c2\"},\"env\":[{\"name\":\"MAVEN_MIRROR_URL\"},{\"name\":\"MAVEN_ARGS_APPEND\",\"value\":\"-Dcom.redhat.xpaas.repo.jbossorg\"},{\"name\":\"ARTIFACT_DIR\"}],\"incremental\":true,\"forcePull\":true}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-xc9c2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Manually triggered\"}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"aaa\",\"name\":\"eap-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                            },
+                            {
+                                "name": "SOURCE_CONTEXT_DIR",
+                                "value": "kitchensink"
+                            },
+                            {
+                                "name": "SOURCE_REF",
+                                "value": "openshift"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "manage-dockerfile",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-6kw9k",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "nodeSelector": {
+                    "kubernetes.io/os": "linux"
+                },
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "builder",
+                "serviceAccountName": "builder",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/containers/cache",
+                            "type": ""
+                        },
+                        "name": "buildcachedir"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "buildworkdir"
+                    },
+                    {
+                        "name": "builder-dockercfg-xc9c2-push",
+                        "secret": {
+                            "defaultMode": 384,
+                            "secretName": "builder-dockercfg-xc9c2"
+                        }
+                    },
+                    {
+                        "name": "builder-dockercfg-xc9c2-pull",
+                        "secret": {
+                            "defaultMode": 384,
+                            "secretName": "builder-dockercfg-xc9c2"
+                        }
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "eap-app-2-sys-config"
+                        },
+                        "name": "build-system-configs"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "items": [
+                                {
+                                    "key": "service-ca.crt",
+                                    "path": "certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt"
+                                }
+                            ],
+                            "name": "eap-app-2-ca"
+                        },
+                        "name": "build-ca-bundles"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "items": [
+                                {
+                                    "key": "ca-bundle.crt",
+                                    "path": "tls-ca-bundle.pem"
+                                }
+                            ],
+                            "name": "eap-app-2-global-ca"
+                        },
+                        "name": "build-proxy-ca-bundles"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "container-storage-root"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "build-blob-cache"
+                    },
+                    {
+                        "name": "builder-token-6kw9k",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "builder-token-6kw9k"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:38:22Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:40:47Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:40:47Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:38:02Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://9023ab2de1b9bdea07d99e60bca8072a9cc4f1db41322622368ea3aebb03e3a5",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "sti-build",
+                        "ready": false,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://9023ab2de1b9bdea07d99e60bca8072a9cc4f1db41322622368ea3aebb03e3a5",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-08T19:40:47Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-08T19:38:23Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "initContainerStatuses": [
+                    {
+                        "containerID": "cri-o://4cc07927341f797318a7d085f36794af802745e4c4ee563a0472953352f74ae3",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "git-clone",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://4cc07927341f797318a7d085f36794af802745e4c4ee563a0472953352f74ae3",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-08T19:38:21Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-08T19:38:10Z"
+                            }
+                        }
+                    },
+                    {
+                        "containerID": "cri-o://47bb4c05dbb947dc504ff9e2c1971500916b87bce93838641ec5b408d8a0600e",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "manage-dockerfile",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://47bb4c05dbb947dc504ff9e2c1971500916b87bce93838641ec5b408d8a0600e",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-08T19:38:22Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-08T19:38:22Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Succeeded",
+                "podIP": "10.128.0.208",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-08T19:38:02Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "",
+                    "openshift.io/deployment-config.name": "eap-app",
+                    "openshift.io/deployment.name": "eap-app-2",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-02-08T19:40:48Z",
+                "labels": {
+                    "openshift.io/deployer-pod-for.name": "eap-app-2"
+                },
+                "name": "eap-app-2-deploy",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "ReplicationController",
+                        "name": "eap-app-2",
+                        "uid": "e7d41fda-4aaa-11ea-bba8-0ef0e3c74fbe"
+                    }
+                ],
+                "resourceVersion": "42620",
+                "selfLink": "/api/v1/namespaces/aaa/pods/eap-app-2-deploy",
+                "uid": "e7e907ce-4aaa-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "activeDeadlineSeconds": 21600,
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAME",
+                                "value": "eap-app-2"
+                            },
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAMESPACE",
+                                "value": "aaa"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "deployment",
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000520000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "deployer-token-d6xzd",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "deployer-dockercfg-fmxbn"
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000520000,
+                    "seLinuxOptions": {
+                        "level": "s0:c23,c7"
+                    }
+                },
+                "serviceAccount": "deployer",
+                "serviceAccountName": "deployer",
+                "shareProcessNamespace": false,
+                "terminationGracePeriodSeconds": 10,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "deployer-token-d6xzd",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "deployer-token-d6xzd"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:40:48Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:41:41Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:41:41Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-08T19:40:48Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://a1ea9fd3df46f625724bc6eb2b6c93525ad5521fb37ab5bde6a443bacbcaf64b",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "lastState": {},
+                        "name": "deployment",
+                        "ready": false,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://a1ea9fd3df46f625724bc6eb2b6c93525ad5521fb37ab5bde6a443bacbcaf64b",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-08T19:41:40Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-08T19:40:57Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "phase": "Succeeded",
+                "podIP": "10.128.0.210",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-08T19:40:48Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "ReplicationController",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/deployer-pod.completed-at": "2020-02-08 19:40:22 +0000 UTC",
+                    "openshift.io/deployer-pod.created-at": "2020-02-08 19:38:01 +0000 UTC",
+                    "openshift.io/deployer-pod.name": "eap-app-1-deploy",
+                    "openshift.io/deployment-config.latest-version": "1",
+                    "openshift.io/deployment-config.name": "eap-app",
+                    "openshift.io/deployment.phase": "Complete",
+                    "openshift.io/deployment.replicas": "1",
+                    "openshift.io/deployment.status-reason": "config change",
+                    "openshift.io/encoded-deployment-config": "{\"kind\":\"DeploymentConfig\",\"apiVersion\":\"apps.openshift.io/v1\",\"metadata\":{\"name\":\"eap-app\",\"namespace\":\"aaa\",\"selfLink\":\"/apis/apps.openshift.io/v1/namespaces/aaa/deploymentconfigs/eap-app\",\"uid\":\"c60d2d0b-4aa9-11ea-a477-0a580a8000ae\",\"resourceVersion\":\"41860\",\"generation\":2,\"creationTimestamp\":\"2020-02-08T19:32:42Z\",\"labels\":{\"application\":\"eap-app\",\"template\":\"eap72-basic-s2i\",\"template.openshift.io/template-instance-owner\":\"c5d050b9-4aa9-11ea-a477-0a580a8000ae\",\"xpaas\":\"1.0.0\"}},\"spec\":{\"strategy\":{\"type\":\"Recreate\",\"recreateParams\":{\"timeoutSeconds\":600},\"resources\":{},\"activeDeadlineSeconds\":21600},\"triggers\":[{\"type\":\"ImageChange\",\"imageChangeParams\":{\"automatic\":true,\"containerNames\":[\"eap-app\"],\"from\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"aaa\",\"name\":\"eap-app:latest\"},\"lastTriggeredImage\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:ea5c168b2b7b9f0d8db3984bc0082fba52106e9a4d52a2b518fd17c441faff22\"}},{\"type\":\"ConfigChange\"}],\"replicas\":1,\"revisionHistoryLimit\":10,\"test\":false,\"selector\":{\"deploymentConfig\":\"eap-app\"},\"template\":{\"metadata\":{\"name\":\"eap-app\",\"creationTimestamp\":null,\"labels\":{\"application\":\"eap-app\",\"deploymentConfig\":\"eap-app\"}},\"spec\":{\"containers\":[{\"name\":\"eap-app\",\"image\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:ea5c168b2b7b9f0d8db3984bc0082fba52106e9a4d52a2b518fd17c441faff22\",\"ports\":[{\"name\":\"jolokia\",\"containerPort\":8778,\"protocol\":\"TCP\"},{\"name\":\"http\",\"containerPort\":8080,\"protocol\":\"TCP\"},{\"name\":\"ping\",\"containerPort\":8888,\"protocol\":\"TCP\"}],\"env\":[{\"name\":\"JGROUPS_PING_PROTOCOL\",\"value\":\"dns.DNS_PING\"},{\"name\":\"OPENSHIFT_DNS_PING_SERVICE_NAME\",\"value\":\"eap-app-ping\"},{\"name\":\"OPENSHIFT_DNS_PING_SERVICE_PORT\",\"value\":\"8888\"},{\"name\":\"MQ_CLUSTER_PASSWORD\",\"value\":\"tM4IOWg6\"},{\"name\":\"MQ_QUEUES\"},{\"name\":\"MQ_TOPICS\"},{\"name\":\"JGROUPS_CLUSTER_PASSWORD\",\"value\":\"LjJql1Uy\"},{\"name\":\"AUTO_DEPLOY_EXPLODED\",\"value\":\"false\"}],\"resources\":{\"limits\":{\"memory\":\"1Gi\"}},\"livenessProbe\":{\"exec\":{\"command\":[\"/bin/bash\",\"-c\",\"/opt/eap/bin/livenessProbe.sh\"]},\"initialDelaySeconds\":60,\"timeoutSeconds\":1,\"periodSeconds\":10,\"successThreshold\":1,\"failureThreshold\":3},\"readinessProbe\":{\"exec\":{\"command\":[\"/bin/bash\",\"-c\",\"/opt/eap/bin/readinessProbe.sh\"]},\"timeoutSeconds\":1,\"periodSeconds\":10,\"successThreshold\":1,\"failureThreshold\":3},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"Always\"}],\"restartPolicy\":\"Always\",\"terminationGracePeriodSeconds\":75,\"dnsPolicy\":\"ClusterFirst\",\"securityContext\":{},\"schedulerName\":\"default-scheduler\"}}},\"status\":{\"latestVersion\":1,\"observedGeneration\":1,\"replicas\":0,\"updatedReplicas\":0,\"availableReplicas\":0,\"unavailableReplicas\":0,\"details\":{\"message\":\"config change\",\"causes\":[{\"type\":\"ConfigChange\"}]},\"conditions\":[{\"type\":\"Available\",\"status\":\"False\",\"lastUpdateTime\":\"2020-02-08T19:32:42Z\",\"lastTransitionTime\":\"2020-02-08T19:32:42Z\",\"message\":\"Deployment config does not have minimum availability.\"}]}}\n"
+                },
+                "creationTimestamp": "2020-02-08T19:38:01Z",
+                "generation": 3,
+                "labels": {
+                    "application": "eap-app",
+                    "openshift.io/deployment-config.name": "eap-app",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app-1",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps.openshift.io/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "DeploymentConfig",
+                        "name": "eap-app",
+                        "uid": "c60d2d0b-4aa9-11ea-a477-0a580a8000ae"
+                    }
+                ],
+                "resourceVersion": "42448",
+                "selfLink": "/api/v1/namespaces/aaa/replicationcontrollers/eap-app-1",
+                "uid": "8473ffc8-4aaa-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "replicas": 0,
+                "selector": {
+                    "deployment": "eap-app-1",
+                    "deploymentConfig": "eap-app",
+                    "deploymentconfig": "eap-app"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "openshift.io/deployment-config.latest-version": "1",
+                            "openshift.io/deployment-config.name": "eap-app",
+                            "openshift.io/deployment.name": "eap-app-1"
+                        },
+                        "creationTimestamp": null,
+                        "labels": {
+                            "application": "eap-app",
+                            "deployment": "eap-app-1",
+                            "deploymentConfig": "eap-app",
+                            "deploymentconfig": "eap-app"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "JGROUPS_PING_PROTOCOL",
+                                        "value": "dns.DNS_PING"
+                                    },
+                                    {
+                                        "name": "OPENSHIFT_DNS_PING_SERVICE_NAME",
+                                        "value": "eap-app-ping"
+                                    },
+                                    {
+                                        "name": "OPENSHIFT_DNS_PING_SERVICE_PORT",
+                                        "value": "8888"
+                                    },
+                                    {
+                                        "name": "MQ_CLUSTER_PASSWORD",
+                                        "value": "tM4IOWg6"
+                                    },
+                                    {
+                                        "name": "MQ_QUEUES"
+                                    },
+                                    {
+                                        "name": "MQ_TOPICS"
+                                    },
+                                    {
+                                        "name": "JGROUPS_CLUSTER_PASSWORD",
+                                        "value": "LjJql1Uy"
+                                    },
+                                    {
+                                        "name": "AUTO_DEPLOY_EXPLODED",
+                                        "value": "false"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:ea5c168b2b7b9f0d8db3984bc0082fba52106e9a4d52a2b518fd17c441faff22",
+                                "imagePullPolicy": "Always",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "/bin/bash",
+                                            "-c",
+                                            "/opt/eap/bin/livenessProbe.sh"
+                                        ]
+                                    },
+                                    "failureThreshold": 3,
+                                    "initialDelaySeconds": 60,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "timeoutSeconds": 1
+                                },
+                                "name": "eap-app",
+                                "ports": [
+                                    {
+                                        "containerPort": 8778,
+                                        "name": "jolokia",
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8080,
+                                        "name": "http",
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8888,
+                                        "name": "ping",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "readinessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "/bin/bash",
+                                            "-c",
+                                            "/opt/eap/bin/readinessProbe.sh"
+                                        ]
+                                    },
+                                    "failureThreshold": 3,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "timeoutSeconds": 1
+                                },
+                                "resources": {
+                                    "limits": {
+                                        "memory": "1Gi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 75
+                    }
+                }
+            },
+            "status": {
+                "observedGeneration": 3,
+                "replicas": 0
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "ReplicationController",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/deployer-pod.completed-at": "2020-02-08 19:41:40 +0000 UTC",
+                    "openshift.io/deployer-pod.created-at": "2020-02-08 19:40:48 +0000 UTC",
+                    "openshift.io/deployer-pod.name": "eap-app-2-deploy",
+                    "openshift.io/deployment-config.latest-version": "2",
+                    "openshift.io/deployment-config.name": "eap-app",
+                    "openshift.io/deployment.phase": "Complete",
+                    "openshift.io/deployment.replicas": "1",
+                    "openshift.io/deployment.status-reason": "image change",
+                    "openshift.io/encoded-deployment-config": "{\"kind\":\"DeploymentConfig\",\"apiVersion\":\"apps.openshift.io/v1\",\"metadata\":{\"name\":\"eap-app\",\"namespace\":\"aaa\",\"selfLink\":\"/apis/apps.openshift.io/v1/namespaces/aaa/deploymentconfigs/eap-app\",\"uid\":\"c60d2d0b-4aa9-11ea-a477-0a580a8000ae\",\"resourceVersion\":\"42405\",\"generation\":3,\"creationTimestamp\":\"2020-02-08T19:32:42Z\",\"labels\":{\"application\":\"eap-app\",\"template\":\"eap72-basic-s2i\",\"template.openshift.io/template-instance-owner\":\"c5d050b9-4aa9-11ea-a477-0a580a8000ae\",\"xpaas\":\"1.0.0\"}},\"spec\":{\"strategy\":{\"type\":\"Recreate\",\"recreateParams\":{\"timeoutSeconds\":600},\"resources\":{},\"activeDeadlineSeconds\":21600},\"triggers\":[{\"type\":\"ImageChange\",\"imageChangeParams\":{\"automatic\":true,\"containerNames\":[\"eap-app\"],\"from\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"aaa\",\"name\":\"eap-app:latest\"},\"lastTriggeredImage\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177\"}},{\"type\":\"ConfigChange\"}],\"replicas\":1,\"revisionHistoryLimit\":10,\"test\":false,\"selector\":{\"deploymentConfig\":\"eap-app\"},\"template\":{\"metadata\":{\"name\":\"eap-app\",\"creationTimestamp\":null,\"labels\":{\"application\":\"eap-app\",\"deploymentConfig\":\"eap-app\"}},\"spec\":{\"containers\":[{\"name\":\"eap-app\",\"image\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177\",\"ports\":[{\"name\":\"jolokia\",\"containerPort\":8778,\"protocol\":\"TCP\"},{\"name\":\"http\",\"containerPort\":8080,\"protocol\":\"TCP\"},{\"name\":\"ping\",\"containerPort\":8888,\"protocol\":\"TCP\"}],\"env\":[{\"name\":\"JGROUPS_PING_PROTOCOL\",\"value\":\"dns.DNS_PING\"},{\"name\":\"OPENSHIFT_DNS_PING_SERVICE_NAME\",\"value\":\"eap-app-ping\"},{\"name\":\"OPENSHIFT_DNS_PING_SERVICE_PORT\",\"value\":\"8888\"},{\"name\":\"MQ_CLUSTER_PASSWORD\",\"value\":\"tM4IOWg6\"},{\"name\":\"MQ_QUEUES\"},{\"name\":\"MQ_TOPICS\"},{\"name\":\"JGROUPS_CLUSTER_PASSWORD\",\"value\":\"LjJql1Uy\"},{\"name\":\"AUTO_DEPLOY_EXPLODED\",\"value\":\"false\"}],\"resources\":{\"limits\":{\"memory\":\"1Gi\"}},\"livenessProbe\":{\"exec\":{\"command\":[\"/bin/bash\",\"-c\",\"/opt/eap/bin/livenessProbe.sh\"]},\"initialDelaySeconds\":60,\"timeoutSeconds\":1,\"periodSeconds\":10,\"successThreshold\":1,\"failureThreshold\":3},\"readinessProbe\":{\"exec\":{\"command\":[\"/bin/bash\",\"-c\",\"/opt/eap/bin/readinessProbe.sh\"]},\"timeoutSeconds\":1,\"periodSeconds\":10,\"successThreshold\":1,\"failureThreshold\":3},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"Always\"}],\"restartPolicy\":\"Always\",\"terminationGracePeriodSeconds\":75,\"dnsPolicy\":\"ClusterFirst\",\"securityContext\":{},\"schedulerName\":\"default-scheduler\"}}},\"status\":{\"latestVersion\":2,\"observedGeneration\":2,\"replicas\":1,\"updatedReplicas\":1,\"availableReplicas\":1,\"unavailableReplicas\":0,\"details\":{\"message\":\"image change\",\"causes\":[{\"type\":\"ImageChange\",\"imageTrigger\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177\"}}}]},\"conditions\":[{\"type\":\"Available\",\"status\":\"True\",\"lastUpdateTime\":\"2020-02-08T19:40:22Z\",\"lastTransitionTime\":\"2020-02-08T19:40:22Z\",\"message\":\"Deployment config has minimum availability.\"},{\"type\":\"Progressing\",\"status\":\"True\",\"lastUpdateTime\":\"2020-02-08T19:40:23Z\",\"lastTransitionTime\":\"2020-02-08T19:38:18Z\",\"reason\":\"NewReplicationControllerAvailable\",\"message\":\"replication controller \\\"eap-app-1\\\" successfully rolled out\"}],\"readyReplicas\":1}}\n"
+                },
+                "creationTimestamp": "2020-02-08T19:40:48Z",
+                "generation": 2,
+                "labels": {
+                    "application": "eap-app",
+                    "openshift.io/deployment-config.name": "eap-app",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app-2",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps.openshift.io/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "DeploymentConfig",
+                        "name": "eap-app",
+                        "uid": "c60d2d0b-4aa9-11ea-a477-0a580a8000ae"
+                    }
+                ],
+                "resourceVersion": "71342",
+                "selfLink": "/api/v1/namespaces/aaa/replicationcontrollers/eap-app-2",
+                "uid": "e7d41fda-4aaa-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "deployment": "eap-app-2",
+                    "deploymentConfig": "eap-app",
+                    "deploymentconfig": "eap-app"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "openshift.io/deployment-config.latest-version": "2",
+                            "openshift.io/deployment-config.name": "eap-app",
+                            "openshift.io/deployment.name": "eap-app-2"
+                        },
+                        "creationTimestamp": null,
+                        "labels": {
+                            "application": "eap-app",
+                            "deployment": "eap-app-2",
+                            "deploymentConfig": "eap-app",
+                            "deploymentconfig": "eap-app"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "JGROUPS_PING_PROTOCOL",
+                                        "value": "dns.DNS_PING"
+                                    },
+                                    {
+                                        "name": "OPENSHIFT_DNS_PING_SERVICE_NAME",
+                                        "value": "eap-app-ping"
+                                    },
+                                    {
+                                        "name": "OPENSHIFT_DNS_PING_SERVICE_PORT",
+                                        "value": "8888"
+                                    },
+                                    {
+                                        "name": "MQ_CLUSTER_PASSWORD",
+                                        "value": "tM4IOWg6"
+                                    },
+                                    {
+                                        "name": "MQ_QUEUES"
+                                    },
+                                    {
+                                        "name": "MQ_TOPICS"
+                                    },
+                                    {
+                                        "name": "JGROUPS_CLUSTER_PASSWORD",
+                                        "value": "LjJql1Uy"
+                                    },
+                                    {
+                                        "name": "AUTO_DEPLOY_EXPLODED",
+                                        "value": "false"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177",
+                                "imagePullPolicy": "Always",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "/bin/bash",
+                                            "-c",
+                                            "/opt/eap/bin/livenessProbe.sh"
+                                        ]
+                                    },
+                                    "failureThreshold": 3,
+                                    "initialDelaySeconds": 60,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "timeoutSeconds": 1
+                                },
+                                "name": "eap-app",
+                                "ports": [
+                                    {
+                                        "containerPort": 8778,
+                                        "name": "jolokia",
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8080,
+                                        "name": "http",
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8888,
+                                        "name": "ping",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "readinessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "/bin/bash",
+                                            "-c",
+                                            "/opt/eap/bin/readinessProbe.sh"
+                                        ]
+                                    },
+                                    "failureThreshold": 3,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "timeoutSeconds": 1
+                                },
+                                "resources": {
+                                    "limits": {
+                                        "memory": "1Gi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 75
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 2,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "description": "The web server's http port."
+                },
+                "creationTimestamp": "2020-02-08T19:32:41Z",
+                "labels": {
+                    "application": "eap-app",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app",
+                "namespace": "aaa",
+                "resourceVersion": "40928",
+                "selfLink": "/api/v1/namespaces/aaa/services/eap-app",
+                "uid": "c5f6277c-4aa9-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "clusterIP": "172.30.170.199",
+                "ports": [
+                    {
+                        "port": 8080,
+                        "protocol": "TCP",
+                        "targetPort": 8080
+                    }
+                ],
+                "selector": {
+                    "deploymentConfig": "eap-app"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "description": "The JGroups ping port for clustering.",
+                    "service.alpha.kubernetes.io/tolerate-unready-endpoints": "true"
+                },
+                "creationTimestamp": "2020-02-08T19:32:41Z",
+                "labels": {
+                    "application": "eap-app",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app-ping",
+                "namespace": "aaa",
+                "resourceVersion": "40930",
+                "selfLink": "/api/v1/namespaces/aaa/services/eap-app-ping",
+                "uid": "c5f78ae1-4aa9-11ea-bba8-0ef0e3c74fbe"
+            },
+            "spec": {
+                "clusterIP": "None",
+                "ports": [
+                    {
+                        "name": "ping",
+                        "port": 8888,
+                        "protocol": "TCP",
+                        "targetPort": 8888
+                    }
+                ],
+                "publishNotReadyAddresses": true,
+                "selector": {
+                    "deploymentConfig": "eap-app"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "apps.openshift.io/v1",
+            "kind": "DeploymentConfig",
+            "metadata": {
+                "creationTimestamp": "2020-02-08T19:32:42Z",
+                "generation": 3,
+                "labels": {
+                    "application": "eap-app",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app",
+                "namespace": "aaa",
+                "resourceVersion": "74918",
+                "selfLink": "/apis/apps.openshift.io/v1/namespaces/aaa/deploymentconfigs/eap-app",
+                "uid": "c60d2d0b-4aa9-11ea-a477-0a580a8000ae"
+            },
+            "spec": {
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "deploymentConfig": "eap-app"
+                },
+                "strategy": {
+                    "activeDeadlineSeconds": 21600,
+                    "recreateParams": {
+                        "timeoutSeconds": 600
+                    },
+                    "resources": {},
+                    "type": "Recreate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "application": "eap-app",
+                            "deploymentConfig": "eap-app"
+                        },
+                        "name": "eap-app"
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "JGROUPS_PING_PROTOCOL",
+                                        "value": "dns.DNS_PING"
+                                    },
+                                    {
+                                        "name": "OPENSHIFT_DNS_PING_SERVICE_NAME",
+                                        "value": "eap-app-ping"
+                                    },
+                                    {
+                                        "name": "OPENSHIFT_DNS_PING_SERVICE_PORT",
+                                        "value": "8888"
+                                    },
+                                    {
+                                        "name": "MQ_CLUSTER_PASSWORD",
+                                        "value": "tM4IOWg6"
+                                    },
+                                    {
+                                        "name": "MQ_QUEUES"
+                                    },
+                                    {
+                                        "name": "MQ_TOPICS"
+                                    },
+                                    {
+                                        "name": "JGROUPS_CLUSTER_PASSWORD",
+                                        "value": "LjJql1Uy"
+                                    },
+                                    {
+                                        "name": "AUTO_DEPLOY_EXPLODED",
+                                        "value": "false"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177",
+                                "imagePullPolicy": "Always",
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "/bin/bash",
+                                            "-c",
+                                            "/opt/eap/bin/livenessProbe.sh"
+                                        ]
+                                    },
+                                    "failureThreshold": 3,
+                                    "initialDelaySeconds": 60,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "timeoutSeconds": 1
+                                },
+                                "name": "eap-app",
+                                "ports": [
+                                    {
+                                        "containerPort": 8778,
+                                        "name": "jolokia",
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8080,
+                                        "name": "http",
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8888,
+                                        "name": "ping",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "readinessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "/bin/bash",
+                                            "-c",
+                                            "/opt/eap/bin/readinessProbe.sh"
+                                        ]
+                                    },
+                                    "failureThreshold": 3,
+                                    "periodSeconds": 10,
+                                    "successThreshold": 1,
+                                    "timeoutSeconds": 1
+                                },
+                                "resources": {
+                                    "limits": {
+                                        "memory": "1Gi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 75
+                    }
+                },
+                "test": false,
+                "triggers": [
+                    {
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "eap-app"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "eap-app:latest",
+                                "namespace": "aaa"
+                            },
+                            "lastTriggeredImage": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177"
+                        },
+                        "type": "ImageChange"
+                    },
+                    {
+                        "type": "ConfigChange"
+                    }
+                ]
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-02-08T19:41:04Z",
+                        "lastUpdateTime": "2020-02-08T19:41:41Z",
+                        "message": "replication controller \"eap-app-2\" successfully rolled out",
+                        "reason": "NewReplicationControllerAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    },
+                    {
+                        "lastTransitionTime": "2020-02-08T23:00:52Z",
+                        "lastUpdateTime": "2020-02-08T23:00:52Z",
+                        "message": "Deployment config has minimum availability.",
+                        "status": "True",
+                        "type": "Available"
+                    }
+                ],
+                "details": {
+                    "causes": [
+                        {
+                            "imageTrigger": {
+                                "from": {
+                                    "kind": "DockerImage",
+                                    "name": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177"
+                                }
+                            },
+                            "type": "ImageChange"
+                        }
+                    ],
+                    "message": "image change"
+                },
+                "latestVersion": 2,
+                "observedGeneration": 3,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "unavailableReplicas": 0,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "build.openshift.io/v1",
+            "kind": "BuildConfig",
+            "metadata": {
+                "creationTimestamp": "2020-02-08T19:32:42Z",
+                "labels": {
+                    "application": "eap-app",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app",
+                "namespace": "aaa",
+                "resourceVersion": "41037",
+                "selfLink": "/apis/build.openshift.io/v1/namespaces/aaa/buildconfigs/eap-app",
+                "uid": "c6057c07-4aa9-11ea-a477-0a580a8000ae"
+            },
+            "spec": {
+                "failedBuildsHistoryLimit": 5,
+                "nodeSelector": null,
+                "output": {
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "eap-app:latest"
+                    }
+                },
+                "postCommit": {},
+                "resources": {},
+                "runPolicy": "Serial",
+                "source": {
+                    "contextDir": "kitchensink",
+                    "git": {
+                        "ref": "openshift",
+                        "uri": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                    },
+                    "type": "Git"
+                },
+                "strategy": {
+                    "sourceStrategy": {
+                        "env": [
+                            {
+                                "name": "MAVEN_MIRROR_URL"
+                            },
+                            {
+                                "name": "MAVEN_ARGS_APPEND",
+                                "value": "-Dcom.redhat.xpaas.repo.jbossorg"
+                            },
+                            {
+                                "name": "ARTIFACT_DIR"
+                            }
+                        ],
+                        "forcePull": true,
+                        "from": {
+                            "kind": "ImageStreamTag",
+                            "name": "jboss-eap72-openshift:1.0",
+                            "namespace": "openshift"
+                        },
+                        "incremental": true
+                    },
+                    "type": "Source"
+                },
+                "successfulBuildsHistoryLimit": 5,
+                "triggers": [
+                    {
+                        "github": {
+                            "secret": "JO1raOJo"
+                        },
+                        "type": "GitHub"
+                    },
+                    {
+                        "generic": {
+                            "secret": "wobqAVfU"
+                        },
+                        "type": "Generic"
+                    },
+                    {
+                        "imageChange": {
+                            "lastTriggeredImageID": "image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7"
+                        },
+                        "type": "ImageChange"
+                    },
+                    {
+                        "type": "ConfigChange"
+                    }
+                ]
+            },
+            "status": {
+                "lastVersion": 2
+            }
+        },
+        {
+            "apiVersion": "build.openshift.io/v1",
+            "kind": "Build",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/build-config.name": "eap-app",
+                    "openshift.io/build.number": "1",
+                    "openshift.io/build.pod-name": "eap-app-1-build"
+                },
+                "creationTimestamp": "2020-02-08T19:32:42Z",
+                "labels": {
+                    "application": "eap-app",
+                    "buildconfig": "eap-app",
+                    "openshift.io/build-config.name": "eap-app",
+                    "openshift.io/build.start-policy": "Serial",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app-1",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "build.openshift.io/v1",
+                        "controller": true,
+                        "kind": "BuildConfig",
+                        "name": "eap-app",
+                        "uid": "c6057c07-4aa9-11ea-a477-0a580a8000ae"
+                    }
+                ],
+                "resourceVersion": "41874",
+                "selfLink": "/apis/build.openshift.io/v1/namespaces/aaa/builds/eap-app-1",
+                "uid": "c6378e7e-4aa9-11ea-a477-0a580a8000ae"
+            },
+            "spec": {
+                "nodeSelector": null,
+                "output": {
+                    "pushSecret": {
+                        "name": "builder-dockercfg-xc9c2"
+                    },
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "eap-app:latest"
+                    }
+                },
+                "postCommit": {},
+                "resources": {},
+                "revision": {
+                    "git": {
+                        "author": {
+                            "email": "emartins@redhat.com",
+                            "name": "Eduardo Martins"
+                        },
+                        "commit": "6eaf5ee283c2d06eabd21e819296d1e149845237",
+                        "committer": {
+                            "email": "emartins@redhat.com",
+                            "name": "Eduardo Martins"
+                        },
+                        "message": "7.2.0.CD18"
+                    },
+                    "type": "Git"
+                },
+                "serviceAccount": "builder",
+                "source": {
+                    "contextDir": "kitchensink",
+                    "git": {
+                        "ref": "openshift",
+                        "uri": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                    },
+                    "type": "Git"
+                },
+                "strategy": {
+                    "sourceStrategy": {
+                        "env": [
+                            {
+                                "name": "MAVEN_MIRROR_URL"
+                            },
+                            {
+                                "name": "MAVEN_ARGS_APPEND",
+                                "value": "-Dcom.redhat.xpaas.repo.jbossorg"
+                            },
+                            {
+                                "name": "ARTIFACT_DIR"
+                            }
+                        ],
+                        "forcePull": true,
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7"
+                        },
+                        "incremental": true,
+                        "pullSecret": {
+                            "name": "builder-dockercfg-xc9c2"
+                        }
+                    },
+                    "type": "Source"
+                },
+                "triggeredBy": [
+                    {
+                        "imageChangeBuild": {
+                            "fromRef": {
+                                "kind": "ImageStreamTag",
+                                "name": "jboss-eap72-openshift:1.0",
+                                "namespace": "openshift"
+                            },
+                            "imageID": "image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7"
+                        },
+                        "message": "Image change"
+                    }
+                ]
+            },
+            "status": {
+                "completionTimestamp": "2020-02-08T19:38:01Z",
+                "config": {
+                    "kind": "BuildConfig",
+                    "name": "eap-app",
+                    "namespace": "aaa"
+                },
+                "duration": 319000000000,
+                "output": {
+                    "to": {
+                        "imageDigest": "sha256:ea5c168b2b7b9f0d8db3984bc0082fba52106e9a4d52a2b518fd17c441faff22"
+                    }
+                },
+                "outputDockerImageReference": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest",
+                "phase": "Complete",
+                "stages": [
+                    {
+                        "durationMilliseconds": 7449,
+                        "name": "FetchInputs",
+                        "startTime": "2020-02-08T19:33:05Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 7449,
+                                "name": "FetchGitSource",
+                                "startTime": "2020-02-08T19:33:05Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 116734,
+                        "name": "PullImages",
+                        "startTime": "2020-02-08T19:33:16Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 101546,
+                                "name": "PullBaseImage",
+                                "startTime": "2020-02-08T19:33:16Z"
+                            },
+                            {
+                                "durationMilliseconds": 15188,
+                                "name": "PullInputImage",
+                                "startTime": "2020-02-08T19:34:58Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 165254,
+                        "name": "Build",
+                        "startTime": "2020-02-08T19:35:13Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 165254,
+                                "name": "DockerBuild",
+                                "startTime": "2020-02-08T19:35:13Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 1861,
+                        "name": "PushImage",
+                        "startTime": "2020-02-08T19:37:58Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 1861,
+                                "name": "PushImage",
+                                "startTime": "2020-02-08T19:37:58Z"
+                            }
+                        ]
+                    }
+                ],
+                "startTimestamp": "2020-02-08T19:32:42Z"
+            }
+        },
+        {
+            "apiVersion": "build.openshift.io/v1",
+            "kind": "Build",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/build-config.name": "eap-app",
+                    "openshift.io/build.number": "2",
+                    "openshift.io/build.pod-name": "eap-app-2-build"
+                },
+                "creationTimestamp": "2020-02-08T19:33:10Z",
+                "labels": {
+                    "application": "eap-app",
+                    "buildconfig": "eap-app",
+                    "openshift.io/build-config.name": "eap-app",
+                    "openshift.io/build.start-policy": "Serial",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app-2",
+                "namespace": "aaa",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "build.openshift.io/v1",
+                        "controller": true,
+                        "kind": "BuildConfig",
+                        "name": "eap-app",
+                        "uid": "c6057c07-4aa9-11ea-a477-0a580a8000ae"
+                    }
+                ],
+                "resourceVersion": "42401",
+                "selfLink": "/apis/build.openshift.io/v1/namespaces/aaa/builds/eap-app-2",
+                "uid": "d6f279a1-4aa9-11ea-a477-0a580a8000ae"
+            },
+            "spec": {
+                "nodeSelector": null,
+                "output": {
+                    "pushSecret": {
+                        "name": "builder-dockercfg-xc9c2"
+                    },
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "eap-app:latest"
+                    }
+                },
+                "postCommit": {},
+                "resources": {},
+                "revision": {
+                    "git": {
+                        "author": {
+                            "email": "emartins@redhat.com",
+                            "name": "Eduardo Martins"
+                        },
+                        "commit": "6eaf5ee283c2d06eabd21e819296d1e149845237",
+                        "committer": {
+                            "email": "emartins@redhat.com",
+                            "name": "Eduardo Martins"
+                        },
+                        "message": "7.2.0.CD18"
+                    },
+                    "type": "Git"
+                },
+                "serviceAccount": "builder",
+                "source": {
+                    "contextDir": "kitchensink",
+                    "git": {
+                        "ref": "openshift",
+                        "uri": "https://github.com/jboss-developer/jboss-eap-quickstarts.git"
+                    },
+                    "type": "Git"
+                },
+                "strategy": {
+                    "sourceStrategy": {
+                        "env": [
+                            {
+                                "name": "MAVEN_MIRROR_URL"
+                            },
+                            {
+                                "name": "MAVEN_ARGS_APPEND",
+                                "value": "-Dcom.redhat.xpaas.repo.jbossorg"
+                            },
+                            {
+                                "name": "ARTIFACT_DIR"
+                            }
+                        ],
+                        "forcePull": true,
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "image-registry.openshift-image-registry.svc:5000/openshift/jboss-eap72-openshift@sha256:aef672575e93481d5a408e757562f6ed72b1736b5bc2ce92f3b2896e638db0c7"
+                        },
+                        "incremental": true,
+                        "pullSecret": {
+                            "name": "builder-dockercfg-xc9c2"
+                        }
+                    },
+                    "type": "Source"
+                },
+                "triggeredBy": [
+                    {
+                        "message": "Manually triggered"
+                    }
+                ]
+            },
+            "status": {
+                "completionTimestamp": "2020-02-08T19:40:47Z",
+                "config": {
+                    "kind": "BuildConfig",
+                    "name": "eap-app",
+                    "namespace": "aaa"
+                },
+                "duration": 165000000000,
+                "output": {
+                    "to": {
+                        "imageDigest": "sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177"
+                    }
+                },
+                "outputDockerImageReference": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app:latest",
+                "phase": "Complete",
+                "stages": [
+                    {
+                        "durationMilliseconds": 8487,
+                        "name": "FetchInputs",
+                        "startTime": "2020-02-08T19:38:11Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 8487,
+                                "name": "FetchGitSource",
+                                "startTime": "2020-02-08T19:38:11Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 104440,
+                        "name": "PullImages",
+                        "startTime": "2020-02-08T19:38:23Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 95905,
+                                "name": "PullBaseImage",
+                                "startTime": "2020-02-08T19:38:23Z"
+                            },
+                            {
+                                "durationMilliseconds": 8534,
+                                "name": "PullInputImage",
+                                "startTime": "2020-02-08T19:39:59Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 37474,
+                        "name": "Build",
+                        "startTime": "2020-02-08T19:40:08Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 37474,
+                                "name": "DockerBuild",
+                                "startTime": "2020-02-08T19:40:08Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 1750,
+                        "name": "PushImage",
+                        "startTime": "2020-02-08T19:40:45Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 1750,
+                                "name": "PushImage",
+                                "startTime": "2020-02-08T19:40:45Z"
+                            }
+                        ]
+                    }
+                ],
+                "startTimestamp": "2020-02-08T19:38:02Z"
+            }
+        },
+        {
+            "apiVersion": "image.openshift.io/v1",
+            "kind": "ImageStream",
+            "metadata": {
+                "creationTimestamp": "2020-02-08T19:32:41Z",
+                "generation": 1,
+                "labels": {
+                    "application": "eap-app",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app",
+                "namespace": "aaa",
+                "resourceVersion": "42392",
+                "selfLink": "/apis/image.openshift.io/v1/namespaces/aaa/imagestreams/eap-app",
+                "uid": "c5ff68e6-4aa9-11ea-a477-0a580a8000ae"
+            },
+            "spec": {
+                "lookupPolicy": {
+                    "local": false
+                }
+            },
+            "status": {
+                "dockerImageRepository": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app",
+                "publicDockerImageRepository": "default-route-openshift-image-registry.apps-crc.testing/aaa/eap-app",
+                "tags": [
+                    {
+                        "items": [
+                            {
+                                "created": "2020-02-08T19:40:47Z",
+                                "dockerImageReference": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177",
+                                "generation": 1,
+                                "image": "sha256:a99b4e623f4ac70cbf8c03c798b0c966eb147c1866d73d9bfba13e490a940177"
+                            },
+                            {
+                                "created": "2020-02-08T19:38:00Z",
+                                "dockerImageReference": "image-registry.openshift-image-registry.svc:5000/aaa/eap-app@sha256:ea5c168b2b7b9f0d8db3984bc0082fba52106e9a4d52a2b518fd17c441faff22",
+                                "generation": 1,
+                                "image": "sha256:ea5c168b2b7b9f0d8db3984bc0082fba52106e9a4d52a2b518fd17c441faff22"
+                            }
+                        ],
+                        "tag": "latest"
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "route.openshift.io/v1",
+            "kind": "Route",
+            "metadata": {
+                "annotations": {
+                    "description": "Route for application's https service.",
+                    "openshift.io/host.generated": "true"
+                },
+                "creationTimestamp": "2020-02-08T19:32:41Z",
+                "labels": {
+                    "application": "eap-app",
+                    "template": "eap72-basic-s2i",
+                    "template.openshift.io/template-instance-owner": "c5d050b9-4aa9-11ea-a477-0a580a8000ae",
+                    "xpaas": "1.0.0"
+                },
+                "name": "eap-app",
+                "namespace": "aaa",
+                "resourceVersion": "40938",
+                "selfLink": "/apis/route.openshift.io/v1/namespaces/aaa/routes/eap-app",
+                "uid": "c5fc3fe5-4aa9-11ea-a477-0a580a8000ae"
+            },
+            "spec": {
+                "host": "eap-app-aaa.apps-crc.testing",
+                "subdomain": "",
+                "tls": {
+                    "insecureEdgeTerminationPolicy": "Redirect",
+                    "termination": "edge"
+                },
+                "to": {
+                    "kind": "Service",
+                    "name": "eap-app",
+                    "weight": 100
+                },
+                "wildcardPolicy": "None"
+            },
+            "status": {
+                "ingress": [
+                    {
+                        "conditions": [
+                            {
+                                "lastTransitionTime": "2020-02-08T19:32:42Z",
+                                "status": "True",
+                                "type": "Admitted"
+                            }
+                        ],
+                        "host": "eap-app-aaa.apps-crc.testing",
+                        "routerCanonicalHostname": "apps-crc.testing",
+                        "routerName": "default",
+                        "wildcardPolicy": "None"
+                    }
+                ]
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

@@ -1,0 +1,744 @@
+apiVersion: v1
+items:
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:a1fbd1b235102ae18344527b44201c34ad4c2181b0b4cbf295b1a8f0cbde8e73
+    metadata:
+      creationTimestamp: null
+      name: sha256:a1fbd1b235102ae18344527b44201c34ad4c2181b0b4cbf295b1a8f0cbde8e73
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 12 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 12
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:12,jee,java
+      tags: builder,wildfly,java
+      version: "12.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:12.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A12.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 12 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 12
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:12,jee,java
+      tags: builder,wildfly,java
+      version: "12.0"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-120-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "12.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:73b9d5578eac447606e708a635bc0661755866162673a4c6e6d1119248d3c2c8
+    metadata:
+      creationTimestamp: null
+      name: sha256:73b9d5578eac447606e708a635bc0661755866162673a4c6e6d1119248d3c2c8
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 13 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 13
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:13,jee,java
+      tags: builder,wildfly,java
+      version: "13.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:13.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A13.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 13 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 13
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:13,jee,java
+      tags: builder,wildfly,java
+      version: "13.0"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-130-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "13.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:4e2dc4d7b87b1d26ca7b302ed10da6875602a2a618a28814ccd8e96ccfab6f4d
+    metadata:
+      creationTimestamp: null
+      name: sha256:4e2dc4d7b87b1d26ca7b302ed10da6875602a2a618a28814ccd8e96ccfab6f4d
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 14 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 14
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:14,jee,java
+      tags: builder,wildfly,java
+      version: "14.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:14.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A14.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 14 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 14
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:14,jee,java
+      tags: builder,wildfly,java
+      version: "14.0"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-140-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "14.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:66ce43dd4be6aabcb97557f1cf86abb95f5b2a78cf4a40752d5f4caa8c9c25e2
+    metadata:
+      creationTimestamp: null
+      name: sha256:66ce43dd4be6aabcb97557f1cf86abb95f5b2a78cf4a40752d5f4caa8c9c25e2
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 15 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 15
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:15,jee,java
+      tags: builder,wildfly,java
+      version: "15.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:15.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A15.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 15 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 15
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:15,jee,java
+      tags: builder,wildfly,java
+      version: "15.0"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-150-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "15.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:4c880e767b9ad36a6f2487f2d8c7db54117e78cb9e3d6fa4d451fe716374d0bd
+    metadata:
+      creationTimestamp: null
+      name: sha256:4c880e767b9ad36a6f2487f2d8c7db54117e78cb9e3d6fa4d451fe716374d0bd
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 18 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 18
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:18,jee,java
+      tags: builder,wildfly,java
+      version: "18.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:18.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A18.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 18 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 18
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:18,jee,java
+      tags: builder,wildfly,java
+      version: "18.0"
+    from:
+      kind: DockerImage
+      name: quay.io/wildfly/wildfly-centos7:18.0
+    generation: 2
+    importPolicy: {}
+    name: "18.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78
+    metadata:
+      creationTimestamp: null
+      name: sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: |-
+        Build and run WildFly applications on CentOS 7. For more information about using this builder image, including OpenShift considerations, see https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+
+        WARNING: By selecting this tag, your application will automatically update to use the latest version of WildFly available on OpenShift, including major versions updates.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly (Latest)
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: jee,java
+      tags: builder,wildfly,java
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:latest
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3Alatest
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: |-
+        Build and run WildFly applications on CentOS 7. For more information about using this builder image, including OpenShift considerations, see https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+
+        WARNING: By selecting this tag, your application will automatically update to use the latest version of WildFly available on OpenShift, including major versions updates.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly (Latest)
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: jee,java
+      tags: builder,wildfly,java
+    from:
+      kind: DockerImage
+      name: quay.io/wildfly/wildfly-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: latest
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:0b1f4092df0a24bb67e34094bc0332b8412bcd4ea9b054fbf678eabfcb0b8ad3
+    metadata:
+      creationTimestamp: null
+      name: sha256:0b1f4092df0a24bb67e34094bc0332b8412bcd4ea9b054fbf678eabfcb0b8ad3
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 10.0 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 10.0
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:10.0,jee,java
+      tags: builder,wildfly,java
+      version: "10.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:10.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A10.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 10.0 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 10.0
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:10.0,jee,java
+      tags: builder,wildfly,java
+      version: "10.0"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-100-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "10.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:5828134f4b215ab02ccc832a5f17f06c5b5d8c71c11f138cd7461e3f246b1929
+    metadata:
+      creationTimestamp: null
+      name: sha256:5828134f4b215ab02ccc832a5f17f06c5b5d8c71c11f138cd7461e3f246b1929
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 11 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 11
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:11,jee,java
+      tags: builder,wildfly,java
+      version: "11.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:11.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A11.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 11 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 11
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:11,jee,java
+      tags: builder,wildfly,java
+      version: "11.0"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-110-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "11.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:d12c6ef86991edf35e51aef804822f76897cbc579f7518ce84eaf55ec8ec6f9d
+    metadata:
+      creationTimestamp: null
+      name: sha256:d12c6ef86991edf35e51aef804822f76897cbc579f7518ce84eaf55ec8ec6f9d
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 16 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 16
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:16,jee,java
+      tags: builder,wildfly,java
+      version: "16.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:16.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A16.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 16 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 16
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:16,jee,java
+      tags: builder,wildfly,java
+      version: "16.0"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-160-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "16.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:5a20dd8d9bfe99d9c192c2385fa55daa929ee488068de4ad0b95d397d3cc46a5
+    metadata:
+      creationTimestamp: null
+      name: sha256:5a20dd8d9bfe99d9c192c2385fa55daa929ee488068de4ad0b95d397d3cc46a5
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 17 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 17
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:17,jee,java
+      tags: builder,wildfly,java
+      version: "17.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:17.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A17.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 17 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 17
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:17,jee,java
+      tags: builder,wildfly,java
+      version: "17.0"
+    from:
+      kind: DockerImage
+      name: quay.io/wildfly/wildfly-centos7:17.0
+    generation: 2
+    importPolicy: {}
+    name: "17.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:9f66d9efe2565d1799219f2a3e07373e62eb2d2cea323596a02aaf00c3ee0750
+    metadata:
+      creationTimestamp: null
+      name: sha256:9f66d9efe2565d1799219f2a3e07373e62eb2d2cea323596a02aaf00c3ee0750
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 8.1 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 8.1
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:8.1,jee,java
+      tags: builder,wildfly,java
+      version: "8.1"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:8.1
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A8.1
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 8.1 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 8.1
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:8.1,jee,java
+      tags: builder,wildfly,java
+      version: "8.1"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-81-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "8.1"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:ea374cc4aee82ed9afe41ce34122136d5837f04d8009a27e4baffbb7980454ff
+    metadata:
+      creationTimestamp: null
+      name: sha256:ea374cc4aee82ed9afe41ce34122136d5837f04d8009a27e4baffbb7980454ff
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 9.0 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 9.0
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:9.0,jee,java
+      tags: builder,wildfly,java
+      version: "9.0"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:9.0
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A9.0
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 9.0 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 9.0
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:9.0,jee,java
+      tags: builder,wildfly,java
+      version: "9.0"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-90-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "9.0"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 2
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:7775d40f77e22897dc760b76f1656f67ef6bd5561b4d74fbb030b977f61d48e8
+    metadata:
+      creationTimestamp: null
+      name: sha256:7775d40f77e22897dc760b76f1656f67ef6bd5561b4d74fbb030b977f61d48e8
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      description: Build and run WildFly 10.1 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 10.1
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:10.1,jee,java
+      tags: builder,wildfly,java
+      version: "10.1"
+    creationTimestamp: "2020-02-09T01:32:00Z"
+    name: wildfly:10.1
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly%3A10.1
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  tag:
+    annotations:
+      description: Build and run WildFly 10.1 applications on CentOS 7. For more information
+        about using this builder image, including OpenShift considerations, see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+      iconClass: icon-wildfly
+      openshift.io/display-name: WildFly 10.1
+      openshift.io/provider-display-name: Red Hat, Inc.
+      sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+      supports: wildfly:10.1,jee,java
+      tags: builder,wildfly,java
+      version: "10.1"
+    from:
+      kind: DockerImage
+      name: docker.io/openshift/wildfly-101-centos7:latest
+    generation: 2
+    importPolicy: {}
+    name: "10.1"
+    referencePolicy:
+      type: Local
+- apiVersion: image.openshift.io/v1
+  generation: 1
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+    metadata:
+      creationTimestamp: null
+      name: sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    creationTimestamp: "2020-02-09T01:36:39Z"
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+    name: wildfly-dcdj-app:latest
+    namespace: aaa
+    resourceVersion: "101194"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreamtags/wildfly-dcdj-app%3Alatest
+    uid: 06cb7dff-4adc-11ea-b90b-0a580a8000ae
+  tag: null
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

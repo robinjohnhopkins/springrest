@@ -1,0 +1,1382 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: ""
+      openshift.io/build.name: wildfly-dcdj-app-1
+      openshift.io/scc: privileged
+    creationTimestamp: "2020-02-09T01:32:26Z"
+    labels:
+      openshift.io/build.name: wildfly-dcdj-app-1
+    name: wildfly-dcdj-app-1-build
+    namespace: aaa
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: Build
+      name: wildfly-dcdj-app-1
+      uid: 07029006-4adc-11ea-b90b-0a580a8000ae
+    resourceVersion: "101205"
+    selfLink: /api/v1/namespaces/aaa/pods/wildfly-dcdj-app-1-build
+    uid: 0742c9d6-4adc-11ea-879b-0ef0e3c74fbe
+  spec:
+    containers:
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-sti-build
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"wildfly-dcdj-app-1","namespace":"aaa","selfLink":"/apis/build.openshift.io/v1/namespaces/aaa/builds/wildfly-dcdj-app-1","uid":"07029006-4adc-11ea-b90b-0a580a8000ae","resourceVersion":"100469","creationTimestamp":"2020-02-09T01:32:25Z","labels":{"app":"app","app.kubernetes.io/instance":"wildfly-dcdj","app.kubernetes.io/managed-by":"odo","app.kubernetes.io/managed-by-version":"v1.1.0","app.kubernetes.io/name":"wildfly","app.kubernetes.io/part-of":"app","app.openshift.io/runtime-version":"latest","buildconfig":"wildfly-dcdj-app","openshift.io/build-config.name":"wildfly-dcdj-app","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"wildfly-dcdj-app","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"wildfly-dcdj-app","uid":"06d2a1f5-4adc-11ea-b90b-0a580a8000ae","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/openshift/openshift-jee-sample.git"}},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78"},"pullSecret":{"name":"builder-dockercfg-xc9c2"},"env":[{"name":"DEBUG_PORT","value":"5858"}]}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app:latest"},"pushSecret":{"name":"builder-dockercfg-xc9c2"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Manually triggered"}]},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app:latest","config":{"kind":"BuildConfig","namespace":"aaa","name":"wildfly-dcdj-app"},"output":{}}}
+      - name: LANG
+        value: en_US.utf8
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/openshift/openshift-jee-sample.git
+      - name: SOURCE_URI
+        value: https://github.com/openshift/openshift-jee-sample.git
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      - name: PUSH_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/push
+      - name: PULL_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/pull
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_STORAGE_DRIVER
+        value: overlay
+      - name: BUILD_ISOLATION
+        value: chroot
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: HTTPS_PROXY
+      - name: NO_PROXY
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      imagePullPolicy: IfNotPresent
+      name: sti-build
+      resources: {}
+      securityContext:
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/lib/containers/cache
+        name: buildcachedir
+      - mountPath: /var/run/secrets/openshift.io/push
+        name: builder-dockercfg-xc9c2-push
+        readOnly: true
+      - mountPath: /var/run/secrets/openshift.io/pull
+        name: builder-dockercfg-xc9c2-pull
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /etc/pki/ca-trust/extracted/pem
+        name: build-proxy-ca-bundles
+      - mountPath: /var/lib/containers/storage
+        name: container-storage-root
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6kw9k
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: builder-dockercfg-xc9c2
+    initContainers:
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-git-clone
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"wildfly-dcdj-app-1","namespace":"aaa","selfLink":"/apis/build.openshift.io/v1/namespaces/aaa/builds/wildfly-dcdj-app-1","uid":"07029006-4adc-11ea-b90b-0a580a8000ae","resourceVersion":"100469","creationTimestamp":"2020-02-09T01:32:25Z","labels":{"app":"app","app.kubernetes.io/instance":"wildfly-dcdj","app.kubernetes.io/managed-by":"odo","app.kubernetes.io/managed-by-version":"v1.1.0","app.kubernetes.io/name":"wildfly","app.kubernetes.io/part-of":"app","app.openshift.io/runtime-version":"latest","buildconfig":"wildfly-dcdj-app","openshift.io/build-config.name":"wildfly-dcdj-app","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"wildfly-dcdj-app","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"wildfly-dcdj-app","uid":"06d2a1f5-4adc-11ea-b90b-0a580a8000ae","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/openshift/openshift-jee-sample.git"}},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78"},"pullSecret":{"name":"builder-dockercfg-xc9c2"},"env":[{"name":"DEBUG_PORT","value":"5858"}]}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app:latest"},"pushSecret":{"name":"builder-dockercfg-xc9c2"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Manually triggered"}]},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app:latest","config":{"kind":"BuildConfig","namespace":"aaa","name":"wildfly-dcdj-app"},"output":{}}}
+      - name: LANG
+        value: en_US.utf8
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/openshift/openshift-jee-sample.git
+      - name: SOURCE_URI
+        value: https://github.com/openshift/openshift-jee-sample.git
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: HTTPS_PROXY
+      - name: NO_PROXY
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      imagePullPolicy: IfNotPresent
+      name: git-clone
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /etc/pki/ca-trust/extracted/pem
+        name: build-proxy-ca-bundles
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6kw9k
+        readOnly: true
+    - args:
+      - --loglevel=0
+      command:
+      - openshift-manage-dockerfile
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"wildfly-dcdj-app-1","namespace":"aaa","selfLink":"/apis/build.openshift.io/v1/namespaces/aaa/builds/wildfly-dcdj-app-1","uid":"07029006-4adc-11ea-b90b-0a580a8000ae","resourceVersion":"100469","creationTimestamp":"2020-02-09T01:32:25Z","labels":{"app":"app","app.kubernetes.io/instance":"wildfly-dcdj","app.kubernetes.io/managed-by":"odo","app.kubernetes.io/managed-by-version":"v1.1.0","app.kubernetes.io/name":"wildfly","app.kubernetes.io/part-of":"app","app.openshift.io/runtime-version":"latest","buildconfig":"wildfly-dcdj-app","openshift.io/build-config.name":"wildfly-dcdj-app","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"wildfly-dcdj-app","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"wildfly-dcdj-app","uid":"06d2a1f5-4adc-11ea-b90b-0a580a8000ae","controller":true}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/openshift/openshift-jee-sample.git"}},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78"},"pullSecret":{"name":"builder-dockercfg-xc9c2"},"env":[{"name":"DEBUG_PORT","value":"5858"}]}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app:latest"},"pushSecret":{"name":"builder-dockercfg-xc9c2"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Manually triggered"}]},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app:latest","config":{"kind":"BuildConfig","namespace":"aaa","name":"wildfly-dcdj-app"},"output":{}}}
+      - name: LANG
+        value: en_US.utf8
+      - name: SOURCE_REPOSITORY
+        value: https://github.com/openshift/openshift-jee-sample.git
+      - name: SOURCE_URI
+        value: https://github.com/openshift/openshift-jee-sample.git
+      - name: ALLOWED_UIDS
+        value: 1-
+      - name: DROP_CAPS
+        value: KILL,MKNOD,SETGID,SETUID
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: HTTPS_PROXY
+      - name: NO_PROXY
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      imagePullPolicy: IfNotPresent
+      name: manage-dockerfile
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /etc/pki/ca-trust/extracted/pem
+        name: build-proxy-ca-bundles
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: builder-token-6kw9k
+        readOnly: true
+    nodeName: crc-q4zfq-master-0
+    nodeSelector:
+      kubernetes.io/os: linux
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: builder
+    serviceAccountName: builder
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /var/lib/containers/cache
+        type: ""
+      name: buildcachedir
+    - emptyDir: {}
+      name: buildworkdir
+    - name: builder-dockercfg-xc9c2-push
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-xc9c2
+    - name: builder-dockercfg-xc9c2-pull
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-xc9c2
+    - configMap:
+        defaultMode: 420
+        name: wildfly-dcdj-app-1-sys-config
+      name: build-system-configs
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: service-ca.crt
+          path: certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt
+        name: wildfly-dcdj-app-1-ca
+      name: build-ca-bundles
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: ca-bundle.crt
+          path: tls-ca-bundle.pem
+        name: wildfly-dcdj-app-1-global-ca
+      name: build-proxy-ca-bundles
+    - emptyDir: {}
+      name: container-storage-root
+    - emptyDir: {}
+      name: build-blob-cache
+    - name: builder-token-6kw9k
+      secret:
+        defaultMode: 420
+        secretName: builder-token-6kw9k
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:32:41Z"
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:36:40Z"
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:36:40Z"
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:32:26Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://e04bb3a7804a4a39d89a235f89eed6d029fc95076ec39f09b2e1fabd5b24140e
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      imageID: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      lastState: {}
+      name: sti-build
+      ready: false
+      restartCount: 0
+      state:
+        terminated:
+          containerID: cri-o://e04bb3a7804a4a39d89a235f89eed6d029fc95076ec39f09b2e1fabd5b24140e
+          exitCode: 0
+          finishedAt: "2020-02-09T01:36:40Z"
+          reason: Completed
+          startedAt: "2020-02-09T01:32:41Z"
+    hostIP: 192.168.64.5
+    initContainerStatuses:
+    - containerID: cri-o://9c5c091e54903ceeec651bd944e3e543f78560e60fca9a81acb12ac27f53966e
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      imageID: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      lastState: {}
+      name: git-clone
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: cri-o://9c5c091e54903ceeec651bd944e3e543f78560e60fca9a81acb12ac27f53966e
+          exitCode: 0
+          finishedAt: "2020-02-09T01:32:39Z"
+          reason: OOMKilled
+          startedAt: "2020-02-09T01:32:35Z"
+    - containerID: cri-o://664acd2ed3193c90d0362b3013f4b6b6080ba62ceb86280cac1231d254fb8c7c
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      imageID: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d
+      lastState: {}
+      name: manage-dockerfile
+      ready: true
+      restartCount: 0
+      state:
+        terminated:
+          containerID: cri-o://664acd2ed3193c90d0362b3013f4b6b6080ba62ceb86280cac1231d254fb8c7c
+          exitCode: 0
+          finishedAt: "2020-02-09T01:32:41Z"
+          reason: Completed
+          startedAt: "2020-02-09T01:32:40Z"
+    phase: Succeeded
+    podIP: 10.128.0.233
+    qosClass: BestEffort
+    startTime: "2020-02-09T01:32:26Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: ""
+      openshift.io/deployment-config.name: wildfly-dcdj-app
+      openshift.io/deployment.name: wildfly-dcdj-app-1
+      openshift.io/scc: restricted
+    creationTimestamp: "2020-02-09T01:36:43Z"
+    labels:
+      openshift.io/deployer-pod-for.name: wildfly-dcdj-app-1
+    name: wildfly-dcdj-app-1-deploy
+    namespace: aaa
+    ownerReferences:
+    - apiVersion: v1
+      kind: ReplicationController
+      name: wildfly-dcdj-app-1
+      uid: a0424c1f-4adc-11ea-879b-0ef0e3c74fbe
+    resourceVersion: "101488"
+    selfLink: /api/v1/namespaces/aaa/pods/wildfly-dcdj-app-1-deploy
+    uid: a0642f6e-4adc-11ea-879b-0ef0e3c74fbe
+  spec:
+    activeDeadlineSeconds: 21600
+    containers:
+    - env:
+      - name: OPENSHIFT_DEPLOYMENT_NAME
+        value: wildfly-dcdj-app-1
+      - name: OPENSHIFT_DEPLOYMENT_NAMESPACE
+        value: aaa
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483
+      imagePullPolicy: IfNotPresent
+      name: deployment
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000520000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: deployer-token-d6xzd
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: deployer-dockercfg-fmxbn
+    nodeName: crc-q4zfq-master-0
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000520000
+      seLinuxOptions:
+        level: s0:c23,c7
+    serviceAccount: deployer
+    serviceAccountName: deployer
+    shareProcessNamespace: false
+    terminationGracePeriodSeconds: 10
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: deployer-token-d6xzd
+      secret:
+        defaultMode: 420
+        secretName: deployer-token-d6xzd
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:36:43Z"
+      reason: PodCompleted
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:38:10Z"
+      reason: PodCompleted
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:38:10Z"
+      reason: PodCompleted
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:36:43Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://46b001b3e4bdd875b66379ca94674d62dcf16ee1fb5f1fb000498f36e870b4a5
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483
+      imageID: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483
+      lastState: {}
+      name: deployment
+      ready: false
+      restartCount: 0
+      state:
+        terminated:
+          containerID: cri-o://46b001b3e4bdd875b66379ca94674d62dcf16ee1fb5f1fb000498f36e870b4a5
+          exitCode: 0
+          finishedAt: "2020-02-09T01:38:09Z"
+          reason: Completed
+          startedAt: "2020-02-09T01:36:52Z"
+    hostIP: 192.168.64.5
+    phase: Succeeded
+    podIP: 10.128.0.234
+    qosClass: BestEffort
+    startTime: "2020-02-09T01:36:43Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.128.0.235"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: wildfly-dcdj-app
+      openshift.io/deployment.name: wildfly-dcdj-app-1
+      openshift.io/scc: restricted
+    creationTimestamp: "2020-02-09T01:36:53Z"
+    generateName: wildfly-dcdj-app-1-
+    labels:
+      deployment: wildfly-dcdj-app-1
+      deploymentconfig: wildfly-dcdj-app
+    name: wildfly-dcdj-app-1-dfqgr
+    namespace: aaa
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: wildfly-dcdj-app-1
+      uid: a0424c1f-4adc-11ea-879b-0ef0e3c74fbe
+    resourceVersion: "101471"
+    selfLink: /api/v1/namespaces/aaa/pods/wildfly-dcdj-app-1-dfqgr
+    uid: a6b70cec-4adc-11ea-879b-0ef0e3c74fbe
+  spec:
+    containers:
+    - env:
+      - name: DEBUG_PORT
+        value: "5858"
+      image: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+      imagePullPolicy: IfNotPresent
+      name: wildfly-dcdj-app
+      ports:
+      - containerPort: 8778
+        name: 8778-tcp
+        protocol: TCP
+      - containerPort: 8080
+        name: 8080-tcp
+        protocol: TCP
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000520000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-nvlpt
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: default-dockercfg-qvzd6
+    nodeName: crc-q4zfq-master-0
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000520000
+      seLinuxOptions:
+        level: s0:c23,c7
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: default-token-nvlpt
+      secret:
+        defaultMode: 420
+        secretName: default-token-nvlpt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:36:53Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:38:09Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:38:09Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2020-02-09T01:36:53Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://c1eadb0e7b0c27e09761a31b4feb1c017fb159b88d0a9e275bddb4591146b414
+      image: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+      imageID: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+      lastState: {}
+      name: wildfly-dcdj-app
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: "2020-02-09T01:38:08Z"
+    hostIP: 192.168.64.5
+    phase: Running
+    podIP: 10.128.0.235
+    qosClass: BestEffort
+    startTime: "2020-02-09T01:36:53Z"
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2020-02-09 01:38:09 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2020-02-09 01:36:43 +0000 UTC
+      openshift.io/deployer-pod.name: wildfly-dcdj-app-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: wildfly-dcdj-app
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: manual change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"wildfly-dcdj-app","namespace":"aaa","selfLink":"/apis/apps.openshift.io/v1/namespaces/aaa/deploymentconfigs/wildfly-dcdj-app","uid":"06d8c8e8-4adc-11ea-b90b-0a580a8000ae","resourceVersion":"101208","generation":2,"creationTimestamp":"2020-02-09T01:32:25Z","labels":{"app":"app","app.kubernetes.io/instance":"wildfly-dcdj","app.kubernetes.io/managed-by":"odo","app.kubernetes.io/managed-by-version":"v1.1.0","app.kubernetes.io/name":"wildfly","app.kubernetes.io/part-of":"app","app.openshift.io/runtime-version":"latest"},"annotations":{"app.kubernetes.io/component-source-type":"git","app.openshift.io/vcs-uri":"https://github.com/openshift/openshift-jee-sample.git"}},"spec":{"strategy":{"type":"Recreate","recreateParams":{"timeoutSeconds":600},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ImageChange","imageChangeParams":{"containerNames":["wildfly-dcdj-app"],"from":{"kind":"ImageStreamTag","namespace":"aaa","name":"wildfly-dcdj-app:latest"},"lastTriggeredImage":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e"}}],"replicas":1,"revisionHistoryLimit":10,"test":false,"selector":{"deploymentconfig":"wildfly-dcdj-app"},"template":{"metadata":{"creationTimestamp":null,"labels":{"deploymentconfig":"wildfly-dcdj-app"}},"spec":{"containers":[{"name":"wildfly-dcdj-app","image":"image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e","ports":[{"name":"8778-tcp","containerPort":8778,"protocol":"TCP"},{"name":"8080-tcp","containerPort":8080,"protocol":"TCP"}],"env":[{"name":"DEBUG_PORT","value":"5858"}],"resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"manual change","causes":[{"type":"Manual"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2020-02-09T01:32:25Z","lastTransitionTime":"2020-02-09T01:32:25Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: "2020-02-09T01:36:43Z"
+    generation: 2
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+      openshift.io/deployment-config.name: wildfly-dcdj-app
+    name: wildfly-dcdj-app-1
+    namespace: aaa
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: wildfly-dcdj-app
+      uid: 06d8c8e8-4adc-11ea-b90b-0a580a8000ae
+    resourceVersion: "101486"
+    selfLink: /api/v1/namespaces/aaa/replicationcontrollers/wildfly-dcdj-app-1
+    uid: a0424c1f-4adc-11ea-879b-0ef0e3c74fbe
+  spec:
+    replicas: 1
+    selector:
+      deployment: wildfly-dcdj-app-1
+      deploymentconfig: wildfly-dcdj-app
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: wildfly-dcdj-app
+          openshift.io/deployment.name: wildfly-dcdj-app-1
+        creationTimestamp: null
+        labels:
+          deployment: wildfly-dcdj-app-1
+          deploymentconfig: wildfly-dcdj-app
+      spec:
+        containers:
+        - env:
+          - name: DEBUG_PORT
+            value: "5858"
+          image: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+          imagePullPolicy: IfNotPresent
+          name: wildfly-dcdj-app
+          ports:
+          - containerPort: 8778
+            name: 8778-tcp
+            protocol: TCP
+          - containerPort: 8080
+            name: 8080-tcp
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      app.kubernetes.io/component-source-type: git
+      app.openshift.io/vcs-uri: https://github.com/openshift/openshift-jee-sample.git
+    creationTimestamp: "2020-02-09T01:32:25Z"
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+    name: wildfly-dcdj-app
+    namespace: aaa
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      kind: DeploymentConfig
+      name: wildfly-dcdj-app
+      uid: 06d8c8e8-4adc-11ea-b90b-0a580a8000ae
+    resourceVersion: "100461"
+    selfLink: /api/v1/namespaces/aaa/services/wildfly-dcdj-app
+    uid: 06dc946c-4adc-11ea-879b-0ef0e3c74fbe
+  spec:
+    clusterIP: 172.30.19.85
+    ports:
+    - name: 8778-tcp
+      port: 8778
+      protocol: TCP
+      targetPort: 8778
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      deploymentconfig: wildfly-dcdj-app
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      app.kubernetes.io/component-source-type: git
+      app.openshift.io/vcs-uri: https://github.com/openshift/openshift-jee-sample.git
+    creationTimestamp: "2020-02-09T01:32:25Z"
+    generation: 2
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+    name: wildfly-dcdj-app
+    namespace: aaa
+    resourceVersion: "101487"
+    selfLink: /apis/apps.openshift.io/v1/namespaces/aaa/deploymentconfigs/wildfly-dcdj-app
+    uid: 06d8c8e8-4adc-11ea-b90b-0a580a8000ae
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      deploymentconfig: wildfly-dcdj-app
+    strategy:
+      activeDeadlineSeconds: 21600
+      recreateParams:
+        timeoutSeconds: 600
+      resources: {}
+      type: Recreate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          deploymentconfig: wildfly-dcdj-app
+      spec:
+        containers:
+        - env:
+          - name: DEBUG_PORT
+            value: "5858"
+          image: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+          imagePullPolicy: IfNotPresent
+          name: wildfly-dcdj-app
+          ports:
+          - containerPort: 8778
+            name: 8778-tcp
+            protocol: TCP
+          - containerPort: 8080
+            name: 8080-tcp
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - imageChangeParams:
+        containerNames:
+        - wildfly-dcdj-app
+        from:
+          kind: ImageStreamTag
+          name: wildfly-dcdj-app:latest
+          namespace: aaa
+        lastTriggeredImage: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+      type: ImageChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2020-02-09T01:38:09Z"
+      lastUpdateTime: "2020-02-09T01:38:09Z"
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2020-02-09T01:36:54Z"
+      lastUpdateTime: "2020-02-09T01:38:10Z"
+      message: replication controller "wildfly-dcdj-app-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: Manual
+      message: manual change
+    latestVersion: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      app.kubernetes.io/component-source-type: git
+      app.openshift.io/vcs-uri: https://github.com/openshift/openshift-jee-sample.git
+    creationTimestamp: "2020-02-09T01:32:25Z"
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+    name: wildfly-dcdj-app
+    namespace: aaa
+    resourceVersion: "100467"
+    selfLink: /apis/build.openshift.io/v1/namespaces/aaa/buildconfigs/wildfly-dcdj-app
+    uid: 06d2a1f5-4adc-11ea-b90b-0a580a8000ae
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: wildfly-dcdj-app:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      git:
+        uri: https://github.com/openshift/openshift-jee-sample.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        env:
+        - name: DEBUG_PORT
+          value: "5858"
+        from:
+          kind: ImageStreamTag
+          name: wildfly:latest
+          namespace: aaa
+      type: Source
+    successfulBuildsHistoryLimit: 5
+    triggers: []
+  status:
+    lastVersion: 1
+- apiVersion: build.openshift.io/v1
+  kind: Build
+  metadata:
+    annotations:
+      openshift.io/build-config.name: wildfly-dcdj-app
+      openshift.io/build.number: "1"
+      openshift.io/build.pod-name: wildfly-dcdj-app-1-build
+    creationTimestamp: "2020-02-09T01:32:25Z"
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+      buildconfig: wildfly-dcdj-app
+      openshift.io/build-config.name: wildfly-dcdj-app
+      openshift.io/build.start-policy: Serial
+    name: wildfly-dcdj-app-1
+    namespace: aaa
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: wildfly-dcdj-app
+      uid: 06d2a1f5-4adc-11ea-b90b-0a580a8000ae
+    resourceVersion: "101206"
+    selfLink: /apis/build.openshift.io/v1/namespaces/aaa/builds/wildfly-dcdj-app-1
+    uid: 07029006-4adc-11ea-b90b-0a580a8000ae
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-xc9c2
+      to:
+        kind: ImageStreamTag
+        name: wildfly-dcdj-app:latest
+    postCommit: {}
+    resources: {}
+    revision:
+      git:
+        author:
+          email: bparees@users.noreply.github.com
+          name: Ben Parees
+        commit: 3ed799911cf2d7dd93086aaa6f394d6da5ceb0fd
+        committer:
+          email: noreply@github.com
+          name: GitHub
+        message: 'Merge pull request #13 from bparees/welcome'
+      type: Git
+    serviceAccount: builder
+    source:
+      git:
+        uri: https://github.com/openshift/openshift-jee-sample.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        env:
+        - name: DEBUG_PORT
+          value: "5858"
+        from:
+          kind: DockerImage
+          name: image-registry.openshift-image-registry.svc:5000/aaa/wildfly@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78
+        pullSecret:
+          name: builder-dockercfg-xc9c2
+      type: Source
+    triggeredBy:
+    - message: Manually triggered
+  status:
+    completionTimestamp: "2020-02-09T01:36:42Z"
+    config:
+      kind: BuildConfig
+      name: wildfly-dcdj-app
+      namespace: aaa
+    duration: 256000000000
+    output:
+      to:
+        imageDigest: sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+    outputDockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 2139
+      name: FetchInputs
+      startTime: "2020-02-09T01:32:37Z"
+      steps:
+      - durationMilliseconds: 2139
+        name: FetchGitSource
+        startTime: "2020-02-09T01:32:37Z"
+    - durationMilliseconds: 193956
+      name: PullImages
+      startTime: "2020-02-09T01:32:42Z"
+      steps:
+      - durationMilliseconds: 193956
+        name: PullBaseImage
+        startTime: "2020-02-09T01:32:42Z"
+    - durationMilliseconds: 40595
+      name: Build
+      startTime: "2020-02-09T01:35:56Z"
+      steps:
+      - durationMilliseconds: 40595
+        name: DockerBuild
+        startTime: "2020-02-09T01:35:56Z"
+    - durationMilliseconds: 2553
+      name: PushImage
+      startTime: "2020-02-09T01:36:37Z"
+      steps:
+      - durationMilliseconds: 2553
+        name: PushImage
+        startTime: "2020-02-09T01:36:37Z"
+    startTimestamp: "2020-02-09T01:32:26Z"
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/display-name: WildFly
+      openshift.io/image.dockerRepositoryCheck: "2020-02-09T01:32:00Z"
+    creationTimestamp: "2020-02-09T01:31:48Z"
+    generation: 2
+    name: wildfly
+    namespace: aaa
+    resourceVersion: "100381"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreams/wildfly
+    uid: f091bfba-4adb-11ea-b90b-0a580a8000ae
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations:
+        description: Build and run WildFly 10.0 applications on CentOS 7. For more
+          information about using this builder image, including OpenShift considerations,
+          see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 10.0
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:10.0,jee,java
+        tags: builder,wildfly,java
+        version: "10.0"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-100-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "10.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 10.1 applications on CentOS 7. For more
+          information about using this builder image, including OpenShift considerations,
+          see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 10.1
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:10.1,jee,java
+        tags: builder,wildfly,java
+        version: "10.1"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-101-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "10.1"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 11 applications on CentOS 7. For more information
+          about using this builder image, including OpenShift considerations, see
+          https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 11
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:11,jee,java
+        tags: builder,wildfly,java
+        version: "11.0"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-110-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "11.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 12 applications on CentOS 7. For more information
+          about using this builder image, including OpenShift considerations, see
+          https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 12
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:12,jee,java
+        tags: builder,wildfly,java
+        version: "12.0"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-120-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "12.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 13 applications on CentOS 7. For more information
+          about using this builder image, including OpenShift considerations, see
+          https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 13
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:13,jee,java
+        tags: builder,wildfly,java
+        version: "13.0"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-130-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "13.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 14 applications on CentOS 7. For more information
+          about using this builder image, including OpenShift considerations, see
+          https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 14
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:14,jee,java
+        tags: builder,wildfly,java
+        version: "14.0"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-140-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "14.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 15 applications on CentOS 7. For more information
+          about using this builder image, including OpenShift considerations, see
+          https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 15
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:15,jee,java
+        tags: builder,wildfly,java
+        version: "15.0"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-150-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "15.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 16 applications on CentOS 7. For more information
+          about using this builder image, including OpenShift considerations, see
+          https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 16
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:16,jee,java
+        tags: builder,wildfly,java
+        version: "16.0"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-160-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "16.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 17 applications on CentOS 7. For more information
+          about using this builder image, including OpenShift considerations, see
+          https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 17
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:17,jee,java
+        tags: builder,wildfly,java
+        version: "17.0"
+      from:
+        kind: DockerImage
+        name: quay.io/wildfly/wildfly-centos7:17.0
+      generation: 2
+      importPolicy: {}
+      name: "17.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 18 applications on CentOS 7. For more information
+          about using this builder image, including OpenShift considerations, see
+          https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 18
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:18,jee,java
+        tags: builder,wildfly,java
+        version: "18.0"
+      from:
+        kind: DockerImage
+        name: quay.io/wildfly/wildfly-centos7:18.0
+      generation: 2
+      importPolicy: {}
+      name: "18.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 8.1 applications on CentOS 7. For more
+          information about using this builder image, including OpenShift considerations,
+          see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 8.1
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:8.1,jee,java
+        tags: builder,wildfly,java
+        version: "8.1"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-81-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "8.1"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: Build and run WildFly 9.0 applications on CentOS 7. For more
+          information about using this builder image, including OpenShift considerations,
+          see https://github.com/openshift-s2i/s2i-wildfly/blob/master/README.md.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly 9.0
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: wildfly:9.0,jee,java
+        tags: builder,wildfly,java
+        version: "9.0"
+      from:
+        kind: DockerImage
+        name: docker.io/openshift/wildfly-90-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: "9.0"
+      referencePolicy:
+        type: Local
+    - annotations:
+        description: |-
+          Build and run WildFly applications on CentOS 7. For more information about using this builder image, including OpenShift considerations, see https://github.com/wildfly/wildfly-s2i/blob/current/README.md.
+
+          WARNING: By selecting this tag, your application will automatically update to use the latest version of WildFly available on OpenShift, including major versions updates.
+        iconClass: icon-wildfly
+        openshift.io/display-name: WildFly (Latest)
+        openshift.io/provider-display-name: Red Hat, Inc.
+        sampleRepo: https://github.com/openshift/openshift-jee-sample.git
+        supports: jee,java
+        tags: builder,wildfly,java
+      from:
+        kind: DockerImage
+        name: quay.io/wildfly/wildfly-centos7:latest
+      generation: 2
+      importPolicy: {}
+      name: latest
+      referencePolicy:
+        type: Local
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/aaa/wildfly
+    publicDockerImageRepository: default-route-openshift-image-registry.apps-crc.testing/aaa/wildfly
+    tags:
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-100-centos7@sha256:0b1f4092df0a24bb67e34094bc0332b8412bcd4ea9b054fbf678eabfcb0b8ad3
+        generation: 2
+        image: sha256:0b1f4092df0a24bb67e34094bc0332b8412bcd4ea9b054fbf678eabfcb0b8ad3
+      tag: "10.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-101-centos7@sha256:7775d40f77e22897dc760b76f1656f67ef6bd5561b4d74fbb030b977f61d48e8
+        generation: 2
+        image: sha256:7775d40f77e22897dc760b76f1656f67ef6bd5561b4d74fbb030b977f61d48e8
+      tag: "10.1"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-110-centos7@sha256:5828134f4b215ab02ccc832a5f17f06c5b5d8c71c11f138cd7461e3f246b1929
+        generation: 2
+        image: sha256:5828134f4b215ab02ccc832a5f17f06c5b5d8c71c11f138cd7461e3f246b1929
+      tag: "11.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-120-centos7@sha256:a1fbd1b235102ae18344527b44201c34ad4c2181b0b4cbf295b1a8f0cbde8e73
+        generation: 2
+        image: sha256:a1fbd1b235102ae18344527b44201c34ad4c2181b0b4cbf295b1a8f0cbde8e73
+      tag: "12.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-130-centos7@sha256:73b9d5578eac447606e708a635bc0661755866162673a4c6e6d1119248d3c2c8
+        generation: 2
+        image: sha256:73b9d5578eac447606e708a635bc0661755866162673a4c6e6d1119248d3c2c8
+      tag: "13.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-140-centos7@sha256:4e2dc4d7b87b1d26ca7b302ed10da6875602a2a618a28814ccd8e96ccfab6f4d
+        generation: 2
+        image: sha256:4e2dc4d7b87b1d26ca7b302ed10da6875602a2a618a28814ccd8e96ccfab6f4d
+      tag: "14.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-150-centos7@sha256:66ce43dd4be6aabcb97557f1cf86abb95f5b2a78cf4a40752d5f4caa8c9c25e2
+        generation: 2
+        image: sha256:66ce43dd4be6aabcb97557f1cf86abb95f5b2a78cf4a40752d5f4caa8c9c25e2
+      tag: "15.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-160-centos7@sha256:d12c6ef86991edf35e51aef804822f76897cbc579f7518ce84eaf55ec8ec6f9d
+        generation: 2
+        image: sha256:d12c6ef86991edf35e51aef804822f76897cbc579f7518ce84eaf55ec8ec6f9d
+      tag: "16.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: quay.io/wildfly/wildfly-centos7@sha256:5a20dd8d9bfe99d9c192c2385fa55daa929ee488068de4ad0b95d397d3cc46a5
+        generation: 2
+        image: sha256:5a20dd8d9bfe99d9c192c2385fa55daa929ee488068de4ad0b95d397d3cc46a5
+      tag: "17.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: quay.io/wildfly/wildfly-centos7@sha256:4c880e767b9ad36a6f2487f2d8c7db54117e78cb9e3d6fa4d451fe716374d0bd
+        generation: 2
+        image: sha256:4c880e767b9ad36a6f2487f2d8c7db54117e78cb9e3d6fa4d451fe716374d0bd
+      tag: "18.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-81-centos7@sha256:9f66d9efe2565d1799219f2a3e07373e62eb2d2cea323596a02aaf00c3ee0750
+        generation: 2
+        image: sha256:9f66d9efe2565d1799219f2a3e07373e62eb2d2cea323596a02aaf00c3ee0750
+      tag: "8.1"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: docker.io/openshift/wildfly-90-centos7@sha256:ea374cc4aee82ed9afe41ce34122136d5837f04d8009a27e4baffbb7980454ff
+        generation: 2
+        image: sha256:ea374cc4aee82ed9afe41ce34122136d5837f04d8009a27e4baffbb7980454ff
+      tag: "9.0"
+    - items:
+      - created: "2020-02-09T01:32:00Z"
+        dockerImageReference: quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78
+        generation: 2
+        image: sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78
+      tag: latest
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      app.kubernetes.io/component-source-type: git
+      app.openshift.io/vcs-uri: https://github.com/openshift/openshift-jee-sample.git
+    creationTimestamp: "2020-02-09T01:32:25Z"
+    generation: 1
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+    name: wildfly-dcdj-app
+    namespace: aaa
+    resourceVersion: "101194"
+    selfLink: /apis/image.openshift.io/v1/namespaces/aaa/imagestreams/wildfly-dcdj-app
+    uid: 06cb7dff-4adc-11ea-b90b-0a580a8000ae
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app
+    publicDockerImageRepository: default-route-openshift-image-registry.apps-crc.testing/aaa/wildfly-dcdj-app
+    tags:
+    - items:
+      - created: "2020-02-09T01:36:39Z"
+        dockerImageReference: image-registry.openshift-image-registry.svc:5000/aaa/wildfly-dcdj-app@sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+        generation: 1
+        image: sha256:065218ddae03c74c46366c16e3adc2feb35b19ea6938c88f2abf46a034b2194e
+      tag: latest
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2020-02-09T01:44:13Z"
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+    name: banana
+    namespace: aaa
+    resourceVersion: "102494"
+    selfLink: /apis/route.openshift.io/v1/namespaces/aaa/routes/banana
+    uid: aca5063c-4add-11ea-b90b-0a580a8000ae
+  spec:
+    host: banana-aaa.apps-crc.testing
+    port:
+      targetPort: 8080-tcp
+    subdomain: ""
+    to:
+      kind: Service
+      name: wildfly-dcdj-app
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2020-02-09T01:44:13Z"
+        status: "True"
+        type: Admitted
+      host: banana-aaa.apps-crc.testing
+      routerCanonicalHostname: apps-crc.testing
+      routerName: default
+      wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

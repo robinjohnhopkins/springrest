@@ -1,0 +1,109 @@
+kind: Build
+apiVersion: build.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/build-config.name: openshift-jee-sample
+    openshift.io/build.number: '1'
+    openshift.io/build.pod-name: openshift-jee-sample-1-build
+  selfLink: /apis/build.openshift.io/v1/namespaces/banana/builds/openshift-jee-sample-1
+  resourceVersion: '157203467'
+  name: openshift-jee-sample-1
+  uid: c57ae914-4215-11ea-b4e8-0a580a80007a
+  creationTimestamp: '2020-01-28T21:33:06Z'
+  namespace: banana
+  ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      kind: BuildConfig
+      name: openshift-jee-sample
+      uid: c52169bb-4215-11ea-afdb-0a580a82008f
+      controller: true
+  labels:
+    app: openshift-jee-sample
+    app.kubernetes.io/part-of: openshift-jee-sample-app
+    app.kubernetes.io/instance: openshift-jee-sample
+    openshift.io/build-config.name: openshift-jee-sample
+    app.kubernetes.io/component: openshift-jee-sample
+    openshift.io/build.start-policy: Serial
+    buildconfig: openshift-jee-sample
+    app.openshift.io/runtime: wildfly
+    app.kubernetes.io/name: wildfly
+    app.openshift.io/runtime-version: '10.1'
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'openshift-jee-sample:latest'
+    pushSecret:
+      name: builder-dockercfg-n4bdf
+  resources: {}
+  triggeredBy:
+    - message: Image change
+      imageChangeBuild:
+        imageID: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/wildfly@sha256:7775d40f77e22897dc760b76f1656f67ef6bd5561b4d74fbb030b977f61d48e8
+        fromRef:
+          kind: ImageStreamTag
+          namespace: openshift
+          name: 'wildfly:10.1'
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/wildfly@sha256:7775d40f77e22897dc760b76f1656f67ef6bd5561b4d74fbb030b977f61d48e8
+      pullSecret:
+        name: builder-dockercfg-n4bdf
+  postCommit: {}
+  serviceAccount: builder
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/openshift/openshift-jee-sample'
+    contextDir: /
+  revision:
+    type: Git
+    git:
+      commit: 3ed799911cf2d7dd93086aaa6f394d6da5ceb0fd
+      author:
+        name: Ben Parees
+        email: bparees@users.noreply.github.com
+      committer:
+        name: GitHub
+        email: noreply@github.com
+      message: 'Merge pull request #13 from bparees/welcome'
+status:
+  output: {}
+  config:
+    kind: BuildConfig
+    namespace: banana
+    name: openshift-jee-sample
+  reason: OutOfMemoryKilled
+  message: The build pod was killed due to an out of memory condition.
+  outputDockerImageReference: >-
+    image-registry.openshift-image-registry.svc:5000/banana/openshift-jee-sample:latest
+  duration: 85000000000
+  startTimestamp: '2020-01-28T21:33:07Z'
+  stages:
+    - name: FetchInputs
+      startTime: '2020-01-28T21:33:20Z'
+      durationMilliseconds: 585
+      steps:
+        - name: FetchGitSource
+          startTime: '2020-01-28T21:33:20Z'
+          durationMilliseconds: 585
+  logSnippet: >-
+    STEP 2: LABEL "io.openshift.build.image"="image-registry.o...ift-jee-sample"
+    "io.openshift.build.source-context-dir"="/"
+
+    STEP 3: ENV OPENSHIFT_BUILD_NAME="openshift-jee-sample-1"
+    ...IFT_BUILD_COMMIT="3ed799911cf2d7dd93086aaa6f394d6da5ceb0fd"
+
+    STEP 4: USER root
+
+    STEP 5: COPY upload/src /opt/s2i/destination/src
+
+    STEP 6: RUN chown -R 1001:0 /opt/s2i/destination/src
+  completionTimestamp: '2020-01-28T21:34:32Z'
+  phase: Failed

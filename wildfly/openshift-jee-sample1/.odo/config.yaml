@@ -1,0 +1,12 @@
+kind: LocalConfig
+apiversion: odo.openshift.io/v1alpha1
+ComponentSettings:
+  Type: wildfly
+  SourceLocation: https://github.com/openshift/openshift-jee-sample.git
+  SourceType: git
+  Ports:
+  - 8778/TCP
+  - 8080/TCP
+  Application: app
+  Project: aaa
+  Name: wildfly-dcdj

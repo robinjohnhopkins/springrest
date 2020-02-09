@@ -1,0 +1,60 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: openshift-quickstarts
+  namespace: banana
+  selfLink: >-
+    /apis/build.openshift.io/v1/namespaces/banana/buildconfigs/openshift-quickstarts
+  uid: 478438cf-4217-11ea-bd30-0a580a810070
+  resourceVersion: '157210824'
+  creationTimestamp: '2020-01-28T21:43:53Z'
+  labels:
+    app: openshift-quickstarts
+    app.kubernetes.io/component: openshift-quickstarts
+    app.kubernetes.io/instance: openshift-quickstarts
+    app.kubernetes.io/name: java
+    app.kubernetes.io/part-of: openshift-quickstarts-app
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: '11'
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: 'https://github.com/jboss-openshift/openshift-quickstarts'
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'openshift-quickstarts:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'java:11'
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/jboss-openshift/openshift-quickstarts'
+    contextDir: /
+  triggers:
+    - type: Generic
+      generic:
+        secretReference:
+          name: openshift-quickstarts-generic-webhook-secret
+    - type: GitHub
+      github:
+        secretReference:
+          name: openshift-quickstarts-github-webhook-secret
+    - type: ImageChange
+      imageChange:
+        lastTriggeredImageID: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/java@sha256:4453c8ab3c428d81b69258500908386c006f7dbacad02024b032cb56fa836f75
+    - type: ConfigChange
+  runPolicy: Serial
+status:
+  lastVersion: 1

@@ -1,0 +1,40 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    creationTimestamp: "2020-02-09T01:32:25Z"
+    labels:
+      app: app
+      app.kubernetes.io/instance: wildfly-dcdj
+      app.kubernetes.io/managed-by: odo
+      app.kubernetes.io/managed-by-version: v1.1.0
+      app.kubernetes.io/name: wildfly
+      app.kubernetes.io/part-of: app
+      app.openshift.io/runtime-version: latest
+    name: wildfly-dcdj-app
+    namespace: aaa
+    resourceVersion: "103114"
+    selfLink: /api/v1/namespaces/aaa/endpoints/wildfly-dcdj-app
+    uid: 06e09bcf-4adc-11ea-879b-0ef0e3c74fbe
+  subsets:
+  - addresses:
+    - ip: 10.128.0.235
+      nodeName: crc-q4zfq-master-0
+      targetRef:
+        kind: Pod
+        name: wildfly-dcdj-app-1-dfqgr
+        namespace: aaa
+        resourceVersion: "101471"
+        uid: a6b70cec-4adc-11ea-879b-0ef0e3c74fbe
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+    - name: 8778-tcp
+      port: 8778
+      protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

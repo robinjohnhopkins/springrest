@@ -1,0 +1,979 @@
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "annotations": {
+      "openshift.io/generated-by": "OpenShiftNewApp"
+    },
+    "creationTimestamp": "2020-01-28T20:14:43Z",
+    "labels": {
+      "app": "intro-jberet"
+    },
+    "name": "intro-jberet",
+    "namespace": "jberet-lab",
+    "resourceVersion": "6456",
+    "selfLink": "/api/v1/namespaces/jberet-lab/services/intro-jberet",
+    "uid": "d252c7e2-420a-11ea-80b9-0242ac11002d"
+  },
+  "spec": {
+    "clusterIP": "172.30.145.234",
+    "ports": [
+      {
+        "name": "8080-tcp",
+        "port": 8080,
+        "protocol": "TCP",
+        "targetPort": 8080
+      }
+    ],
+    "selector": {
+      "app": "intro-jberet",
+      "deploymentconfig": "intro-jberet"
+    },
+    "sessionAffinity": "None",
+    "type": "ClusterIP"
+  },
+  "status": {
+    "loadBalancer": {}
+  }
+},
+{
+"apiVersion": "v1",
+"kind": "Service",
+"metadata": {
+"annotations": {
+"openshift.io/generated-by": "OpenShiftNewApp",
+"template.openshift.io/expose-uri": "postgres://{.spec.clusterIP}:{.spec.ports[?(.name==\"postgresql\")].port}"
+},
+"creationTimestamp": "2020-01-28T20:23:13Z",
+"labels": {
+"app": "postgresql",
+"template": "postgresql-ephemeral-template"
+},
+"name": "postgresql",
+"namespace": "jberet-lab",
+"resourceVersion": "6688",
+"selfLink": "/api/v1/namespaces/jberet-lab/services/postgresql",
+"uid": "02271051-420c-11ea-80b9-0242ac11002d"
+},
+"spec": {
+"clusterIP": "172.30.6.10",
+"ports": [
+{
+"name": "postgresql",
+"port": 5432,
+"protocol": "TCP",
+"targetPort": 5432
+}
+],
+"selector": {
+"name": "postgresql"
+},
+"sessionAffinity": "None",
+"type": "ClusterIP"
+},
+"status": {
+"loadBalancer": {}
+}
+},
+{
+"apiVersion": "v1",
+"kind": "Service",
+"metadata": {
+"annotations": {
+"openshift.io/generated-by": "OpenShiftNewApp"
+},
+"creationTimestamp": "2020-01-28T20:14:12Z",
+"labels": {
+"app": "ruby-ex"
+},
+"name": "ruby-ex",
+"namespace": "jberet-lab",
+"resourceVersion": "6420",
+"selfLink": "/api/v1/namespaces/jberet-lab/services/ruby-ex",
+"uid": "bfb98a6a-420a-11ea-80b9-0242ac11002d"
+},
+"spec": {
+"clusterIP": "172.30.207.149",
+"ports": [
+{
+"name": "8080-tcp",
+"port": 8080,
+"protocol": "TCP",
+"targetPort": 8080
+}
+],
+"selector": {
+"app": "ruby-ex",
+"deploymentconfig": "ruby-ex"
+},
+"sessionAffinity": "None",
+"type": "ClusterIP"
+},
+"status": {
+"loadBalancer": {}
+}
+},
+{
+"apiVersion": "v1",
+"kind": "Pod",
+"metadata": {
+"annotations": {
+"openshift.io/build.name": "intro-jberet-1",
+"openshift.io/scc": "privileged"
+},
+"creationTimestamp": "2020-01-28T20:14:43Z",
+"labels": {
+"openshift.io/build.name": "intro-jberet-1"
+},
+"name": "intro-jberet-1-build",
+"namespace": "jberet-lab",
+"ownerReferences": [
+{
+"apiVersion": "build.openshift.io/v1",
+"controller": true,
+"kind": "Build",
+"name": "intro-jberet-1",
+"uid": "d257180b-420a-11ea-80b9-0242ac11002d"
+}
+],
+"resourceVersion": "6567",
+"selfLink": "/api/v1/namespaces/jberet-lab/pods/intro-jberet-1-build",
+"uid": "d25a2d6f-420a-11ea-80b9-0242ac11002d"
+},
+"spec": {
+"containers": [
+{
+"args": [
+"--loglevel=0"
+],
+"env": [
+{
+"name": "BUILD",
+"value": "{\"kind\":\"Build\",\"apiVersion\":\"v1\",\"metadata\":{\"name\":\"intro-jberet-1\",\"namespace\":\"jberet-lab\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/jberet-lab/builds/intro-jberet-1\",\"uid\":\"d257180b-420a-11ea-80b9-0242ac11002d\",\"resourceVersion\":\"6458\",\"creationTimestamp\":\"2020-01-28T20:14:43Z\",\"labels\":{\"app\":\"intro-jberet\",\"buildconfig\":\"intro-jberet\",\"openshift.io/build-config.name\":\"intro-jberet\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"intro-jberet\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"intro-jberet\",\"uid\":\"d24c8cc7-420a-11ea-80b9-0242ac11002d\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/jberet/intro-jberet.git\"}},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"openshift/wildfly-101-centos7@sha256:7775d40f77e22897dc760b76f1656f67ef6bd5561b4d74fbb030b977f61d48e8\"}}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"172.30.160.252:5000/jberet-lab/intro-jberet:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-3djh3\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Image change\",\"imageChangeBuild\":{\"imageID\":\"openshift/wildfly-101-centos7@sha256:7775d40f77e22897dc760b76f1656f67ef6bd5561b4d74fbb030b977f61d48e8\",\"fromRef\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"openshift\",\"name\":\"wildfly:10.1\"}}}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"172.30.160.252:5000/jberet-lab/intro-jberet:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"jberet-lab\",\"name\":\"intro-jberet\"},\"output\":{}}}\n"
+},
+{
+"name": "SOURCE_REPOSITORY",
+"value": "https://github.com/jberet/intro-jberet.git"
+},
+{
+"name": "SOURCE_URI",
+"value": "https://github.com/jberet/intro-jberet.git"
+},
+{
+"name": "ORIGIN_VERSION",
+"value": "v3.6.0+c4dd4cf"
+},
+{
+"name": "ALLOWED_UIDS",
+"value": "1-"
+},
+{
+"name": "DROP_CAPS",
+"value": "KILL,MKNOD,SETGID,SETUID,SYS_CHROOT"
+},
+{
+"name": "PUSH_DOCKERCFG_PATH",
+"value": "/var/run/secrets/openshift.io/push"
+}
+],
+"image": "openshift/origin-sti-builder:v3.6.0",
+"imagePullPolicy": "IfNotPresent",
+"name": "sti-build",
+"resources": {},
+"securityContext": {
+"privileged": true
+},
+"terminationMessagePath": "/dev/termination-log",
+"terminationMessagePolicy": "FallbackToLogsOnError",
+"volumeMounts": [
+{
+"mountPath": "/var/run/docker.sock",
+"name": "docker-socket"
+},
+{
+"mountPath": "/var/run/secrets/openshift.io/push",
+"name": "builder-dockercfg-3djh3-push",
+"readOnly": true
+},
+{
+"mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+"name": "builder-token-m23gc",
+"readOnly": true
+}
+]
+}
+],
+"dnsPolicy": "ClusterFirst",
+"imagePullSecrets": [
+{
+"name": "builder-dockercfg-3djh3"
+}
+],
+"nodeName": "93a27c1891a7",
+"restartPolicy": "Never",
+"schedulerName": "default-scheduler",
+"securityContext": {},
+"serviceAccount": "builder",
+"serviceAccountName": "builder",
+"terminationGracePeriodSeconds": 30,
+"volumes": [
+{
+"hostPath": {
+"path": "/var/run/docker.sock"
+},
+"name": "docker-socket"
+},
+{
+"name": "builder-dockercfg-3djh3-push",
+"secret": {
+"defaultMode": 420,
+"secretName": "builder-dockercfg-3djh3"
+}
+},
+{
+"name": "builder-token-m23gc",
+"secret": {
+"defaultMode": 420,
+"secretName": "builder-token-m23gc"
+}
+}
+]
+},
+"status": {
+"conditions": [
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:14:43Z",
+"reason": "PodCompleted",
+"status": "True",
+"type": "Initialized"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:16:51Z",
+"reason": "PodCompleted",
+"status": "False",
+"type": "Ready"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:14:43Z",
+"status": "True",
+"type": "PodScheduled"
+}
+],
+"containerStatuses": [
+{
+"containerID": "docker://e860d2563c427f462b4c407389ba993cb3df791ef2443601b2faaab00db4387c",
+"image": "docker.io/openshift/origin-sti-builder:v3.6.0",
+"imageID": "docker-pullable://docker.io/openshift/origin-sti-builder@sha256:a774e0b41ae138fb33d84ad3a4913feecfff752cd9c7abb683887fb190c06f64",
+"lastState": {},
+"name": "sti-build",
+"ready": false,
+"restartCount": 0,
+"state": {
+"terminated": {
+"containerID": "docker://e860d2563c427f462b4c407389ba993cb3df791ef2443601b2faaab00db4387c",
+"exitCode": 0,
+"finishedAt": "2020-01-28T20:16:51Z",
+"reason": "Completed",
+"startedAt": "2020-01-28T20:14:45Z"
+}
+}
+}
+],
+"hostIP": "172.17.0.45",
+"phase": "Succeeded",
+"podIP": "172.20.0.3",
+"qosClass": "BestEffort",
+"startTime": "2020-01-28T20:14:43Z"
+}
+},
+{
+"apiVersion": "v1",
+"kind": "Pod",
+"metadata": {
+"annotations": {
+"kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"jberet-lab\",\"name\":\"intro-jberet-1\",\"uid\":\"1ec361fe-420b-11ea-80b9-0242ac11002d\",\"apiVersion\":\"v1\",\"resourceVersion\":\"6573\"}}\n",
+"openshift.io/deployment-config.latest-version": "1",
+"openshift.io/deployment-config.name": "intro-jberet",
+"openshift.io/deployment.name": "intro-jberet-1",
+"openshift.io/generated-by": "OpenShiftNewApp",
+"openshift.io/scc": "restricted"
+},
+"creationTimestamp": "2020-01-28T20:16:53Z",
+"generateName": "intro-jberet-1-",
+"labels": {
+"app": "intro-jberet",
+"deployment": "intro-jberet-1",
+"deploymentconfig": "intro-jberet"
+},
+"name": "intro-jberet-1-hnp2b",
+"namespace": "jberet-lab",
+"ownerReferences": [
+{
+"apiVersion": "v1",
+"blockOwnerDeletion": true,
+"controller": true,
+"kind": "ReplicationController",
+"name": "intro-jberet-1",
+"uid": "1ec361fe-420b-11ea-80b9-0242ac11002d"
+}
+],
+"resourceVersion": "6589",
+"selfLink": "/api/v1/namespaces/jberet-lab/pods/intro-jberet-1-hnp2b",
+"uid": "200604ab-420b-11ea-80b9-0242ac11002d"
+},
+"spec": {
+"containers": [
+{
+"image": "172.30.160.252:5000/jberet-lab/intro-jberet@sha256:6e222ac8e8d60e1ab2fbd47352bfde661c43294e4c7bacefc923c7d512b6bbec",
+"imagePullPolicy": "Always",
+"name": "intro-jberet",
+"ports": [
+{
+"containerPort": 8080,
+"protocol": "TCP"
+}
+],
+"resources": {},
+"securityContext": {
+"capabilities": {
+"drop": [
+"KILL",
+"MKNOD",
+"SETGID",
+"SETUID",
+"SYS_CHROOT"
+]
+},
+"privileged": false,
+"runAsUser": 1000050000,
+"seLinuxOptions": {
+"level": "s0:c7,c4"
+}
+},
+"terminationMessagePath": "/dev/termination-log",
+"terminationMessagePolicy": "File",
+"volumeMounts": [
+{
+"mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+"name": "default-token-8x14f",
+"readOnly": true
+}
+]
+}
+],
+"dnsPolicy": "ClusterFirst",
+"imagePullSecrets": [
+{
+"name": "default-dockercfg-kwxmw"
+}
+],
+"nodeName": "93a27c1891a7",
+"restartPolicy": "Always",
+"schedulerName": "default-scheduler",
+"securityContext": {
+"fsGroup": 1000050000,
+"seLinuxOptions": {
+"level": "s0:c7,c4"
+}
+},
+"serviceAccount": "default",
+"serviceAccountName": "default",
+"terminationGracePeriodSeconds": 30,
+"volumes": [
+{
+"name": "default-token-8x14f",
+"secret": {
+"defaultMode": 420,
+"secretName": "default-token-8x14f"
+}
+}
+]
+},
+"status": {
+"conditions": [
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:16:53Z",
+"status": "True",
+"type": "Initialized"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:16:56Z",
+"status": "True",
+"type": "Ready"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:16:53Z",
+"status": "True",
+"type": "PodScheduled"
+}
+],
+"containerStatuses": [
+{
+"containerID": "docker://c5b00ab69a58b7260973771cf205766046da87e3e9fef86195acd366d765de45",
+"image": "172.30.160.252:5000/jberet-lab/intro-jberet:latest",
+"imageID": "docker-pullable://172.30.160.252:5000/jberet-lab/intro-jberet@sha256:6e222ac8e8d60e1ab2fbd47352bfde661c43294e4c7bacefc923c7d512b6bbec",
+"lastState": {},
+"name": "intro-jberet",
+"ready": true,
+"restartCount": 0,
+"state": {
+"running": {
+"startedAt": "2020-01-28T20:16:55Z"
+}
+}
+}
+],
+"hostIP": "172.17.0.45",
+"phase": "Running",
+"podIP": "172.20.0.3",
+"qosClass": "BestEffort",
+"startTime": "2020-01-28T20:16:53Z"
+}
+},
+{
+"apiVersion": "v1",
+"kind": "Pod",
+"metadata": {
+"annotations": {
+"kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"jberet-lab\",\"name\":\"postgresql-1\",\"uid\":\"02425ec8-420c-11ea-80b9-0242ac11002d\",\"apiVersion\":\"v1\",\"resourceVersion\":\"6708\"}}\n",
+"openshift.io/deployment-config.latest-version": "1",
+"openshift.io/deployment-config.name": "postgresql",
+"openshift.io/deployment.name": "postgresql-1",
+"openshift.io/generated-by": "OpenShiftNewApp",
+"openshift.io/scc": "restricted"
+},
+"creationTimestamp": "2020-01-28T20:23:16Z",
+"generateName": "postgresql-1-",
+"labels": {
+"app": "postgresql",
+"deployment": "postgresql-1",
+"deploymentconfig": "postgresql",
+"name": "postgresql"
+},
+"name": "postgresql-1-9xxqw",
+"namespace": "jberet-lab",
+"ownerReferences": [
+{
+"apiVersion": "v1",
+"blockOwnerDeletion": true,
+"controller": true,
+"kind": "ReplicationController",
+"name": "postgresql-1",
+"uid": "02425ec8-420c-11ea-80b9-0242ac11002d"
+}
+],
+"resourceVersion": "6733",
+"selfLink": "/api/v1/namespaces/jberet-lab/pods/postgresql-1-9xxqw",
+"uid": "03ff4c68-420c-11ea-80b9-0242ac11002d"
+},
+"spec": {
+"containers": [
+{
+"env": [
+{
+"name": "POSTGRESQL_USER",
+"valueFrom": {
+"secretKeyRef": {
+"key": "database-user",
+"name": "postgresql"
+}
+}
+},
+{
+"name": "POSTGRESQL_PASSWORD",
+"valueFrom": {
+"secretKeyRef": {
+"key": "database-password",
+"name": "postgresql"
+}
+}
+},
+{
+"name": "POSTGRESQL_DATABASE",
+"value": "sampledb"
+}
+],
+"image": "centos/postgresql-95-centos7@sha256:d459c9bb18ec7de443fbe4dd31cff26bdc6fdc681363922e97ae2f40e64a93c1",
+"imagePullPolicy": "IfNotPresent",
+"livenessProbe": {
+"failureThreshold": 3,
+"initialDelaySeconds": 30,
+"periodSeconds": 10,
+"successThreshold": 1,
+"tcpSocket": {
+"port": 5432
+},
+"timeoutSeconds": 1
+},
+"name": "postgresql",
+"ports": [
+{
+"containerPort": 5432,
+"protocol": "TCP"
+}
+],
+"readinessProbe": {
+"exec": {
+"command": [
+"/bin/sh",
+"-i",
+"-c",
+"psql -h 127.0.0.1 -U $POSTGRESQL_USER -q -d $POSTGRESQL_DATABASE -c 'SELECT 1'"
+]
+},
+"failureThreshold": 3,
+"initialDelaySeconds": 5,
+"periodSeconds": 10,
+"successThreshold": 1,
+"timeoutSeconds": 1
+},
+"resources": {
+"limits": {
+"memory": "512Mi"
+},
+"requests": {
+"memory": "512Mi"
+}
+},
+"securityContext": {
+"capabilities": {
+"drop": [
+"KILL",
+"MKNOD",
+"SETGID",
+"SETUID",
+"SYS_CHROOT"
+]
+},
+"privileged": false,
+"runAsUser": 1000050000,
+"seLinuxOptions": {
+"level": "s0:c7,c4"
+}
+},
+"terminationMessagePath": "/dev/termination-log",
+"terminationMessagePolicy": "File",
+"volumeMounts": [
+{
+"mountPath": "/var/lib/pgsql/data",
+"name": "postgresql-data"
+},
+{
+"mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+"name": "default-token-8x14f",
+"readOnly": true
+}
+]
+}
+],
+"dnsPolicy": "ClusterFirst",
+"imagePullSecrets": [
+{
+"name": "default-dockercfg-kwxmw"
+}
+],
+"nodeName": "93a27c1891a7",
+"restartPolicy": "Always",
+"schedulerName": "default-scheduler",
+"securityContext": {
+"fsGroup": 1000050000,
+"seLinuxOptions": {
+"level": "s0:c7,c4"
+}
+},
+"serviceAccount": "default",
+"serviceAccountName": "default",
+"terminationGracePeriodSeconds": 30,
+"volumes": [
+{
+"emptyDir": {},
+"name": "postgresql-data"
+},
+{
+"name": "default-token-8x14f",
+"secret": {
+"defaultMode": 420,
+"secretName": "default-token-8x14f"
+}
+}
+]
+},
+"status": {
+"conditions": [
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:23:16Z",
+"status": "True",
+"type": "Initialized"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:23:36Z",
+"status": "True",
+"type": "Ready"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:23:16Z",
+"status": "True",
+"type": "PodScheduled"
+}
+],
+"containerStatuses": [
+{
+"containerID": "docker://4e99b3dd08bdeb320d8a0df156ca273e97b5f718224ece0dfd7708781809ae4b",
+"image": "docker.io/centos/postgresql-95-centos7:latest",
+"imageID": "docker-pullable://docker.io/centos/postgresql-95-centos7@sha256:d459c9bb18ec7de443fbe4dd31cff26bdc6fdc681363922e97ae2f40e64a93c1",
+"lastState": {},
+"name": "postgresql",
+"ready": true,
+"restartCount": 0,
+"state": {
+"running": {
+"startedAt": "2020-01-28T20:23:17Z"
+}
+}
+}
+],
+"hostIP": "172.17.0.45",
+"phase": "Running",
+"podIP": "172.20.0.6",
+"qosClass": "Burstable",
+"startTime": "2020-01-28T20:23:16Z"
+}
+},
+{
+"apiVersion": "v1",
+"kind": "Pod",
+"metadata": {
+"annotations": {
+"kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"jberet-lab\",\"name\":\"ruby-ex-1\",\"uid\":\"fb3bb388-420a-11ea-80b9-0242ac11002d\",\"apiVersion\":\"v1\",\"resourceVersion\":\"6514\"}}\n",
+"openshift.io/deployment-config.latest-version": "1",
+"openshift.io/deployment-config.name": "ruby-ex",
+"openshift.io/deployment.name": "ruby-ex-1",
+"openshift.io/generated-by": "OpenShiftNewApp",
+"openshift.io/scc": "restricted"
+},
+"creationTimestamp": "2020-01-28T20:15:54Z",
+"generateName": "ruby-ex-1-",
+"labels": {
+"app": "ruby-ex",
+"deployment": "ruby-ex-1",
+"deploymentconfig": "ruby-ex"
+},
+"name": "ruby-ex-1-4cfn6",
+"namespace": "jberet-lab",
+"ownerReferences": [
+{
+"apiVersion": "v1",
+"blockOwnerDeletion": true,
+"controller": true,
+"kind": "ReplicationController",
+"name": "ruby-ex-1",
+"uid": "fb3bb388-420a-11ea-80b9-0242ac11002d"
+}
+],
+"resourceVersion": "6529",
+"selfLink": "/api/v1/namespaces/jberet-lab/pods/ruby-ex-1-4cfn6",
+"uid": "fcace5ee-420a-11ea-80b9-0242ac11002d"
+},
+"spec": {
+"containers": [
+{
+"image": "172.30.160.252:5000/jberet-lab/ruby-ex@sha256:02506e97aa3bee44667b54f07b9c216fb0083638fa5cec1e0e517c362a19483b",
+"imagePullPolicy": "Always",
+"name": "ruby-ex",
+"ports": [
+{
+"containerPort": 8080,
+"protocol": "TCP"
+}
+],
+"resources": {},
+"securityContext": {
+"capabilities": {
+"drop": [
+"KILL",
+"MKNOD",
+"SETGID",
+"SETUID",
+"SYS_CHROOT"
+]
+},
+"privileged": false,
+"runAsUser": 1000050000,
+"seLinuxOptions": {
+"level": "s0:c7,c4"
+}
+},
+"terminationMessagePath": "/dev/termination-log",
+"terminationMessagePolicy": "File",
+"volumeMounts": [
+{
+"mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+"name": "default-token-8x14f",
+"readOnly": true
+}
+]
+}
+],
+"dnsPolicy": "ClusterFirst",
+"imagePullSecrets": [
+{
+"name": "default-dockercfg-kwxmw"
+}
+],
+"nodeName": "93a27c1891a7",
+"restartPolicy": "Always",
+"schedulerName": "default-scheduler",
+"securityContext": {
+"fsGroup": 1000050000,
+"seLinuxOptions": {
+"level": "s0:c7,c4"
+}
+},
+"serviceAccount": "default",
+"serviceAccountName": "default",
+"terminationGracePeriodSeconds": 30,
+"volumes": [
+{
+"name": "default-token-8x14f",
+"secret": {
+"defaultMode": 420,
+"secretName": "default-token-8x14f"
+}
+}
+]
+},
+"status": {
+"conditions": [
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:15:54Z",
+"status": "True",
+"type": "Initialized"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:15:56Z",
+"status": "True",
+"type": "Ready"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:15:54Z",
+"status": "True",
+"type": "PodScheduled"
+}
+],
+"containerStatuses": [
+{
+"containerID": "docker://581ae7ee23cc1e3532835a27962fdd4b3736565cdf3e8d64abea71dde3aae521",
+"image": "172.30.160.252:5000/jberet-lab/ruby-ex:latest",
+"imageID": "docker-pullable://172.30.160.252:5000/jberet-lab/ruby-ex@sha256:02506e97aa3bee44667b54f07b9c216fb0083638fa5cec1e0e517c362a19483b",
+"lastState": {},
+"name": "ruby-ex",
+"ready": true,
+"restartCount": 0,
+"state": {
+"running": {
+"startedAt": "2020-01-28T20:15:56Z"
+}
+}
+}
+],
+"hostIP": "172.17.0.45",
+"phase": "Running",
+"podIP": "172.20.0.2",
+"qosClass": "BestEffort",
+"startTime": "2020-01-28T20:15:54Z"
+}
+},
+{
+"apiVersion": "v1",
+"kind": "Pod",
+"metadata": {
+"annotations": {
+"openshift.io/build.name": "ruby-ex-1",
+"openshift.io/scc": "privileged"
+},
+"creationTimestamp": "2020-01-28T20:14:12Z",
+"labels": {
+"openshift.io/build.name": "ruby-ex-1"
+},
+"name": "ruby-ex-1-build",
+"namespace": "jberet-lab",
+"ownerReferences": [
+{
+"apiVersion": "build.openshift.io/v1",
+"controller": true,
+"kind": "Build",
+"name": "ruby-ex-1",
+"uid": "c02fc4e8-420a-11ea-80b9-0242ac11002d"
+}
+],
+"resourceVersion": "6506",
+"selfLink": "/api/v1/namespaces/jberet-lab/pods/ruby-ex-1-build",
+"uid": "c032a244-420a-11ea-80b9-0242ac11002d"
+},
+"spec": {
+"containers": [
+{
+"args": [
+"--loglevel=0"
+],
+"env": [
+{
+"name": "BUILD",
+"value": "{\"kind\":\"Build\",\"apiVersion\":\"v1\",\"metadata\":{\"name\":\"ruby-ex-1\",\"namespace\":\"jberet-lab\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/jberet-lab/builds/ruby-ex-1\",\"uid\":\"c02fc4e8-420a-11ea-80b9-0242ac11002d\",\"resourceVersion\":\"6430\",\"creationTimestamp\":\"2020-01-28T20:14:12Z\",\"labels\":{\"app\":\"ruby-ex\",\"buildconfig\":\"ruby-ex\",\"openshift.io/build-config.name\":\"ruby-ex\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"ruby-ex\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"ruby-ex\",\"uid\":\"bfb418ee-420a-11ea-80b9-0242ac11002d\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/openshift/ruby-ex.git\"}},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"centos/ruby-22-centos7@sha256:a18c8706118a5c4c9f1adf045024d2abf06ba632b5674b23421019ee4d3edcae\"}}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"172.30.160.252:5000/jberet-lab/ruby-ex:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-3djh3\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Image change\",\"imageChangeBuild\":{\"imageID\":\"centos/ruby-22-centos7@sha256:a18c8706118a5c4c9f1adf045024d2abf06ba632b5674b23421019ee4d3edcae\",\"fromRef\":{\"kind\":\"ImageStreamTag\",\"name\":\"ruby-22-centos7:latest\"}}}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"172.30.160.252:5000/jberet-lab/ruby-ex:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"jberet-lab\",\"name\":\"ruby-ex\"},\"output\":{}}}\n"
+},
+{
+"name": "SOURCE_REPOSITORY",
+"value": "https://github.com/openshift/ruby-ex.git"
+},
+{
+"name": "SOURCE_URI",
+"value": "https://github.com/openshift/ruby-ex.git"
+},
+{
+"name": "ORIGIN_VERSION",
+"value": "v3.6.0+c4dd4cf"
+},
+{
+"name": "ALLOWED_UIDS",
+"value": "1-"
+},
+{
+"name": "DROP_CAPS",
+"value": "KILL,MKNOD,SETGID,SETUID,SYS_CHROOT"
+},
+{
+"name": "PUSH_DOCKERCFG_PATH",
+"value": "/var/run/secrets/openshift.io/push"
+}
+],
+"image": "openshift/origin-sti-builder:v3.6.0",
+"imagePullPolicy": "IfNotPresent",
+"name": "sti-build",
+"resources": {},
+"securityContext": {
+"privileged": true
+},
+"terminationMessagePath": "/dev/termination-log",
+"terminationMessagePolicy": "FallbackToLogsOnError",
+"volumeMounts": [
+{
+"mountPath": "/var/run/docker.sock",
+"name": "docker-socket"
+},
+{
+"mountPath": "/var/run/secrets/openshift.io/push",
+"name": "builder-dockercfg-3djh3-push",
+"readOnly": true
+},
+{
+"mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+"name": "builder-token-m23gc",
+"readOnly": true
+}
+]
+}
+],
+"dnsPolicy": "ClusterFirst",
+"imagePullSecrets": [
+{
+"name": "builder-dockercfg-3djh3"
+}
+],
+"nodeName": "93a27c1891a7",
+"restartPolicy": "Never",
+"schedulerName": "default-scheduler",
+"securityContext": {},
+"serviceAccount": "builder",
+"serviceAccountName": "builder",
+"terminationGracePeriodSeconds": 30,
+"volumes": [
+{
+"hostPath": {
+"path": "/var/run/docker.sock"
+},
+"name": "docker-socket"
+},
+{
+"name": "builder-dockercfg-3djh3-push",
+"secret": {
+"defaultMode": 420,
+"secretName": "builder-dockercfg-3djh3"
+}
+},
+{
+"name": "builder-token-m23gc",
+"secret": {
+"defaultMode": 420,
+"secretName": "builder-token-m23gc"
+}
+}
+]
+},
+"status": {
+"conditions": [
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:14:12Z",
+"reason": "PodCompleted",
+"status": "True",
+"type": "Initialized"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:15:52Z",
+"reason": "PodCompleted",
+"status": "False",
+"type": "Ready"
+},
+{
+"lastProbeTime": null,
+"lastTransitionTime": "2020-01-28T20:14:12Z",
+"status": "True",
+"type": "PodScheduled"
+}
+],
+"containerStatuses": [
+{
+"containerID": "docker://1547953c80aef150fbcc3f6d03bb5c6f4e448e1bf331951037fa2387e4dd1a75",
+"image": "docker.io/openshift/origin-sti-builder:v3.6.0",
+"imageID": "docker-pullable://docker.io/openshift/origin-sti-builder@sha256:a774e0b41ae138fb33d84ad3a4913feecfff752cd9c7abb683887fb190c06f64",
+"lastState": {},
+"name": "sti-build",
+"ready": false,
+"restartCount": 0,
+"state": {
+"terminated": {
+"containerID": "docker://1547953c80aef150fbcc3f6d03bb5c6f4e448e1bf331951037fa2387e4dd1a75",
+"exitCode": 0,
+"finishedAt": "2020-01-28T20:15:52Z",
+"reason": "Completed",
+"startedAt": "2020-01-28T20:14:14Z"
+}
+}
+}
+],
+"hostIP": "172.17.0.45",
+"phase": "Succeeded",
+"podIP": "172.20.0.2",
+"qosClass": "BestEffort",
+"startTime": "2020-01-28T20:14:12Z"
+}
+}
+],
+"kind": "List",
+"metadata": {},
+"resourceVersion": "",
+"selfLink": ""
+}

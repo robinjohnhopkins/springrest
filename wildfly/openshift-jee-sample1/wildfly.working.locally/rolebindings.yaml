@@ -1,0 +1,84 @@
+apiVersion: v1
+items:
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: "2020-02-08T19:28:26Z"
+    name: admin
+    namespace: aaa
+    resourceVersion: "40224"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/aaa/rolebindings/admin
+    uid: 2e013339-4aa9-11ea-bba8-0ef0e3c74fbe
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: admin
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: developer
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      openshift.io/description: Allows deploymentconfigs in this namespace to rollout
+        pods in this namespace.  It is auto-managed by a controller; remove subjects
+        to disable.
+    creationTimestamp: "2020-02-08T19:28:26Z"
+    name: system:deployers
+    namespace: aaa
+    resourceVersion: "40223"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/aaa/rolebindings/system%3Adeployers
+    uid: 2dfe9965-4aa9-11ea-bba8-0ef0e3c74fbe
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:deployer
+  subjects:
+  - kind: ServiceAccount
+    name: deployer
+    namespace: aaa
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      openshift.io/description: Allows builds in this namespace to push images to
+        this namespace.  It is auto-managed by a controller; remove subjects to disable.
+    creationTimestamp: "2020-02-08T19:28:26Z"
+    name: system:image-builders
+    namespace: aaa
+    resourceVersion: "40222"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/aaa/rolebindings/system%3Aimage-builders
+    uid: 2df9cd06-4aa9-11ea-bba8-0ef0e3c74fbe
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:image-builder
+  subjects:
+  - kind: ServiceAccount
+    name: builder
+    namespace: aaa
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      openshift.io/description: Allows all pods in this namespace to pull images from
+        this namespace.  It is auto-managed by a controller; remove subjects to disable.
+    creationTimestamp: "2020-02-08T19:28:26Z"
+    name: system:image-pullers
+    namespace: aaa
+    resourceVersion: "40220"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/aaa/rolebindings/system%3Aimage-pullers
+    uid: 2df0dca5-4aa9-11ea-bba8-0ef0e3c74fbe
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:image-puller
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:serviceaccounts:aaa
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
