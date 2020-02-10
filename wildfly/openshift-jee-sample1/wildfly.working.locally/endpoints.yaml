@@ -14,19 +14,19 @@ items:
       app.openshift.io/runtime-version: latest
     name: wildfly-dcdj-app
     namespace: aaa
-    resourceVersion: "103114"
+    resourceVersion: "150006"
     selfLink: /api/v1/namespaces/aaa/endpoints/wildfly-dcdj-app
     uid: 06e09bcf-4adc-11ea-879b-0ef0e3c74fbe
   subsets:
   - addresses:
-    - ip: 10.128.0.235
+    - ip: 10.128.1.17
       nodeName: crc-q4zfq-master-0
       targetRef:
         kind: Pod
-        name: wildfly-dcdj-app-1-dfqgr
+        name: wildfly-dcdj-app-2-vtwmj
         namespace: aaa
-        resourceVersion: "101471"
-        uid: a6b70cec-4adc-11ea-879b-0ef0e3c74fbe
+        resourceVersion: "148772"
+        uid: 6560b12d-4b03-11ea-879b-0ef0e3c74fbe
     ports:
     - name: 8080-tcp
       port: 8080

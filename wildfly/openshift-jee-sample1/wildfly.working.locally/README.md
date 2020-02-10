@@ -68,3 +68,8 @@ $ oc create -f pvc.yaml
 $ oc create -f rolebindings.yaml
 ```
 
+## forked repo
+
+forked repo, made small change to html
+rebuilt, redeployed
+then reexported to yaml and checked in the diff.
