@@ -1,0 +1,37 @@
+apiVersion: v1
+items:
+- apiVersion: image.openshift.io/v1
+  generation: 1
+  image:
+    dockerImageLayers: null
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+    dockerImageReference: image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c
+    metadata:
+      creationTimestamp: null
+      name: sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c
+  kind: ImageStreamTag
+  lookupPolicy:
+    local: false
+  metadata:
+    creationTimestamp: "2020-02-11T02:44:07Z"
+    labels:
+      app: wildfly-app
+      app.kubernetes.io/component: wildfly-app
+      app.kubernetes.io/instance: wildfly-app
+      app.kubernetes.io/name: wildfly
+    name: wildfly-app:latest
+    namespace: wildfly-demo
+    resourceVersion: "77486"
+    selfLink: /apis/image.openshift.io/v1/namespaces/wildfly-demo/imagestreamtags/wildfly-app%3Alatest
+    uid: c661a11a-4c77-11ea-9715-0a580a800095
+  tag: null
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

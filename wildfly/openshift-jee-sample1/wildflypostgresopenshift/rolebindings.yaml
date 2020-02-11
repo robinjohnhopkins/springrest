@@ -1,0 +1,84 @@
+apiVersion: v1
+items:
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: "2020-02-11T02:37:47Z"
+    name: admin
+    namespace: wildfly-demo
+    resourceVersion: "76341"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/wildfly-demo/rolebindings/admin
+    uid: 7d0e17d2-4c77-11ea-b029-0ef0e3c74fbe
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: admin
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: kube:admin
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      openshift.io/description: Allows deploymentconfigs in this namespace to rollout
+        pods in this namespace.  It is auto-managed by a controller; remove subjects
+        to disable.
+    creationTimestamp: "2020-02-11T02:37:47Z"
+    name: system:deployers
+    namespace: wildfly-demo
+    resourceVersion: "76340"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/wildfly-demo/rolebindings/system%3Adeployers
+    uid: 7d07dee2-4c77-11ea-b029-0ef0e3c74fbe
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:deployer
+  subjects:
+  - kind: ServiceAccount
+    name: deployer
+    namespace: wildfly-demo
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      openshift.io/description: Allows builds in this namespace to push images to
+        this namespace.  It is auto-managed by a controller; remove subjects to disable.
+    creationTimestamp: "2020-02-11T02:37:47Z"
+    name: system:image-builders
+    namespace: wildfly-demo
+    resourceVersion: "76339"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/wildfly-demo/rolebindings/system%3Aimage-builders
+    uid: 7cfe46ff-4c77-11ea-b029-0ef0e3c74fbe
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:image-builder
+  subjects:
+  - kind: ServiceAccount
+    name: builder
+    namespace: wildfly-demo
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      openshift.io/description: Allows all pods in this namespace to pull images from
+        this namespace.  It is auto-managed by a controller; remove subjects to disable.
+    creationTimestamp: "2020-02-11T02:37:46Z"
+    name: system:image-pullers
+    namespace: wildfly-demo
+    resourceVersion: "76332"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/wildfly-demo/rolebindings/system%3Aimage-pullers
+    uid: 7cee24a8-4c77-11ea-b029-0ef0e3c74fbe
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:image-puller
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:serviceaccounts:wildfly-demo
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

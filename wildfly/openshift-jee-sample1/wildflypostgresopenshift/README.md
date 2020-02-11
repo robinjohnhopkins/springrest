@@ -437,3 +437,75 @@ You can configure the server using pure CLI management operations instead of usi
 https://docs.wildfly.org/18/Admin_Guide.html#operations
 
 
+## Backup to file so that you can restore setup
+
+Export the project objects to a .yaml or .json file.
+To export the project objects into a project.yaml file:
+   
+```
+     $ oc get -o yaml --export all > project.yaml 
+```
+    
+To export the project objects into a project.json file:
+    
+```
+     $ oc get -o json --export all > project.json 
+```
+
+Export the project’s role bindings, secrets, service accounts, and persistent volume claims: $ for object in rolebindings serviceaccounts secrets imagestreamtags cm egressnetworkpolicies rolebindingrestrictions limitranges resourcequotas pvc templates cronjobs statefulsets hpa deployments replicasets poddisruptionbudget endpoints
+
+```
+do
+ oc get -o yaml --export $object > $object.yaml
+done
+```
+
+above for in a convenient one line command:
+
+```
+for object in rolebindings serviceaccounts secrets imagestreamtags cm egressnetworkpolicies rolebindingrestrictions limitranges resourcequotas pvc templates cronjobs statefulsets hpa deployments replicasets poddisruptionbudget endpoints; do  oc get -o yaml --export $object > $object.yaml ;done
+
+```
+
+To list all the namespaced objects: 
+
+```
+$ oc api-resources --namespaced=true -o name
+```
+
+
+Some exported objects can rely on specific metadata or references to unique IDs in the project. This is a limitation on the usability of the recreated objects. When using imagestreams, the image parameter of a deploymentconfig can point to a specific sha checksum of an image in the internal registry that would not exist in a restored environment. 
+
+For instance, running the sample "ruby-ex" as oc new-app centos/ruby-22-centos7~https://github.com/sclorg/ruby-ex.git creates an imagestream ruby-ex using the internal registry to host the image:
+
+```
+  $ oc get dc ruby-ex -o jsonpath="{.spec.template.spec.containers[].image}"
+
+
+10.111.255.221:5000/myproject/ruby-ex@sha256:880c720b23c8d15a53b01db52f7abdcbb2280e03f686a5c8edfef1a2a7b21cee
+```
+
+   If importing the deploymentconfig as it is exported with oc get --export it fails if the image does not exist.
+
+
+## Restoring a project
+
+To restore a project, create the new project, then restore any exported files by running oc create -f pods.json. However, restoring a project from scratch requires a specific order because some objects depend on others. For example, you must create the configmaps before you create any pods.
+
+### PROCEDURE
+
+If the project was exported as a single file, import it by running the following commands: 
+```
+$ oc new-project <projectname>
+
+$ oc create -f project.yaml
+
+$ oc create -f secret.yaml
+
+$ oc create -f serviceaccount.yaml
+
+$ oc create -f pvc.yaml
+
+$ oc create -f rolebindings.yaml
+ ```
+

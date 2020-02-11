@@ -1,0 +1,2351 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "",
+                    "openshift.io/deployment-config.name": "database-server",
+                    "openshift.io/deployment.name": "database-server-1",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-02-11T02:38:27Z",
+                "labels": {
+                    "openshift.io/deployer-pod-for.name": "database-server-1"
+                },
+                "name": "database-server-1-deploy",
+                "namespace": "wildfly-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "ReplicationController",
+                        "name": "database-server-1",
+                        "uid": "954a74fc-4c77-11ea-b029-0ef0e3c74fbe"
+                    }
+                ],
+                "resourceVersion": "76633",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/pods/database-server-1-deploy",
+                "uid": "95696a02-4c77-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "activeDeadlineSeconds": 21600,
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAME",
+                                "value": "database-server-1"
+                            },
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAMESPACE",
+                                "value": "wildfly-demo"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "deployment",
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000520000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "deployer-token-pxr5v",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "deployer-dockercfg-prfbk"
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000520000,
+                    "seLinuxOptions": {
+                        "level": "s0:c23,c7"
+                    }
+                },
+                "serviceAccount": "deployer",
+                "serviceAccountName": "deployer",
+                "shareProcessNamespace": false,
+                "terminationGracePeriodSeconds": 10,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "deployer-token-pxr5v",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "deployer-token-pxr5v"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:38:28Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:39:12Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:39:12Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:38:27Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://520ae60e33d7af96db8b6c197043fa89defabdf2b76f6254367ab8400d3e8773",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "lastState": {},
+                        "name": "deployment",
+                        "ready": false,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://520ae60e33d7af96db8b6c197043fa89defabdf2b76f6254367ab8400d3e8773",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-11T02:39:12Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-11T02:38:44Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "phase": "Succeeded",
+                "podIP": "10.128.0.189",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-11T02:38:28Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "[{\n    \"name\": \"openshift-sdn\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.128.0.190\"\n    ],\n    \"default\": true,\n    \"dns\": {}\n}]",
+                    "openshift.io/deployment-config.latest-version": "1",
+                    "openshift.io/deployment-config.name": "database-server",
+                    "openshift.io/deployment.name": "database-server-1",
+                    "openshift.io/generated-by": "OpenShiftNewApp",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-02-11T02:38:45Z",
+                "generateName": "database-server-1-",
+                "labels": {
+                    "deployment": "database-server-1",
+                    "deploymentconfig": "database-server"
+                },
+                "name": "database-server-1-q946z",
+                "namespace": "wildfly-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicationController",
+                        "name": "database-server-1",
+                        "uid": "954a74fc-4c77-11ea-b029-0ef0e3c74fbe"
+                    }
+                ],
+                "resourceVersion": "76621",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/pods/database-server-1-q946z",
+                "uid": "9ff9deee-4c77-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "POSTGRESQL_DATABASE",
+                                "value": "demodb"
+                            },
+                            {
+                                "name": "POSTGRESQL_PASSWORD",
+                                "value": "admin"
+                            },
+                            {
+                                "name": "POSTGRESQL_USER",
+                                "value": "postgre"
+                            }
+                        ],
+                        "image": "image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:713619e271020556016c60fde6c623b356416d0bfd8bd4214e1b1315952ee8cd",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "database-server",
+                        "ports": [
+                            {
+                                "containerPort": 5432,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000520000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-ql5x8",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-5bzvr"
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000520000,
+                    "seLinuxOptions": {
+                        "level": "s0:c23,c7"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-ql5x8",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-ql5x8"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:38:45Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:39:11Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:39:11Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:38:45Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://ec530fa544a9937669bd365d654cb3fade03343c38d22218f2ee1eb3e79a18da",
+                        "image": "image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:713619e271020556016c60fde6c623b356416d0bfd8bd4214e1b1315952ee8cd",
+                        "imageID": "image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:713619e271020556016c60fde6c623b356416d0bfd8bd4214e1b1315952ee8cd",
+                        "lastState": {},
+                        "name": "database-server",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2020-02-11T02:39:11Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "phase": "Running",
+                "podIP": "10.128.0.190",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-11T02:38:45Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "",
+                    "openshift.io/build.name": "wildfly-app-1",
+                    "openshift.io/scc": "privileged"
+                },
+                "creationTimestamp": "2020-02-11T02:39:50Z",
+                "labels": {
+                    "openshift.io/build.name": "wildfly-app-1"
+                },
+                "name": "wildfly-app-1-build",
+                "namespace": "wildfly-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "build.openshift.io/v1",
+                        "controller": true,
+                        "kind": "Build",
+                        "name": "wildfly-app-1",
+                        "uid": "c6a0cfde-4c77-11ea-9715-0a580a800095"
+                    }
+                ],
+                "resourceVersion": "77503",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/pods/wildfly-app-1-build",
+                "uid": "c6d40062-4c77-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-sti-build"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"wildfly-app-1\",\"namespace\":\"wildfly-demo\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/wildfly-demo/builds/wildfly-app-1\",\"uid\":\"c6a0cfde-4c77-11ea-9715-0a580a800095\",\"resourceVersion\":\"76743\",\"creationTimestamp\":\"2020-02-11T02:39:50Z\",\"labels\":{\"app\":\"wildfly-app\",\"app.kubernetes.io/component\":\"wildfly-app\",\"app.kubernetes.io/instance\":\"wildfly-app\",\"app.kubernetes.io/name\":\"wildfly\",\"buildconfig\":\"wildfly-app\",\"openshift.io/build-config.name\":\"wildfly-app\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"wildfly-app\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"wildfly-app\",\"uid\":\"c6688941-4c77-11ea-9715-0a580a800095\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/yersan/jaxrs-postgresql-demo.git\"}},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78\"},\"pullSecret\":{\"name\":\"builder-dockercfg-np9j2\"},\"env\":[{\"name\":\"GALLEON_PROVISION_LAYERS\",\"value\":\"jaxrs-server,postgresql-datasource\"}]}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-np9j2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Image change\",\"imageChangeBuild\":{\"imageID\":\"quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78\",\"fromRef\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"openshift\",\"name\":\"wildfly:latest\"}}}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"wildfly-demo\",\"name\":\"wildfly-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/yersan/jaxrs-postgresql-demo.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/yersan/jaxrs-postgresql-demo.git"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "PUSH_DOCKERCFG_PATH",
+                                "value": "/var/run/secrets/openshift.io/push"
+                            },
+                            {
+                                "name": "PULL_DOCKERCFG_PATH",
+                                "value": "/var/run/secrets/openshift.io/pull"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_DRIVER",
+                                "value": "overlay"
+                            },
+                            {
+                                "name": "BUILD_ISOLATION",
+                                "value": "chroot"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "sti-build",
+                        "resources": {},
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/lib/containers/cache",
+                                "name": "buildcachedir"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/openshift.io/push",
+                                "name": "builder-dockercfg-np9j2-push",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/openshift.io/pull",
+                                "name": "builder-dockercfg-np9j2-pull",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/lib/containers/storage",
+                                "name": "container-storage-root"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-qpng2",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "builder-dockercfg-np9j2"
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-git-clone"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"wildfly-app-1\",\"namespace\":\"wildfly-demo\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/wildfly-demo/builds/wildfly-app-1\",\"uid\":\"c6a0cfde-4c77-11ea-9715-0a580a800095\",\"resourceVersion\":\"76743\",\"creationTimestamp\":\"2020-02-11T02:39:50Z\",\"labels\":{\"app\":\"wildfly-app\",\"app.kubernetes.io/component\":\"wildfly-app\",\"app.kubernetes.io/instance\":\"wildfly-app\",\"app.kubernetes.io/name\":\"wildfly\",\"buildconfig\":\"wildfly-app\",\"openshift.io/build-config.name\":\"wildfly-app\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"wildfly-app\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"wildfly-app\",\"uid\":\"c6688941-4c77-11ea-9715-0a580a800095\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/yersan/jaxrs-postgresql-demo.git\"}},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78\"},\"pullSecret\":{\"name\":\"builder-dockercfg-np9j2\"},\"env\":[{\"name\":\"GALLEON_PROVISION_LAYERS\",\"value\":\"jaxrs-server,postgresql-datasource\"}]}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-np9j2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Image change\",\"imageChangeBuild\":{\"imageID\":\"quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78\",\"fromRef\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"openshift\",\"name\":\"wildfly:latest\"}}}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"wildfly-demo\",\"name\":\"wildfly-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/yersan/jaxrs-postgresql-demo.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/yersan/jaxrs-postgresql-demo.git"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "git-clone",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-qpng2",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "args": [
+                            "--loglevel=0"
+                        ],
+                        "command": [
+                            "openshift-manage-dockerfile"
+                        ],
+                        "env": [
+                            {
+                                "name": "BUILD",
+                                "value": "{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"wildfly-app-1\",\"namespace\":\"wildfly-demo\",\"selfLink\":\"/apis/build.openshift.io/v1/namespaces/wildfly-demo/builds/wildfly-app-1\",\"uid\":\"c6a0cfde-4c77-11ea-9715-0a580a800095\",\"resourceVersion\":\"76743\",\"creationTimestamp\":\"2020-02-11T02:39:50Z\",\"labels\":{\"app\":\"wildfly-app\",\"app.kubernetes.io/component\":\"wildfly-app\",\"app.kubernetes.io/instance\":\"wildfly-app\",\"app.kubernetes.io/name\":\"wildfly\",\"buildconfig\":\"wildfly-app\",\"openshift.io/build-config.name\":\"wildfly-app\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"wildfly-app\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"wildfly-app\",\"uid\":\"c6688941-4c77-11ea-9715-0a580a800095\",\"controller\":true}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Git\",\"git\":{\"uri\":\"https://github.com/yersan/jaxrs-postgresql-demo.git\"}},\"strategy\":{\"type\":\"Source\",\"sourceStrategy\":{\"from\":{\"kind\":\"DockerImage\",\"name\":\"quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78\"},\"pullSecret\":{\"name\":\"builder-dockercfg-np9j2\"},\"env\":[{\"name\":\"GALLEON_PROVISION_LAYERS\",\"value\":\"jaxrs-server,postgresql-datasource\"}]}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-np9j2\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null,\"triggeredBy\":[{\"message\":\"Image change\",\"imageChangeBuild\":{\"imageID\":\"quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78\",\"fromRef\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"openshift\",\"name\":\"wildfly:latest\"}}}]},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"wildfly-demo\",\"name\":\"wildfly-app\"},\"output\":{}}}\n"
+                            },
+                            {
+                                "name": "LANG",
+                                "value": "en_US.utf8"
+                            },
+                            {
+                                "name": "SOURCE_REPOSITORY",
+                                "value": "https://github.com/yersan/jaxrs-postgresql-demo.git"
+                            },
+                            {
+                                "name": "SOURCE_URI",
+                                "value": "https://github.com/yersan/jaxrs-postgresql-demo.git"
+                            },
+                            {
+                                "name": "ALLOWED_UIDS",
+                                "value": "1-"
+                            },
+                            {
+                                "name": "DROP_CAPS",
+                                "value": "KILL,MKNOD,SETGID,SETUID"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.conf"
+                            },
+                            {
+                                "name": "BUILD_REGISTRIES_DIR_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/registries.d"
+                            },
+                            {
+                                "name": "BUILD_SIGNATURE_POLICY_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/policy.json"
+                            },
+                            {
+                                "name": "BUILD_STORAGE_CONF_PATH",
+                                "value": "/var/run/configs/openshift.io/build-system/storage.conf"
+                            },
+                            {
+                                "name": "BUILD_BLOBCACHE_DIR",
+                                "value": "/var/cache/blobs"
+                            },
+                            {
+                                "name": "HTTP_PROXY"
+                            },
+                            {
+                                "name": "HTTPS_PROXY"
+                            },
+                            {
+                                "name": "NO_PROXY"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "manage-dockerfile",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "FallbackToLogsOnError",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/tmp/build",
+                                "name": "buildworkdir"
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/build-system",
+                                "name": "build-system-configs",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/configs/openshift.io/certs",
+                                "name": "build-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/etc/pki/ca-trust/extracted/pem",
+                                "name": "build-proxy-ca-bundles"
+                            },
+                            {
+                                "mountPath": "/var/cache/blobs",
+                                "name": "build-blob-cache"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "builder-token-qpng2",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "nodeSelector": {
+                    "kubernetes.io/os": "linux"
+                },
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "builder",
+                "serviceAccountName": "builder",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/containers/cache",
+                            "type": ""
+                        },
+                        "name": "buildcachedir"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "buildworkdir"
+                    },
+                    {
+                        "name": "builder-dockercfg-np9j2-push",
+                        "secret": {
+                            "defaultMode": 384,
+                            "secretName": "builder-dockercfg-np9j2"
+                        }
+                    },
+                    {
+                        "name": "builder-dockercfg-np9j2-pull",
+                        "secret": {
+                            "defaultMode": 384,
+                            "secretName": "builder-dockercfg-np9j2"
+                        }
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "wildfly-app-1-sys-config"
+                        },
+                        "name": "build-system-configs"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "items": [
+                                {
+                                    "key": "service-ca.crt",
+                                    "path": "certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt"
+                                }
+                            ],
+                            "name": "wildfly-app-1-ca"
+                        },
+                        "name": "build-ca-bundles"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "items": [
+                                {
+                                    "key": "ca-bundle.crt",
+                                    "path": "tls-ca-bundle.pem"
+                                }
+                            ],
+                            "name": "wildfly-app-1-global-ca"
+                        },
+                        "name": "build-proxy-ca-bundles"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "container-storage-root"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "build-blob-cache"
+                    },
+                    {
+                        "name": "builder-token-qpng2",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "builder-token-qpng2"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:40:19Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:44:08Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:44:08Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:39:50Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://21b1cde90729796bbfae921045641c2f133c27385a4b3e8b624c742b610801cf",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "sti-build",
+                        "ready": false,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://21b1cde90729796bbfae921045641c2f133c27385a4b3e8b624c742b610801cf",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-11T02:44:07Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-11T02:40:20Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "initContainerStatuses": [
+                    {
+                        "containerID": "cri-o://157e24eb1d86550a5e9438d30d7da3653adfa76cc05c2f88139df0dc79193b33",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "git-clone",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://157e24eb1d86550a5e9438d30d7da3653adfa76cc05c2f88139df0dc79193b33",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-11T02:40:17Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-11T02:40:14Z"
+                            }
+                        }
+                    },
+                    {
+                        "containerID": "cri-o://d343f4286dd50da2bdb9c39517d0fda5a88f4b725967efad9688631852985bfa",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fd04ffcf552b368eee7e6098c7a3aade854be2d240b948b452c68e358fab8c5d",
+                        "lastState": {},
+                        "name": "manage-dockerfile",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://d343f4286dd50da2bdb9c39517d0fda5a88f4b725967efad9688631852985bfa",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-11T02:40:19Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-11T02:40:19Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Succeeded",
+                "podIP": "10.128.0.191",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-11T02:39:50Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "",
+                    "openshift.io/deployment-config.name": "wildfly-app",
+                    "openshift.io/deployment.name": "wildfly-app-1",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-02-11T02:44:08Z",
+                "labels": {
+                    "openshift.io/deployer-pod-for.name": "wildfly-app-1"
+                },
+                "name": "wildfly-app-1-deploy",
+                "namespace": "wildfly-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "ReplicationController",
+                        "name": "wildfly-app-1",
+                        "uid": "60644a31-4c78-11ea-b029-0ef0e3c74fbe"
+                    }
+                ],
+                "resourceVersion": "77778",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/pods/wildfly-app-1-deploy",
+                "uid": "608b1584-4c78-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "activeDeadlineSeconds": 21600,
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAME",
+                                "value": "wildfly-app-1"
+                            },
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAMESPACE",
+                                "value": "wildfly-demo"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "deployment",
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000520000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "deployer-token-pxr5v",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "deployer-dockercfg-prfbk"
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000520000,
+                    "seLinuxOptions": {
+                        "level": "s0:c23,c7"
+                    }
+                },
+                "serviceAccount": "deployer",
+                "serviceAccountName": "deployer",
+                "shareProcessNamespace": false,
+                "terminationGracePeriodSeconds": 10,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "deployer-token-pxr5v",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "deployer-token-pxr5v"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:44:10Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:45:36Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:45:36Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:44:08Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://d9be2374139f7aab097642cb56d9c3b06d354e4abed9fbb2e5c90c9eeea2bfeb",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1987114d68a54affa52c4da2c7d9877580a346a9ddf215a0144cfbdbc2fc1483",
+                        "lastState": {},
+                        "name": "deployment",
+                        "ready": false,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://d9be2374139f7aab097642cb56d9c3b06d354e4abed9fbb2e5c90c9eeea2bfeb",
+                                "exitCode": 0,
+                                "finishedAt": "2020-02-11T02:45:36Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-02-11T02:44:19Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "phase": "Succeeded",
+                "podIP": "10.128.0.192",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-11T02:44:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "[{\n    \"name\": \"openshift-sdn\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.128.0.193\"\n    ],\n    \"default\": true,\n    \"dns\": {}\n}]",
+                    "openshift.io/deployment-config.latest-version": "1",
+                    "openshift.io/deployment-config.name": "wildfly-app",
+                    "openshift.io/deployment.name": "wildfly-app-1",
+                    "openshift.io/generated-by": "OpenShiftNewApp",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-02-11T02:44:19Z",
+                "generateName": "wildfly-app-1-",
+                "labels": {
+                    "deployment": "wildfly-app-1",
+                    "deploymentconfig": "wildfly-app"
+                },
+                "name": "wildfly-app-1-scsfd",
+                "namespace": "wildfly-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicationController",
+                        "name": "wildfly-app-1",
+                        "uid": "60644a31-4c78-11ea-b029-0ef0e3c74fbe"
+                    }
+                ],
+                "resourceVersion": "77770",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/pods/wildfly-app-1-scsfd",
+                "uid": "67228849-4c78-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "POSTGRESQL_DATABASE",
+                                "value": "demodb"
+                            },
+                            {
+                                "name": "POSTGRESQL_DATASOURCE",
+                                "value": "PostgreSQLDS"
+                            },
+                            {
+                                "name": "POSTGRESQL_PASSWORD",
+                                "value": "admin"
+                            },
+                            {
+                                "name": "POSTGRESQL_SERVICE_HOST",
+                                "value": "database-server"
+                            },
+                            {
+                                "name": "POSTGRESQL_SERVICE_PORT",
+                                "value": "5432"
+                            },
+                            {
+                                "name": "POSTGRESQL_USER",
+                                "value": "postgre"
+                            }
+                        ],
+                        "image": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c",
+                        "imagePullPolicy": "Always",
+                        "name": "wildfly-app",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 8778,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000520000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-ql5x8",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-5bzvr"
+                    }
+                ],
+                "nodeName": "crc-q4zfq-master-0",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000520000,
+                    "seLinuxOptions": {
+                        "level": "s0:c23,c7"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-ql5x8",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-ql5x8"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:44:19Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:45:35Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:45:35Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-02-11T02:44:19Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://386125d9d53e8f70468052ace522a8f136c2b11760ff6317163e0b3ec09a4c20",
+                        "image": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c",
+                        "imageID": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c",
+                        "lastState": {},
+                        "name": "wildfly-app",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2020-02-11T02:45:35Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.64.5",
+                "phase": "Running",
+                "podIP": "10.128.0.193",
+                "qosClass": "BestEffort",
+                "startTime": "2020-02-11T02:44:19Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "ReplicationController",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/deployer-pod.completed-at": "2020-02-11 02:39:12 +0000 UTC",
+                    "openshift.io/deployer-pod.created-at": "2020-02-11 02:38:27 +0000 UTC",
+                    "openshift.io/deployer-pod.name": "database-server-1-deploy",
+                    "openshift.io/deployment-config.latest-version": "1",
+                    "openshift.io/deployment-config.name": "database-server",
+                    "openshift.io/deployment.phase": "Complete",
+                    "openshift.io/deployment.replicas": "1",
+                    "openshift.io/deployment.status-reason": "config change",
+                    "openshift.io/encoded-deployment-config": "{\"kind\":\"DeploymentConfig\",\"apiVersion\":\"apps.openshift.io/v1\",\"metadata\":{\"name\":\"database-server\",\"namespace\":\"wildfly-demo\",\"selfLink\":\"/apis/apps.openshift.io/v1/namespaces/wildfly-demo/deploymentconfigs/database-server\",\"uid\":\"9443a6d2-4c77-11ea-9715-0a580a800095\",\"resourceVersion\":\"76462\",\"generation\":2,\"creationTimestamp\":\"2020-02-11T02:38:26Z\",\"labels\":{\"app\":\"database-server\",\"app.kubernetes.io/component\":\"database-server\",\"app.kubernetes.io/instance\":\"database-server\"},\"annotations\":{\"openshift.io/generated-by\":\"OpenShiftNewApp\"}},\"spec\":{\"strategy\":{\"type\":\"Rolling\",\"rollingParams\":{\"updatePeriodSeconds\":1,\"intervalSeconds\":1,\"timeoutSeconds\":600,\"maxUnavailable\":\"25%\",\"maxSurge\":\"25%\"},\"resources\":{},\"activeDeadlineSeconds\":21600},\"triggers\":[{\"type\":\"ConfigChange\"},{\"type\":\"ImageChange\",\"imageChangeParams\":{\"automatic\":true,\"containerNames\":[\"database-server\"],\"from\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"openshift\",\"name\":\"postgresql:10\"},\"lastTriggeredImage\":\"image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:713619e271020556016c60fde6c623b356416d0bfd8bd4214e1b1315952ee8cd\"}}],\"replicas\":1,\"revisionHistoryLimit\":10,\"test\":false,\"selector\":{\"deploymentconfig\":\"database-server\"},\"template\":{\"metadata\":{\"creationTimestamp\":null,\"labels\":{\"deploymentconfig\":\"database-server\"},\"annotations\":{\"openshift.io/generated-by\":\"OpenShiftNewApp\"}},\"spec\":{\"containers\":[{\"name\":\"database-server\",\"image\":\"image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:713619e271020556016c60fde6c623b356416d0bfd8bd4214e1b1315952ee8cd\",\"ports\":[{\"containerPort\":5432,\"protocol\":\"TCP\"}],\"env\":[{\"name\":\"POSTGRESQL_DATABASE\",\"value\":\"demodb\"},{\"name\":\"POSTGRESQL_PASSWORD\",\"value\":\"admin\"},{\"name\":\"POSTGRESQL_USER\",\"value\":\"postgre\"}],\"resources\":{},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"IfNotPresent\"}],\"restartPolicy\":\"Always\",\"terminationGracePeriodSeconds\":30,\"dnsPolicy\":\"ClusterFirst\",\"securityContext\":{},\"schedulerName\":\"default-scheduler\"}}},\"status\":{\"latestVersion\":1,\"observedGeneration\":1,\"replicas\":0,\"updatedReplicas\":0,\"availableReplicas\":0,\"unavailableReplicas\":0,\"details\":{\"message\":\"config change\",\"causes\":[{\"type\":\"ConfigChange\"}]},\"conditions\":[{\"type\":\"Available\",\"status\":\"False\",\"lastUpdateTime\":\"2020-02-11T02:38:26Z\",\"lastTransitionTime\":\"2020-02-11T02:38:26Z\",\"message\":\"Deployment config does not have minimum availability.\"}]}}\n"
+                },
+                "creationTimestamp": "2020-02-11T02:38:27Z",
+                "generation": 2,
+                "labels": {
+                    "app": "database-server",
+                    "app.kubernetes.io/component": "database-server",
+                    "app.kubernetes.io/instance": "database-server",
+                    "openshift.io/deployment-config.name": "database-server"
+                },
+                "name": "database-server-1",
+                "namespace": "wildfly-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps.openshift.io/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "DeploymentConfig",
+                        "name": "database-server",
+                        "uid": "9443a6d2-4c77-11ea-9715-0a580a800095"
+                    }
+                ],
+                "resourceVersion": "76631",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/replicationcontrollers/database-server-1",
+                "uid": "954a74fc-4c77-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "deployment": "database-server-1",
+                    "deploymentconfig": "database-server"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "openshift.io/deployment-config.latest-version": "1",
+                            "openshift.io/deployment-config.name": "database-server",
+                            "openshift.io/deployment.name": "database-server-1",
+                            "openshift.io/generated-by": "OpenShiftNewApp"
+                        },
+                        "creationTimestamp": null,
+                        "labels": {
+                            "deployment": "database-server-1",
+                            "deploymentconfig": "database-server"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "POSTGRESQL_DATABASE",
+                                        "value": "demodb"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_PASSWORD",
+                                        "value": "admin"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_USER",
+                                        "value": "postgre"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:713619e271020556016c60fde6c623b356416d0bfd8bd4214e1b1315952ee8cd",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "database-server",
+                                "ports": [
+                                    {
+                                        "containerPort": 5432,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 2,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "ReplicationController",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/deployer-pod.completed-at": "2020-02-11 02:45:36 +0000 UTC",
+                    "openshift.io/deployer-pod.created-at": "2020-02-11 02:44:08 +0000 UTC",
+                    "openshift.io/deployer-pod.name": "wildfly-app-1-deploy",
+                    "openshift.io/deployment-config.latest-version": "1",
+                    "openshift.io/deployment-config.name": "wildfly-app",
+                    "openshift.io/deployment.phase": "Complete",
+                    "openshift.io/deployment.replicas": "1",
+                    "openshift.io/deployment.status-reason": "config change",
+                    "openshift.io/encoded-deployment-config": "{\"kind\":\"DeploymentConfig\",\"apiVersion\":\"apps.openshift.io/v1\",\"metadata\":{\"name\":\"wildfly-app\",\"namespace\":\"wildfly-demo\",\"selfLink\":\"/apis/apps.openshift.io/v1/namespaces/wildfly-demo/deploymentconfigs/wildfly-app\",\"uid\":\"c670aebd-4c77-11ea-9715-0a580a800095\",\"resourceVersion\":\"77490\",\"generation\":2,\"creationTimestamp\":\"2020-02-11T02:39:50Z\",\"labels\":{\"app\":\"wildfly-app\",\"app.kubernetes.io/component\":\"wildfly-app\",\"app.kubernetes.io/instance\":\"wildfly-app\",\"app.kubernetes.io/name\":\"wildfly\"},\"annotations\":{\"openshift.io/generated-by\":\"OpenShiftNewApp\"}},\"spec\":{\"strategy\":{\"type\":\"Rolling\",\"rollingParams\":{\"updatePeriodSeconds\":1,\"intervalSeconds\":1,\"timeoutSeconds\":600,\"maxUnavailable\":\"25%\",\"maxSurge\":\"25%\"},\"resources\":{},\"activeDeadlineSeconds\":21600},\"triggers\":[{\"type\":\"ConfigChange\"},{\"type\":\"ImageChange\",\"imageChangeParams\":{\"automatic\":true,\"containerNames\":[\"wildfly-app\"],\"from\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"wildfly-demo\",\"name\":\"wildfly-app:latest\"},\"lastTriggeredImage\":\"image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c\"}}],\"replicas\":1,\"revisionHistoryLimit\":10,\"test\":false,\"selector\":{\"deploymentconfig\":\"wildfly-app\"},\"template\":{\"metadata\":{\"creationTimestamp\":null,\"labels\":{\"deploymentconfig\":\"wildfly-app\"},\"annotations\":{\"openshift.io/generated-by\":\"OpenShiftNewApp\"}},\"spec\":{\"containers\":[{\"name\":\"wildfly-app\",\"image\":\"image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c\",\"ports\":[{\"containerPort\":8080,\"protocol\":\"TCP\"},{\"containerPort\":8778,\"protocol\":\"TCP\"}],\"env\":[{\"name\":\"POSTGRESQL_DATABASE\",\"value\":\"demodb\"},{\"name\":\"POSTGRESQL_DATASOURCE\",\"value\":\"PostgreSQLDS\"},{\"name\":\"POSTGRESQL_PASSWORD\",\"value\":\"admin\"},{\"name\":\"POSTGRESQL_SERVICE_HOST\",\"value\":\"database-server\"},{\"name\":\"POSTGRESQL_SERVICE_PORT\",\"value\":\"5432\"},{\"name\":\"POSTGRESQL_USER\",\"value\":\"postgre\"}],\"resources\":{},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"Always\"}],\"restartPolicy\":\"Always\",\"terminationGracePeriodSeconds\":30,\"dnsPolicy\":\"ClusterFirst\",\"securityContext\":{},\"schedulerName\":\"default-scheduler\"}}},\"status\":{\"latestVersion\":1,\"observedGeneration\":1,\"replicas\":0,\"updatedReplicas\":0,\"availableReplicas\":0,\"unavailableReplicas\":0,\"details\":{\"message\":\"config change\",\"causes\":[{\"type\":\"ConfigChange\"}]},\"conditions\":[{\"type\":\"Available\",\"status\":\"False\",\"lastUpdateTime\":\"2020-02-11T02:39:50Z\",\"lastTransitionTime\":\"2020-02-11T02:39:50Z\",\"message\":\"Deployment config does not have minimum availability.\"}]}}\n"
+                },
+                "creationTimestamp": "2020-02-11T02:44:08Z",
+                "generation": 2,
+                "labels": {
+                    "app": "wildfly-app",
+                    "app.kubernetes.io/component": "wildfly-app",
+                    "app.kubernetes.io/instance": "wildfly-app",
+                    "app.kubernetes.io/name": "wildfly",
+                    "openshift.io/deployment-config.name": "wildfly-app"
+                },
+                "name": "wildfly-app-1",
+                "namespace": "wildfly-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps.openshift.io/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "DeploymentConfig",
+                        "name": "wildfly-app",
+                        "uid": "c670aebd-4c77-11ea-9715-0a580a800095"
+                    }
+                ],
+                "resourceVersion": "77776",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/replicationcontrollers/wildfly-app-1",
+                "uid": "60644a31-4c78-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "deployment": "wildfly-app-1",
+                    "deploymentconfig": "wildfly-app"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "openshift.io/deployment-config.latest-version": "1",
+                            "openshift.io/deployment-config.name": "wildfly-app",
+                            "openshift.io/deployment.name": "wildfly-app-1",
+                            "openshift.io/generated-by": "OpenShiftNewApp"
+                        },
+                        "creationTimestamp": null,
+                        "labels": {
+                            "deployment": "wildfly-app-1",
+                            "deploymentconfig": "wildfly-app"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "POSTGRESQL_DATABASE",
+                                        "value": "demodb"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_DATASOURCE",
+                                        "value": "PostgreSQLDS"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_PASSWORD",
+                                        "value": "admin"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_SERVICE_HOST",
+                                        "value": "database-server"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_SERVICE_PORT",
+                                        "value": "5432"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_USER",
+                                        "value": "postgre"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c",
+                                "imagePullPolicy": "Always",
+                                "name": "wildfly-app",
+                                "ports": [
+                                    {
+                                        "containerPort": 8080,
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8778,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 2,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": "2020-02-11T02:38:26Z",
+                "labels": {
+                    "app": "database-server",
+                    "app.kubernetes.io/component": "database-server",
+                    "app.kubernetes.io/instance": "database-server"
+                },
+                "name": "database-server",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "76454",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/services/database-server",
+                "uid": "94470f36-4c77-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "clusterIP": "172.30.6.170",
+                "ports": [
+                    {
+                        "name": "5432-tcp",
+                        "port": 5432,
+                        "protocol": "TCP",
+                        "targetPort": 5432
+                    }
+                ],
+                "selector": {
+                    "deploymentconfig": "database-server"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": "2020-02-11T02:39:50Z",
+                "labels": {
+                    "app": "wildfly-app",
+                    "app.kubernetes.io/component": "wildfly-app",
+                    "app.kubernetes.io/instance": "wildfly-app",
+                    "app.kubernetes.io/name": "wildfly"
+                },
+                "name": "wildfly-app",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "76738",
+                "selfLink": "/api/v1/namespaces/wildfly-demo/services/wildfly-app",
+                "uid": "c6741af2-4c77-11ea-b029-0ef0e3c74fbe"
+            },
+            "spec": {
+                "clusterIP": "172.30.95.164",
+                "ports": [
+                    {
+                        "name": "8080-tcp",
+                        "port": 8080,
+                        "protocol": "TCP",
+                        "targetPort": 8080
+                    },
+                    {
+                        "name": "8778-tcp",
+                        "port": 8778,
+                        "protocol": "TCP",
+                        "targetPort": 8778
+                    }
+                ],
+                "selector": {
+                    "deploymentconfig": "wildfly-app"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "apps.openshift.io/v1",
+            "kind": "DeploymentConfig",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": "2020-02-11T02:38:26Z",
+                "generation": 2,
+                "labels": {
+                    "app": "database-server",
+                    "app.kubernetes.io/component": "database-server",
+                    "app.kubernetes.io/instance": "database-server"
+                },
+                "name": "database-server",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "76632",
+                "selfLink": "/apis/apps.openshift.io/v1/namespaces/wildfly-demo/deploymentconfigs/database-server",
+                "uid": "9443a6d2-4c77-11ea-9715-0a580a800095"
+            },
+            "spec": {
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "deploymentconfig": "database-server"
+                },
+                "strategy": {
+                    "activeDeadlineSeconds": 21600,
+                    "resources": {},
+                    "rollingParams": {
+                        "intervalSeconds": 1,
+                        "maxSurge": "25%",
+                        "maxUnavailable": "25%",
+                        "timeoutSeconds": 600,
+                        "updatePeriodSeconds": 1
+                    },
+                    "type": "Rolling"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "openshift.io/generated-by": "OpenShiftNewApp"
+                        },
+                        "creationTimestamp": null,
+                        "labels": {
+                            "deploymentconfig": "database-server"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "POSTGRESQL_DATABASE",
+                                        "value": "demodb"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_PASSWORD",
+                                        "value": "admin"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_USER",
+                                        "value": "postgre"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:713619e271020556016c60fde6c623b356416d0bfd8bd4214e1b1315952ee8cd",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "database-server",
+                                "ports": [
+                                    {
+                                        "containerPort": 5432,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                },
+                "test": false,
+                "triggers": [
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "database-server"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "postgresql:10",
+                                "namespace": "openshift"
+                            },
+                            "lastTriggeredImage": "image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:713619e271020556016c60fde6c623b356416d0bfd8bd4214e1b1315952ee8cd"
+                        },
+                        "type": "ImageChange"
+                    }
+                ]
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-02-11T02:39:11Z",
+                        "lastUpdateTime": "2020-02-11T02:39:11Z",
+                        "message": "Deployment config has minimum availability.",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2020-02-11T02:38:45Z",
+                        "lastUpdateTime": "2020-02-11T02:39:12Z",
+                        "message": "replication controller \"database-server-1\" successfully rolled out",
+                        "reason": "NewReplicationControllerAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "details": {
+                    "causes": [
+                        {
+                            "type": "ConfigChange"
+                        }
+                    ],
+                    "message": "config change"
+                },
+                "latestVersion": 1,
+                "observedGeneration": 2,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "unavailableReplicas": 0,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps.openshift.io/v1",
+            "kind": "DeploymentConfig",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": "2020-02-11T02:39:50Z",
+                "generation": 2,
+                "labels": {
+                    "app": "wildfly-app",
+                    "app.kubernetes.io/component": "wildfly-app",
+                    "app.kubernetes.io/instance": "wildfly-app",
+                    "app.kubernetes.io/name": "wildfly"
+                },
+                "name": "wildfly-app",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "77777",
+                "selfLink": "/apis/apps.openshift.io/v1/namespaces/wildfly-demo/deploymentconfigs/wildfly-app",
+                "uid": "c670aebd-4c77-11ea-9715-0a580a800095"
+            },
+            "spec": {
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "deploymentconfig": "wildfly-app"
+                },
+                "strategy": {
+                    "activeDeadlineSeconds": 21600,
+                    "resources": {},
+                    "rollingParams": {
+                        "intervalSeconds": 1,
+                        "maxSurge": "25%",
+                        "maxUnavailable": "25%",
+                        "timeoutSeconds": 600,
+                        "updatePeriodSeconds": 1
+                    },
+                    "type": "Rolling"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "openshift.io/generated-by": "OpenShiftNewApp"
+                        },
+                        "creationTimestamp": null,
+                        "labels": {
+                            "deploymentconfig": "wildfly-app"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "POSTGRESQL_DATABASE",
+                                        "value": "demodb"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_DATASOURCE",
+                                        "value": "PostgreSQLDS"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_PASSWORD",
+                                        "value": "admin"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_SERVICE_HOST",
+                                        "value": "database-server"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_SERVICE_PORT",
+                                        "value": "5432"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_USER",
+                                        "value": "postgre"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c",
+                                "imagePullPolicy": "Always",
+                                "name": "wildfly-app",
+                                "ports": [
+                                    {
+                                        "containerPort": 8080,
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8778,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                },
+                "test": false,
+                "triggers": [
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "wildfly-app"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "wildfly-app:latest",
+                                "namespace": "wildfly-demo"
+                            },
+                            "lastTriggeredImage": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c"
+                        },
+                        "type": "ImageChange"
+                    }
+                ]
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-02-11T02:45:35Z",
+                        "lastUpdateTime": "2020-02-11T02:45:35Z",
+                        "message": "Deployment config has minimum availability.",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2020-02-11T02:44:20Z",
+                        "lastUpdateTime": "2020-02-11T02:45:36Z",
+                        "message": "replication controller \"wildfly-app-1\" successfully rolled out",
+                        "reason": "NewReplicationControllerAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "details": {
+                    "causes": [
+                        {
+                            "type": "ConfigChange"
+                        }
+                    ],
+                    "message": "config change"
+                },
+                "latestVersion": 1,
+                "observedGeneration": 2,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "unavailableReplicas": 0,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "build.openshift.io/v1",
+            "kind": "BuildConfig",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": "2020-02-11T02:39:50Z",
+                "labels": {
+                    "app": "wildfly-app",
+                    "app.kubernetes.io/component": "wildfly-app",
+                    "app.kubernetes.io/instance": "wildfly-app",
+                    "app.kubernetes.io/name": "wildfly"
+                },
+                "name": "wildfly-app",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "76742",
+                "selfLink": "/apis/build.openshift.io/v1/namespaces/wildfly-demo/buildconfigs/wildfly-app",
+                "uid": "c6688941-4c77-11ea-9715-0a580a800095"
+            },
+            "spec": {
+                "failedBuildsHistoryLimit": 5,
+                "nodeSelector": null,
+                "output": {
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "wildfly-app:latest"
+                    }
+                },
+                "postCommit": {},
+                "resources": {},
+                "runPolicy": "Serial",
+                "source": {
+                    "git": {
+                        "uri": "https://github.com/yersan/jaxrs-postgresql-demo.git"
+                    },
+                    "type": "Git"
+                },
+                "strategy": {
+                    "sourceStrategy": {
+                        "env": [
+                            {
+                                "name": "GALLEON_PROVISION_LAYERS",
+                                "value": "jaxrs-server,postgresql-datasource"
+                            }
+                        ],
+                        "from": {
+                            "kind": "ImageStreamTag",
+                            "name": "wildfly:latest",
+                            "namespace": "openshift"
+                        }
+                    },
+                    "type": "Source"
+                },
+                "successfulBuildsHistoryLimit": 5,
+                "triggers": [
+                    {
+                        "github": {
+                            "secret": "FCnG-PxkHeMry9qPLGzO"
+                        },
+                        "type": "GitHub"
+                    },
+                    {
+                        "generic": {
+                            "secret": "aQZNAET4KjPEUxoBjjZ2"
+                        },
+                        "type": "Generic"
+                    },
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "imageChange": {
+                            "lastTriggeredImageID": "quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78"
+                        },
+                        "type": "ImageChange"
+                    }
+                ]
+            },
+            "status": {
+                "lastVersion": 1
+            }
+        },
+        {
+            "apiVersion": "build.openshift.io/v1",
+            "kind": "Build",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/build-config.name": "wildfly-app",
+                    "openshift.io/build.number": "1",
+                    "openshift.io/build.pod-name": "wildfly-app-1-build"
+                },
+                "creationTimestamp": "2020-02-11T02:39:50Z",
+                "labels": {
+                    "app": "wildfly-app",
+                    "app.kubernetes.io/component": "wildfly-app",
+                    "app.kubernetes.io/instance": "wildfly-app",
+                    "app.kubernetes.io/name": "wildfly",
+                    "buildconfig": "wildfly-app",
+                    "openshift.io/build-config.name": "wildfly-app",
+                    "openshift.io/build.start-policy": "Serial"
+                },
+                "name": "wildfly-app-1",
+                "namespace": "wildfly-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "build.openshift.io/v1",
+                        "controller": true,
+                        "kind": "BuildConfig",
+                        "name": "wildfly-app",
+                        "uid": "c6688941-4c77-11ea-9715-0a580a800095"
+                    }
+                ],
+                "resourceVersion": "77492",
+                "selfLink": "/apis/build.openshift.io/v1/namespaces/wildfly-demo/builds/wildfly-app-1",
+                "uid": "c6a0cfde-4c77-11ea-9715-0a580a800095"
+            },
+            "spec": {
+                "nodeSelector": null,
+                "output": {
+                    "pushSecret": {
+                        "name": "builder-dockercfg-np9j2"
+                    },
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "wildfly-app:latest"
+                    }
+                },
+                "postCommit": {},
+                "resources": {},
+                "revision": {
+                    "git": {
+                        "author": {
+                            "email": "yersan@users.noreply.github.com",
+                            "name": "Yeray Borges"
+                        },
+                        "commit": "24d98fca4b917d26ed0d6778586662475eeb9cc7",
+                        "committer": {
+                            "email": "noreply@github.com",
+                            "name": "GitHub"
+                        },
+                        "message": "Create README.md"
+                    },
+                    "type": "Git"
+                },
+                "serviceAccount": "builder",
+                "source": {
+                    "git": {
+                        "uri": "https://github.com/yersan/jaxrs-postgresql-demo.git"
+                    },
+                    "type": "Git"
+                },
+                "strategy": {
+                    "sourceStrategy": {
+                        "env": [
+                            {
+                                "name": "GALLEON_PROVISION_LAYERS",
+                                "value": "jaxrs-server,postgresql-datasource"
+                            }
+                        ],
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78"
+                        }
+                    },
+                    "type": "Source"
+                },
+                "triggeredBy": [
+                    {
+                        "imageChangeBuild": {
+                            "fromRef": {
+                                "kind": "ImageStreamTag",
+                                "name": "wildfly:latest",
+                                "namespace": "openshift"
+                            },
+                            "imageID": "quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78"
+                        },
+                        "message": "Image change"
+                    }
+                ]
+            },
+            "status": {
+                "completionTimestamp": "2020-02-11T02:44:08Z",
+                "config": {
+                    "kind": "BuildConfig",
+                    "name": "wildfly-app",
+                    "namespace": "wildfly-demo"
+                },
+                "duration": 258000000000,
+                "output": {
+                    "to": {
+                        "imageDigest": "sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c"
+                    }
+                },
+                "outputDockerImageReference": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app:latest",
+                "phase": "Complete",
+                "stages": [
+                    {
+                        "durationMilliseconds": 1947,
+                        "name": "FetchInputs",
+                        "startTime": "2020-02-11T02:40:15Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 1947,
+                                "name": "FetchGitSource",
+                                "startTime": "2020-02-11T02:40:15Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 102025,
+                        "name": "PullImages",
+                        "startTime": "2020-02-11T02:40:21Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 102025,
+                                "name": "PullBaseImage",
+                                "startTime": "2020-02-11T02:40:21Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 90506,
+                        "name": "Build",
+                        "startTime": "2020-02-11T02:42:03Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 90506,
+                                "name": "DockerBuild",
+                                "startTime": "2020-02-11T02:42:03Z"
+                            }
+                        ]
+                    },
+                    {
+                        "durationMilliseconds": 33594,
+                        "name": "PushImage",
+                        "startTime": "2020-02-11T02:43:34Z",
+                        "steps": [
+                            {
+                                "durationMilliseconds": 33594,
+                                "name": "PushImage",
+                                "startTime": "2020-02-11T02:43:34Z"
+                            }
+                        ]
+                    }
+                ],
+                "startTimestamp": "2020-02-11T02:39:50Z"
+            }
+        },
+        {
+            "apiVersion": "image.openshift.io/v1",
+            "kind": "ImageStream",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/image.dockerRepositoryCheck": "2020-02-11T02:38:26Z"
+                },
+                "creationTimestamp": "2020-02-11T02:38:26Z",
+                "generation": 2,
+                "name": "database-server",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "76456",
+                "selfLink": "/apis/image.openshift.io/v1/namespaces/wildfly-demo/imagestreams/database-server",
+                "uid": "943eb77d-4c77-11ea-9715-0a580a800095"
+            },
+            "spec": {
+                "lookupPolicy": {
+                    "local": false
+                },
+                "tags": [
+                    {
+                        "annotations": null,
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "image-registry.openshift-image-registry.svc:5000/openshift/postgresql:10"
+                        },
+                        "generation": 2,
+                        "importPolicy": {},
+                        "name": "10",
+                        "referencePolicy": {
+                            "type": "Source"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "dockerImageRepository": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/database-server",
+                "publicDockerImageRepository": "default-route-openshift-image-registry.apps-crc.testing/wildfly-demo/database-server",
+                "tags": [
+                    {
+                        "conditions": [
+                            {
+                                "generation": 2,
+                                "lastTransitionTime": "2020-02-11T02:38:26Z",
+                                "message": "Internal error occurred: Get https://image-registry.openshift-image-registry.svc:5000/v2/: x509: certificate signed by unknown authority",
+                                "reason": "InternalError",
+                                "status": "False",
+                                "type": "ImportSuccess"
+                            }
+                        ],
+                        "items": null,
+                        "tag": "10"
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "image.openshift.io/v1",
+            "kind": "ImageStream",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": "2020-02-11T02:39:50Z",
+                "generation": 1,
+                "labels": {
+                    "app": "wildfly-app",
+                    "app.kubernetes.io/component": "wildfly-app",
+                    "app.kubernetes.io/instance": "wildfly-app",
+                    "app.kubernetes.io/name": "wildfly"
+                },
+                "name": "wildfly-app",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "77486",
+                "selfLink": "/apis/image.openshift.io/v1/namespaces/wildfly-demo/imagestreams/wildfly-app",
+                "uid": "c661a11a-4c77-11ea-9715-0a580a800095"
+            },
+            "spec": {
+                "lookupPolicy": {
+                    "local": false
+                }
+            },
+            "status": {
+                "dockerImageRepository": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app",
+                "publicDockerImageRepository": "default-route-openshift-image-registry.apps-crc.testing/wildfly-demo/wildfly-app",
+                "tags": [
+                    {
+                        "items": [
+                            {
+                                "created": "2020-02-11T02:44:07Z",
+                                "dockerImageReference": "image-registry.openshift-image-registry.svc:5000/wildfly-demo/wildfly-app@sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c",
+                                "generation": 1,
+                                "image": "sha256:4d7a0ac57a235d70d79f36ea005806ad6983b83e9408f4009422f2e5f12efd1c"
+                            }
+                        ],
+                        "tag": "latest"
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "route.openshift.io/v1",
+            "kind": "Route",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/host.generated": "true"
+                },
+                "creationTimestamp": "2020-02-11T02:41:35Z",
+                "labels": {
+                    "app": "database-server",
+                    "app.kubernetes.io/component": "database-server",
+                    "app.kubernetes.io/instance": "database-server"
+                },
+                "name": "database-server",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "77065",
+                "selfLink": "/apis/route.openshift.io/v1/namespaces/wildfly-demo/routes/database-server",
+                "uid": "052d9831-4c78-11ea-9715-0a580a800095"
+            },
+            "spec": {
+                "host": "database-server-wildfly-demo.apps-crc.testing",
+                "port": {
+                    "targetPort": "5432-tcp"
+                },
+                "subdomain": "",
+                "to": {
+                    "kind": "Service",
+                    "name": "database-server",
+                    "weight": 100
+                },
+                "wildcardPolicy": "None"
+            },
+            "status": {
+                "ingress": [
+                    {
+                        "conditions": [
+                            {
+                                "lastTransitionTime": "2020-02-11T02:41:36Z",
+                                "status": "True",
+                                "type": "Admitted"
+                            }
+                        ],
+                        "host": "database-server-wildfly-demo.apps-crc.testing",
+                        "routerCanonicalHostname": "apps-crc.testing",
+                        "routerName": "default",
+                        "wildcardPolicy": "None"
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "route.openshift.io/v1",
+            "kind": "Route",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/host.generated": "true"
+                },
+                "creationTimestamp": "2020-02-11T02:40:11Z",
+                "labels": {
+                    "app": "wildfly-app",
+                    "app.kubernetes.io/component": "wildfly-app",
+                    "app.kubernetes.io/instance": "wildfly-app",
+                    "app.kubernetes.io/name": "wildfly"
+                },
+                "name": "wildfly-app",
+                "namespace": "wildfly-demo",
+                "resourceVersion": "76811",
+                "selfLink": "/apis/route.openshift.io/v1/namespaces/wildfly-demo/routes/wildfly-app",
+                "uid": "d33cb350-4c77-11ea-9715-0a580a800095"
+            },
+            "spec": {
+                "host": "wildfly-app-wildfly-demo.apps-crc.testing",
+                "port": {
+                    "targetPort": "8080-tcp"
+                },
+                "subdomain": "",
+                "to": {
+                    "kind": "Service",
+                    "name": "wildfly-app",
+                    "weight": 100
+                },
+                "wildcardPolicy": "None"
+            },
+            "status": {
+                "ingress": [
+                    {
+                        "conditions": [
+                            {
+                                "lastTransitionTime": "2020-02-11T02:40:11Z",
+                                "status": "True",
+                                "type": "Admitted"
+                            }
+                        ],
+                        "host": "wildfly-app-wildfly-demo.apps-crc.testing",
+                        "routerCanonicalHostname": "apps-crc.testing",
+                        "routerName": "default",
+                        "wildcardPolicy": "None"
+                    }
+                ]
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}
