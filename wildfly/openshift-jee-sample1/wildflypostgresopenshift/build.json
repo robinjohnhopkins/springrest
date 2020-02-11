@@ -1,0 +1,83 @@
+{
+    "apiVersion": "build.openshift.io/v1",
+    "kind": "BuildConfig",
+    "metadata": {
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        },
+        "creationTimestamp": "2020-02-11T02:39:50Z",
+        "labels": {
+            "app": "wildfly-app",
+            "app.kubernetes.io/component": "wildfly-app",
+            "app.kubernetes.io/instance": "wildfly-app",
+            "app.kubernetes.io/name": "wildfly"
+        },
+        "name": "wildfly-app",
+        "namespace": "wildfly-demo",
+        "resourceVersion": "109584",
+        "selfLink": "/apis/build.openshift.io/v1/namespaces/wildfly-demo/buildconfigs/wildfly-app",
+        "uid": "c6688941-4c77-11ea-9715-0a580a800095"
+    },
+    "spec": {
+        "failedBuildsHistoryLimit": 5,
+        "nodeSelector": null,
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "wildfly-app:latest"
+            }
+        },
+        "postCommit": {},
+        "resources": {},
+        "runPolicy": "Serial",
+        "source": {
+            "git": {
+                "uri": "https://github.com/robinjohnhopkins/jaxrs-postgresql-demo.git"
+            },
+            "type": "Git"
+        },
+        "strategy": {
+            "sourceStrategy": {
+                "env": [
+                    {
+                        "name": "GALLEON_PROVISION_LAYERS",
+                        "value": "jaxrs-server,postgresql-datasource"
+                    }
+                ],
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "wildfly:latest",
+                    "namespace": "openshift"
+                }
+            },
+            "type": "Source"
+        },
+        "successfulBuildsHistoryLimit": 5,
+        "triggers": [
+            {
+                "github": {
+                    "secret": "FCnG-PxkHeMry9qPLGzO"
+                },
+                "type": "GitHub"
+            },
+            {
+                "generic": {
+                    "secret": "aQZNAET4KjPEUxoBjjZ2"
+                },
+                "type": "Generic"
+            },
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "imageChange": {
+                    "lastTriggeredImageID": "quay.io/wildfly/wildfly-centos7@sha256:1550ad7582578c98b0fb23e666123a739e97186dc0ba9621bfe8c1e0f9833f78"
+                },
+                "type": "ImageChange"
+            }
+        ]
+    },
+    "status": {
+        "lastVersion": 5
+    }
+}

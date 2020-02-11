@@ -509,3 +509,92 @@ $ oc create -f pvc.yaml
 $ oc create -f rolebindings.yaml
  ```
 
+## fork git repo and update openshift build instruction
+
+```
+oc get all
+NAME                           READY   STATUS       RESTARTS   AGE
+pod/database-server-1-deploy   0/1     Completed    0          3h20m
+pod/database-server-1-q946z    1/1     Running      0          3h20m
+pod/wildfly-app-1-deploy       0/1     Completed    0          3h14m
+pod/wildfly-app-2-build        0/1     Completed    0          35m
+pod/wildfly-app-2-deploy       0/1     Completed    0          31m
+pod/wildfly-app-3-build        0/1     Completed    0          24m
+pod/wildfly-app-3-deploy       0/1     Completed    0          20m
+pod/wildfly-app-4-build        0/1     Completed    0          9m4s
+pod/wildfly-app-4-deploy       0/1     Completed    0          4m39s
+pod/wildfly-app-4-qnxgz        1/1     Running      0          4m27s
+pod/wildfly-app-5-build        0/1     Init:Error   0          3m26s
+
+NAME                                      DESIRED   CURRENT   READY   AGE
+replicationcontroller/database-server-1   1         1         1       3h20m
+replicationcontroller/wildfly-app-1       0         0         0       3h14m
+replicationcontroller/wildfly-app-2       0         0         0       31m
+replicationcontroller/wildfly-app-3       0         0         0       20m
+replicationcontroller/wildfly-app-4       1         1         1       4m39s
+
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+service/database-server   ClusterIP   172.30.6.170    <none>        5432/TCP            3h20m
+service/wildfly-app       ClusterIP   172.30.95.164   <none>        8080/TCP,8778/TCP   3h18m
+
+NAME                                                 REVISION   DESIRED   CURRENT   TRIGGERED BY
+deploymentconfig.apps.openshift.io/database-server   1          1         1         config,image(postgresql:10)
+deploymentconfig.apps.openshift.io/wildfly-app       4          1         1         config,image(wildfly-app:latest)
+
+NAME                                         TYPE     FROM   LATEST
+buildconfig.build.openshift.io/wildfly-app   Source   Git    5
+
+NAME                                     TYPE     FROM          STATUS                       STARTED          DURATION
+build.build.openshift.io/wildfly-app-1   Source   Git           Complete                     3 hours ago      4m18s
+build.build.openshift.io/wildfly-app-2   Source   Git@24d98fc   Complete                     35 minutes ago   4m39s
+build.build.openshift.io/wildfly-app-3   Source   Git@24d98fc   Complete                     24 minutes ago   3m41s
+build.build.openshift.io/wildfly-app-4   Source   Git@24d98fc   Complete                     9 minutes ago    4m25s
+build.build.openshift.io/wildfly-app-5   Source   Git           Failed (FetchSourceFailed)   3 minutes ago    11s
+
+NAME                                             IMAGE REPOSITORY                                                                       TAGS     UPDATED
+imagestream.image.openshift.io/database-server   default-route-openshift-image-registry.apps-crc.testing/wildfly-demo/database-server   10       
+imagestream.image.openshift.io/wildfly-app       default-route-openshift-image-registry.apps-crc.testing/wildfly-demo/wildfly-app       latest   4 minutes ago
+
+NAME                                       HOST/PORT                                       PATH   SERVICES          PORT       TERMINATION   WILDCARD
+route.route.openshift.io/database-server   database-server-wildfly-demo.apps-crc.testing          database-server   5432-tcp                 None
+route.route.openshift.io/wildfly-app       wildfly-app-wildfly-demo.apps-crc.testing              wildfly-app       8080-tcp                 None
+```
+
+```
+oc get buildconfig.build.openshift.io/wildfly-app -o json >> build.json
+```
+
+
+```
+vim build1.json 
+
+        "source": {
+            "git": {
+                "uri": "https://github.com/robinjohnhopkins/jaxrs-postgresql-demo.git"
+            },
+```
+
+```
+oc replace  buildconfig.build.openshift.io/wildfly-app -f  build.json
+```
+
+Then use gui to rebuild - it auto deploys after build.
+Check url using curl or browser
+
+http://wildfly-app-wildfly-demo.apps-crc.testing/jaxrs-postgresql-demo/api/tasks
+
+```
+[{"id":1,"title":"This is the task-1"},{"id":2,"title":"This is the task-2"},{"id":3,"title":"This is the task-3"},{"id":4,"title":"This is the task-4"},{"id":5,"title":"This is the task-5"}]
+```
+
+http://wildfly-app-wildfly-demo.apps-crc.testing/jaxrs-postgresql-demo/api/rest
+http://wildfly-app-wildfly-demo.apps-crc.testing/jaxrs-postgresql-demo/api/tasks/books
+```
+boom
+```
+
+http://wildfly-app-wildfly-demo.apps-crc.testing/jaxrs-postgresql-demo/api/rest/task
+```
+{"id":11,"title":"my tasky wask"}
+```
+
